@@ -253,9 +253,9 @@
       padding: 5px 11px; border-radius: 20px;
       font-size: .88rem; font-weight: 600; white-space: nowrap;
     }
-    .rb-p  { background: #FBE9E7; color: #BF360C; }  /* Presenter    – coral   */
-    .rb-f  { background: #E1F5FE; color: #01579B; }  /* Feedback     – blue    */
-    .rb-q  { background: #FFF8E1; color: #E65100; }  /* Questioner   – yellow  */
+    .rb-p  { background: #FBE9E7; color: #BF360C; }
+    .rb-f  { background: #E1F5FE; color: #01579B; }
+    .rb-q  { background: #FFF8E1; color: #E65100; }
 
     /* ── Responsive ── */
     @media (max-width: 600px) {
@@ -270,14 +270,12 @@
 </head>
 <body>
 
-<!-- Floating background bubbles -->
 <div class="bubbles" aria-hidden="true">
   <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
   <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
   <div class="bubble"></div>
 </div>
 
-<!-- Wave footer decoration -->
 <div class="wave-wrap" aria-hidden="true">
   <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path fill="rgba(0,188,212,0.25)" d="M0,45 C360,90 1080,0 1440,45 L1440,90 L0,90 Z"/>
@@ -287,14 +285,12 @@
 
 <div class="container">
 
-  <!-- Header -->
   <header class="app-header">
     <div class="header-icons">🌊 ☀️ 🌴</div>
     <h1 class="app-title">Presentation Role Scheduler</h1>
     <p class="app-subtitle">Fair, fun, and fully randomized role assignments for your summer program!</p>
   </header>
 
-  <!-- ── Step 1: Student Setup ── -->
   <section class="card" id="card-setup">
     <div class="card-head">
       <span class="step-badge sb-1">1</span>
@@ -303,17 +299,14 @@
         <div class="card-subtitle">Choose how many students and enter their names</div>
       </div>
     </div>
-
     <div class="count-row">
       <span class="count-label">Number of Students:</span>
       <span class="count-num" id="count-display">5</span>
       <input type="range" id="student-count" min="5" max="20" value="5" aria-label="Number of students">
     </div>
-
     <div class="names-grid" id="names-grid"></div>
   </section>
 
-  <!-- ── Step 2: Preferred Assignments ── -->
   <section class="card" id="card-prefs">
     <div class="card-head">
       <span class="step-badge sb-2">2</span>
@@ -322,38 +315,29 @@
         <div class="card-subtitle">Lock in specific roles before generating the schedule</div>
       </div>
     </div>
-
     <div class="pref-list" id="pref-list">
       <p class="pref-empty" id="pref-empty">No preferences added yet — every assignment will be randomized.</p>
     </div>
-
     <button class="btn btn-add" style="margin-top:14px;" onclick="addPref()">＋ Add Preference</button>
   </section>
 
-  <!-- ── Actions ── -->
   <div class="action-row">
     <button class="btn btn-primary" onclick="generateSchedule()">🌟 Generate Schedule</button>
     <button class="btn btn-ghost"   onclick="resetAll()">↺ Reset All</button>
   </div>
 
   <div id="msg-area"></div>
-
-  <!-- ── Schedule Output ── -->
   <div id="schedule-wrap" style="display:none; margin-top:28px;"></div>
 
-</div><!-- /container -->
+</div>
 
 <script>
-  /* ─── Constants ─── */
   const ROLE_NAMES   = ['Presenter', 'Feedback Provider', 'Questioner'];
   const ROLE_ICONS   = ['🎤', '💬', '❓'];
-  const ROLE_CLASSES = ['rb-p', 'rb-f', 'rb-q'];
 
-  /* ─── State ─── */
   let studentCount = 5;
-  let prefSeq      = 0; // ever-increasing id for pref rows
+  let prefSeq      = 0;
 
-  /* ─── Init ─── */
   document.addEventListener('DOMContentLoaded', () => {
     const slider = document.getElementById('student-count');
     slider.addEventListener('input', () => {
@@ -365,7 +349,6 @@
     rebuildNamesGrid();
   });
 
-  /* ─── Names grid ─── */
   function rebuildNamesGrid() {
     const grid = document.getElementById('names-grid');
     const prev = Array.from(grid.querySelectorAll('input')).map(i => i.value);
@@ -388,7 +371,6 @@
     });
   }
 
-  /* ─── Preferences ─── */
   function addPref() {
     const id = ++prefSeq;
     document.getElementById('pref-empty')?.remove();
@@ -431,12 +413,9 @@
       const ss = document.getElementById(`ps${id}`);
       const sr = document.getElementById(`pd${id}`);
       if (!ss || !sr) return;
-
       const prevS = ss.value, prevR = sr.value;
-
       ss.innerHTML = names.map((n, i) =>
         `<option value="${i}" ${i == prevS ? 'selected' : ''}>${esc(n)}</option>`).join('');
-
       sr.innerHTML = Array.from({length: studentCount}, (_, i) =>
         `<option value="${i}" ${i == prevR ? 'selected' : ''}>Round ${i + 1}</option>`).join('');
     });
@@ -453,14 +432,12 @@
     });
   }
 
-  /* ─── Messages ─── */
   function showMsg(html, type) {
     document.getElementById('msg-area').innerHTML =
       `<div class="msg msg-${type}"><span class="msg-icon">${type === 'error' ? '⚠️' : '✅'}</span><div>${html}</div></div>`;
   }
   function clearMsg() { document.getElementById('msg-area').innerHTML = ''; }
 
-  /* ─── Generate ─── */
   function generateSchedule() {
     clearMsg();
     const names = getNames();
@@ -486,7 +463,6 @@
     document.getElementById('schedule-wrap').style.display = 'none';
   }
 
-  /* ─── Render schedule ─── */
   function renderSchedule(sched, names) {
     const N = sched.length;
     let rows = '';
@@ -494,33 +470,29 @@
       const [p, f, q] = sched[r];
       rows += `<tr>
         <td><span class="round-pill">${r + 1}</span></td>
-        <td><span class="role-badge rb-p">${ROLE_ICONS[0]} ${esc(names[p])}</span></td>
-        <td><span class="role-badge rb-f">${ROLE_ICONS[1]} ${esc(names[f])}</span></td>
-        <td><span class="role-badge rb-q">${ROLE_ICONS[2]} ${esc(names[q])}</span></td>
+        <td><span class="role-badge rb-p">🎤 ${esc(names[p])}</span></td>
+        <td><span class="role-badge rb-f">💬 ${esc(names[f])}</span></td>
+        <td><span class="role-badge rb-q">❓ ${esc(names[q])}</span></td>
       </tr>`;
     }
-
     const wrap = document.getElementById('schedule-wrap');
     wrap.innerHTML = `
       <div class="card schedule-card">
         <div class="card-head">
-          <span class="card-icon" style="font-size:1.5rem;">📋</span>
+          <span style="font-size:1.5rem;">📋</span>
           <div>
             <div class="card-title">Generated Schedule</div>
             <div class="card-subtitle">All roles balanced — every student performs each role exactly once</div>
           </div>
         </div>
-
         <div class="schedule-meta">
           <span class="meta-chip">👥 ${N} Students</span>
           <span class="meta-chip">🔄 ${N} Rounds</span>
           <span class="meta-chip">✅ Fully Validated</span>
         </div>
-
         <div class="action-row" style="justify-content:flex-start; margin-bottom:20px;">
           <button class="btn btn-secondary" onclick="generateSchedule()">🔀 Regenerate</button>
         </div>
-
         <div class="table-wrap">
           <table>
             <thead>
@@ -535,59 +507,38 @@
           </table>
         </div>
       </div>`;
-
     wrap.style.display = 'block';
     wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  /* ─── Utility ─── */
   function esc(s) {
     return String(s)
       .replace(/&/g,'&amp;').replace(/</g,'&lt;')
       .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  /* ════════════════════════════════════════
-     Scheduler
-     Guarantees:
-       - Each student appears as Presenter       exactly once
-       - Each student appears as Feedback        exactly once
-       - Each student appears as Questioner      exactly once
-       - In every round the three students differ
-  ════════════════════════════════════════ */
   class Scheduler {
-    constructor(names) {
-      this.names = names;
-      this.N     = names.length;
-    }
+    constructor(names) { this.names = names; this.N = names.length; }
 
     generate(prefs = []) {
       const N        = this.N;
-      // schedule[round][roleIdx] = studentIdx  (-1 = unassigned)
       const schedule = Array.from({length: N}, () => [-1, -1, -1]);
-      const usedBy   = [new Set(), new Set(), new Set()]; // usedBy[role] = set of studentIdxs
+      const usedBy   = [new Set(), new Set(), new Set()];
 
-      /* ── Apply & validate preferences ── */
       for (const {studentIdx, roleIdx, roundIdx} of prefs) {
         const sn = this.names[studentIdx];
         const rn = ROLE_NAMES[roleIdx];
-
         if (usedBy[roleIdx].has(studentIdx))
           throw new Error(`"${sn}" is already assigned as ${rn} in another round.`);
-
         if (schedule[roundIdx][roleIdx] !== -1)
-          throw new Error(`Round ${roundIdx + 1} already has a ${rn}: ` +
-            `"${this.names[schedule[roundIdx][roleIdx]]}".`);
-
+          throw new Error(`Round ${roundIdx + 1} already has a ${rn}: "${this.names[schedule[roundIdx][roleIdx]]}".`);
         for (let r = 0; r < 3; r++)
           if (schedule[roundIdx][r] === studentIdx)
             throw new Error(`"${sn}" is already in Round ${roundIdx + 1} as ${ROLE_NAMES[r]}.`);
-
         schedule[roundIdx][roleIdx] = studentIdx;
         usedBy[roleIdx].add(studentIdx);
       }
 
-      /* ── Try to complete up to 400 times ── */
       for (let attempt = 0; attempt < 400; attempt++) {
         const res = this._tryComplete(
           schedule.map(row => [...row]),
@@ -603,22 +554,15 @@
     }
 
     _tryComplete(sched, usedBy) {
-      /* Complete roles in order: Presenter → Feedback → Questioner.
-         Each completion is a permutation assignment with round-conflict constraints,
-         solved with randomised backtracking. */
       for (let role = 0; role < 3; role++) {
         const openRounds = [];
         for (let r = 0; r < this.N; r++)
           if (sched[r][role] === -1) openRounds.push(r);
-
         const freeStudents = [];
         for (let s = 0; s < this.N; s++)
           if (!usedBy[role].has(s)) freeStudents.push(s);
-
         this._shuffle(freeStudents);
-
-        if (!this._bt(sched, role, openRounds, freeStudents, 0))
-          return null;
+        if (!this._bt(sched, role, openRounds, freeStudents, 0)) return null;
       }
       return sched;
     }
@@ -626,23 +570,15 @@
     _bt(sched, role, rounds, students, idx) {
       if (idx === rounds.length) return true;
       const round = rounds[idx];
-
       for (let si = idx; si < students.length; si++) {
         const stu = students[si];
-
-        // Check round conflict (same student in another role this round)
         let bad = false;
         for (let r = 0; r < 3; r++)
           if (r !== role && sched[round][r] === stu) { bad = true; break; }
         if (bad) continue;
-
-        // Assign
         [students[idx], students[si]] = [students[si], students[idx]];
         sched[round][role] = stu;
-
         if (this._bt(sched, role, rounds, students, idx + 1)) return true;
-
-        // Undo
         [students[idx], students[si]] = [students[si], students[idx]];
         sched[round][role] = -1;
       }
