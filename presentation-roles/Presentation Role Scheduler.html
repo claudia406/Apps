@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation Role Scheduler</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ocean:   #0288D1;
+      --sky:     #29B6F6;
+      --aqua:    #00BCD4;
+      --coral:   #FF7043;
+      --orange:  #FF8E53;
+      --yellow:  #FFC107;
+      --mint:    #4DB6AC;
+      --sand:    #FFF8E1;
+      --bg-from: #B3E5FC;
+      --bg-to:   #E0F7FA;
+      --text-dk: #1A237E;
+      --text-md: #546E7A;
+      --white:   #FFFFFF;
+      --shadow:  0 4px 24px rgba(0,0,0,.10);
+      --r:       16px;
+      --r-sm:    8px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(150deg, var(--bg-from) 0%, #E0F7FA 45%, #B2EBF2 75%, #E8F5E9 100%);
+      min-height: 100vh;
+      color: var(--text-dk);
+      overflow-x: hidden;
+    }
+
+    /* ── Background floating bubbles ── */
+    .bubbles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .bubble {
+      position: absolute; border-radius: 50%; opacity: .12;
+      animation: rise 10s ease-in-out infinite;
+    }
+    .bubble:nth-child(1)  { width:90px;  height:90px;  background:var(--coral);  top:8%;  left:4%;  animation-delay:0s;   animation-duration:9s;  }
+    .bubble:nth-child(2)  { width:130px; height:130px; background:var(--ocean);  top:15%; right:6%; animation-delay:2s;   animation-duration:11s; }
+    .bubble:nth-child(3)  { width:60px;  height:60px;  background:var(--yellow); top:55%; left:2%;  animation-delay:4s;   animation-duration:8s;  }
+    .bubble:nth-child(4)  { width:110px; height:110px; background:var(--aqua);   top:65%; right:4%; animation-delay:1s;   animation-duration:12s; }
+    .bubble:nth-child(5)  { width:50px;  height:50px;  background:var(--mint);   top:82%; left:14%; animation-delay:3s;   animation-duration:7s;  }
+    .bubble:nth-child(6)  { width:75px;  height:75px;  background:var(--orange); top:38%; left:48%; animation-delay:5s;   animation-duration:10s; }
+    .bubble:nth-child(7)  { width:45px;  height:45px;  background:var(--sky);    top:28%; right:20%;animation-delay:6s;   animation-duration:9s;  }
+    @keyframes rise {
+      0%,100% { transform: translateY(0)   scale(1);    }
+      50%      { transform: translateY(-24px) scale(1.06); }
+    }
+
+    /* ── Wave bottom decoration ── */
+    .wave-wrap { position: fixed; bottom: 0; left: 0; right: 0; z-index: 0; pointer-events: none; }
+    .wave-wrap svg { display: block; width: 100%; }
+
+    /* ── Layout ── */
+    .container {
+      position: relative; z-index: 1;
+      max-width: 920px; margin: 0 auto;
+      padding: 0 16px 120px;
+    }
+
+    /* ── App Header ── */
+    .app-header {
+      text-align: center;
+      padding: 44px 20px 36px;
+    }
+    .header-icons { font-size: 2.4rem; margin-bottom: 12px; }
+    .app-title {
+      font-size: 2.3rem; font-weight: 900; line-height: 1.15;
+      background: linear-gradient(135deg, var(--ocean) 0%, var(--coral) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .app-subtitle { margin-top: 8px; font-size: 1.05rem; color: var(--text-md); }
+
+    /* ── Cards ── */
+    .card {
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      border: 1.5px solid rgba(255,255,255,.75);
+      padding: 28px;
+      margin-bottom: 24px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.12); }
+    .card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .step-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 50%;
+      font-weight: 800; font-size: .9rem; color: var(--white); flex-shrink: 0;
+    }
+    .sb-1 { background: linear-gradient(135deg, var(--coral), var(--orange)); }
+    .sb-2 { background: linear-gradient(135deg, var(--aqua),  var(--sky));   }
+    .card-title    { font-size: 1.2rem; font-weight: 700; color: var(--text-dk); }
+    .card-subtitle { font-size: .82rem; color: var(--text-md); margin-top: 2px; }
+
+    /* ── Student count slider ── */
+    .count-row {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 22px; flex-wrap: wrap;
+    }
+    .count-label { font-weight: 600; font-size: .95rem; white-space: nowrap; }
+    .count-num {
+      font-size: 1.8rem; font-weight: 900; color: var(--coral);
+      min-width: 44px; text-align: center; line-height: 1;
+    }
+    input[type="range"] {
+      flex: 1; min-width: 120px; height: 6px;
+      background: linear-gradient(to right, var(--coral), var(--yellow));
+      border-radius: 3px; appearance: none; -webkit-appearance: none; outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 22px; height: 22px;
+      border-radius: 50%; background: var(--coral); cursor: pointer;
+      box-shadow: 0 2px 8px rgba(255,112,67,.45);
+      transition: transform .12s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.25); }
+
+    /* ── Names grid ── */
+    .names-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 10px; }
+    .name-field label { display: block; font-size: .78rem; font-weight: 600; color: var(--text-md); margin-bottom: 4px; }
+    .name-field input {
+      width: 100%; padding: 9px 13px;
+      border: 2px solid #E0E0E0; border-radius: var(--r-sm);
+      font-size: .93rem; font-family: inherit; color: var(--text-dk); background: var(--white);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .name-field input:focus {
+      outline: none; border-color: var(--aqua);
+      box-shadow: 0 0 0 3px rgba(0,188,212,.18);
+    }
+    .name-field input::placeholder { color: #BDBDBD; }
+
+    /* ── Preferences ── */
+    .pref-list { display: flex; flex-direction: column; gap: 10px; min-height: 4px; }
+    .pref-empty { font-size: .88rem; color: var(--text-md); font-style: italic; padding: 4px 0 8px; }
+    .pref-row {
+      display: flex; align-items: center; gap: 8px;
+      background: #F0FBFF; border-radius: var(--r-sm);
+      padding: 10px 12px; flex-wrap: wrap;
+      animation: popIn .2s ease;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(.97); }
+      to   { opacity: 1; transform: scale(1);   }
+    }
+    .pref-row select {
+      flex: 1; min-width: 110px; padding: 7px 10px;
+      border: 1.5px solid #B2EBF2; border-radius: 6px;
+      font-size: .88rem; font-family: inherit;
+      background: var(--white); color: var(--text-dk); cursor: pointer;
+    }
+    .pref-row select:focus { outline: none; border-color: var(--aqua); }
+    .pref-sep { font-size: .78rem; color: var(--text-md); font-weight: 600; white-space: nowrap; }
+    .btn-del {
+      background: #FFEBEE; color: #C62828; border: none; border-radius: 6px;
+      padding: 6px 11px; font-size: .82rem; cursor: pointer; font-weight: 700;
+      transition: background .18s; white-space: nowrap;
+    }
+    .btn-del:hover { background: #FFCDD2; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      padding: 13px 28px; border: none; border-radius: 50px;
+      font-size: .97rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; transition: transform .15s, box-shadow .15s;
+      text-decoration: none; line-height: 1;
+    }
+    .btn:hover   { transform: translateY(-2px); }
+    .btn:active  { transform: translateY(0); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--coral), var(--orange));
+      color: var(--white); box-shadow: 0 4px 16px rgba(255,112,67,.35);
+    }
+    .btn-primary:hover  { box-shadow: 0 6px 22px rgba(255,112,67,.45); }
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--aqua), var(--sky));
+      color: var(--white); box-shadow: 0 4px 16px rgba(0,188,212,.3);
+    }
+    .btn-secondary:hover { box-shadow: 0 6px 22px rgba(0,188,212,.4); }
+    .btn-ghost {
+      background: rgba(255,255,255,.8); color: var(--text-dk);
+      border: 2px solid #D0D0D0;
+    }
+    .btn-ghost:hover { border-color: var(--aqua); color: var(--aqua); }
+    .btn-add {
+      background: linear-gradient(135deg, var(--mint), var(--aqua));
+      color: var(--white); padding: 9px 18px; font-size: .88rem;
+      box-shadow: 0 3px 12px rgba(77,182,172,.3);
+    }
+    .btn-add:hover { box-shadow: 0 5px 16px rgba(77,182,172,.4); }
+
+    .action-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin: 6px 0; }
+
+    /* ── Messages ── */
+    .msg {
+      padding: 14px 18px; border-radius: var(--r-sm);
+      margin-top: 18px; font-size: .93rem;
+      display: flex; align-items: flex-start; gap: 10px;
+      animation: popIn .25s ease;
+    }
+    .msg-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .msg-error   { background: #FFEBEE; color: #B71C1C; border: 1px solid #FFCDD2; }
+    .msg-success { background: #E8F5E9; color: #1B5E20; border: 1px solid #C8E6C9; }
+
+    /* ── Schedule card ── */
+    .schedule-card { animation: slideUp .4s ease; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    .schedule-meta {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .meta-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--bg-from); border-radius: 20px;
+      padding: 5px 12px; font-size: .83rem; font-weight: 600; color: var(--ocean);
+    }
+
+    .table-wrap { overflow-x: auto; border-radius: var(--r-sm); box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+    table { width: 100%; border-collapse: collapse; min-width: 480px; }
+    thead tr { background: linear-gradient(135deg, var(--ocean), var(--aqua)); color: var(--white); }
+    thead th {
+      padding: 13px 16px; text-align: left;
+      font-size: .82rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+    }
+    tbody tr:nth-child(odd)  { background: var(--white); }
+    tbody tr:nth-child(even) { background: #F0FBFF; }
+    tbody tr { transition: background .14s; }
+    tbody tr:hover { background: #E0F7FA; }
+    tbody td { padding: 11px 16px; border-bottom: 1px solid #E0F7FA; font-size: .93rem; }
+    td:first-child { width: 64px; }
+
+    .round-pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), var(--orange));
+      color: var(--white); font-weight: 800; font-size: .82rem;
+    }
+
+    .role-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 11px; border-radius: 20px;
+      font-size: .88rem; font-weight: 600; white-space: nowrap;
+    }
+    .rb-p  { background: #FBE9E7; color: #BF360C; }  /* Presenter    – coral   */
+    .rb-f  { background: #E1F5FE; color: #01579B; }  /* Feedback     – blue    */
+    .rb-q  { background: #FFF8E1; color: #E65100; }  /* Questioner   – yellow  */
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .app-title  { font-size: 1.65rem; }
+      .card       { padding: 20px 14px; }
+      .btn        { padding: 11px 20px; font-size: .9rem; }
+      .pref-row   { flex-direction: column; }
+      .pref-row select { width: 100%; }
+      .pref-sep   { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating background bubbles -->
+<div class="bubbles" aria-hidden="true">
+  <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+  <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+
+<!-- Wave footer decoration -->
+<div class="wave-wrap" aria-hidden="true">
+  <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path fill="rgba(0,188,212,0.25)" d="M0,45 C360,90 1080,0 1440,45 L1440,90 L0,90 Z"/>
+    <path fill="rgba(2,136,209,0.18)" d="M0,60 C480,20 960,80 1440,55 L1440,90 L0,90 Z"/>
+  </svg>
+</div>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-icons">🌊 ☀️ 🌴</div>
+    <h1 class="app-title">Presentation Role Scheduler</h1>
+    <p class="app-subtitle">Fair, fun, and fully randomized role assignments for your summer program!</p>
+  </header>
+
+  <!-- ── Step 1: Student Setup ── -->
+  <section class="card" id="card-setup">
+    <div class="card-head">
+      <span class="step-badge sb-1">1</span>
+      <div>
+        <div class="card-title">Student Setup</div>
+        <div class="card-subtitle">Choose how many students and enter their names</div>
+      </div>
+    </div>
+
+    <div class="count-row">
+      <span class="count-label">Number of Students:</span>
+      <span class="count-num" id="count-display">5</span>
+      <input type="range" id="student-count" min="5" max="20" value="5" aria-label="Number of students">
+    </div>
+
+    <div class="names-grid" id="names-grid"></div>
+  </section>
+
+  <!-- ── Step 2: Preferred Assignments ── -->
+  <section class="card" id="card-prefs">
+    <div class="card-head">
+      <span class="step-badge sb-2">2</span>
+      <div>
+        <div class="card-title">Preferred Assignments <span style="font-size:.73rem;font-weight:400;color:var(--text-md);">(Optional)</span></div>
+        <div class="card-subtitle">Lock in specific roles before generating the schedule</div>
+      </div>
+    </div>
+
+    <div class="pref-list" id="pref-list">
+      <p class="pref-empty" id="pref-empty">No preferences added yet — every assignment will be randomized.</p>
+    </div>
+
+    <button class="btn btn-add" style="margin-top:14px;" onclick="addPref()">＋ Add Preference</button>
+  </section>
+
+  <!-- ── Actions ── -->
+  <div class="action-row">
+    <button class="btn btn-primary" onclick="generateSchedule()">🌟 Generate Schedule</button>
+    <button class="btn btn-ghost"   onclick="resetAll()">↺ Reset All</button>
+  </div>
+
+  <div id="msg-area"></div>
+
+  <!-- ── Schedule Output ── -->
+  <div id="schedule-wrap" style="display:none; margin-top:28px;"></div>
+
+</div><!-- /container -->
+
+<script>
+  /* ─── Constants ─── */
+  const ROLE_NAMES   = ['Presenter', 'Feedback Provider', 'Questioner'];
+  const ROLE_ICONS   = ['🎤', '💬', '❓'];
+  const ROLE_CLASSES = ['rb-p', 'rb-f', 'rb-q'];
+
+  /* ─── State ─── */
+  let studentCount = 5;
+  let prefSeq      = 0; // ever-increasing id for pref rows
+
+  /* ─── Init ─── */
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('student-count');
+    slider.addEventListener('input', () => {
+      studentCount = +slider.value;
+      document.getElementById('count-display').textContent = studentCount;
+      rebuildNamesGrid();
+      refreshPrefDropdowns();
+    });
+    rebuildNamesGrid();
+  });
+
+  /* ─── Names grid ─── */
+  function rebuildNamesGrid() {
+    const grid = document.getElementById('names-grid');
+    const prev = Array.from(grid.querySelectorAll('input')).map(i => i.value);
+    grid.innerHTML = '';
+    for (let i = 0; i < studentCount; i++) {
+      const d = document.createElement('div');
+      d.className = 'name-field';
+      d.innerHTML =
+        `<label for="n${i}">Student ${i + 1}</label>` +
+        `<input id="n${i}" type="text" maxlength="30" placeholder="Name ${i + 1}"` +
+        ` value="${esc(prev[i] || '')}" oninput="refreshPrefDropdowns()">`;
+      grid.appendChild(d);
+    }
+  }
+
+  function getNames() {
+    return Array.from({length: studentCount}, (_, i) => {
+      const v = document.getElementById(`n${i}`)?.value.trim();
+      return v || `Student ${i + 1}`;
+    });
+  }
+
+  /* ─── Preferences ─── */
+  function addPref() {
+    const id = ++prefSeq;
+    document.getElementById('pref-empty')?.remove();
+    const row = document.createElement('div');
+    row.className = 'pref-row';
+    row.id = `pref-${id}`;
+    row.innerHTML = buildPrefHTML(id);
+    document.getElementById('pref-list').appendChild(row);
+  }
+
+  function buildPrefHTML(id) {
+    const names  = getNames();
+    const stuOpt = names.map((n, i) => `<option value="${i}">${esc(n)}</option>`).join('');
+    const rolOpt = ROLE_NAMES.map((r, i) => `<option value="${i}">${r}</option>`).join('');
+    const rndOpt = Array.from({length: studentCount}, (_, i) =>
+      `<option value="${i}">Round ${i + 1}</option>`).join('');
+    return `
+      <select id="ps${id}" aria-label="Student">${stuOpt}</select>
+      <span class="pref-sep">is</span>
+      <select id="pr${id}" aria-label="Role">${rolOpt}</select>
+      <span class="pref-sep">in</span>
+      <select id="pd${id}" aria-label="Round">${rndOpt}</select>
+      <button class="btn-del" onclick="removePref(${id})">✕</button>`;
+  }
+
+  function removePref(id) {
+    document.getElementById(`pref-${id}`)?.remove();
+    if (!document.querySelector('.pref-row')) {
+      const p = document.createElement('p');
+      p.className = 'pref-empty'; p.id = 'pref-empty';
+      p.textContent = 'No preferences added yet — every assignment will be randomized.';
+      document.getElementById('pref-list').appendChild(p);
+    }
+  }
+
+  function refreshPrefDropdowns() {
+    const names = getNames();
+    document.querySelectorAll('.pref-row').forEach(row => {
+      const id = row.id.replace('pref-', '');
+      const ss = document.getElementById(`ps${id}`);
+      const sr = document.getElementById(`pd${id}`);
+      if (!ss || !sr) return;
+
+      const prevS = ss.value, prevR = sr.value;
+
+      ss.innerHTML = names.map((n, i) =>
+        `<option value="${i}" ${i == prevS ? 'selected' : ''}>${esc(n)}</option>`).join('');
+
+      sr.innerHTML = Array.from({length: studentCount}, (_, i) =>
+        `<option value="${i}" ${i == prevR ? 'selected' : ''}>Round ${i + 1}</option>`).join('');
+    });
+  }
+
+  function getPreferences() {
+    return Array.from(document.querySelectorAll('.pref-row')).map(row => {
+      const id = row.id.replace('pref-', '');
+      return {
+        studentIdx: +document.getElementById(`ps${id}`).value,
+        roleIdx:    +document.getElementById(`pr${id}`).value,
+        roundIdx:   +document.getElementById(`pd${id}`).value,
+      };
+    });
+  }
+
+  /* ─── Messages ─── */
+  function showMsg(html, type) {
+    document.getElementById('msg-area').innerHTML =
+      `<div class="msg msg-${type}"><span class="msg-icon">${type === 'error' ? '⚠️' : '✅'}</span><div>${html}</div></div>`;
+  }
+  function clearMsg() { document.getElementById('msg-area').innerHTML = ''; }
+
+  /* ─── Generate ─── */
+  function generateSchedule() {
+    clearMsg();
+    const names = getNames();
+    const prefs = getPreferences();
+    try {
+      const sched = new Scheduler(names).generate(prefs);
+      renderSchedule(sched, names);
+    } catch (e) {
+      showMsg(e.message, 'error');
+      document.getElementById('schedule-wrap').style.display = 'none';
+    }
+  }
+
+  function resetAll() {
+    document.getElementById('student-count').value = 5;
+    studentCount = 5;
+    document.getElementById('count-display').textContent = '5';
+    rebuildNamesGrid();
+    document.getElementById('pref-list').innerHTML =
+      '<p class="pref-empty" id="pref-empty">No preferences added yet — every assignment will be randomized.</p>';
+    prefSeq = 0;
+    clearMsg();
+    document.getElementById('schedule-wrap').style.display = 'none';
+  }
+
+  /* ─── Render schedule ─── */
+  function renderSchedule(sched, names) {
+    const N = sched.length;
+    let rows = '';
+    for (let r = 0; r < N; r++) {
+      const [p, f, q] = sched[r];
+      rows += `<tr>
+        <td><span class="round-pill">${r + 1}</span></td>
+        <td><span class="role-badge rb-p">${ROLE_ICONS[0]} ${esc(names[p])}</span></td>
+        <td><span class="role-badge rb-f">${ROLE_ICONS[1]} ${esc(names[f])}</span></td>
+        <td><span class="role-badge rb-q">${ROLE_ICONS[2]} ${esc(names[q])}</span></td>
+      </tr>`;
+    }
+
+    const wrap = document.getElementById('schedule-wrap');
+    wrap.innerHTML = `
+      <div class="card schedule-card">
+        <div class="card-head">
+          <span class="card-icon" style="font-size:1.5rem;">📋</span>
+          <div>
+            <div class="card-title">Generated Schedule</div>
+            <div class="card-subtitle">All roles balanced — every student performs each role exactly once</div>
+          </div>
+        </div>
+
+        <div class="schedule-meta">
+          <span class="meta-chip">👥 ${N} Students</span>
+          <span class="meta-chip">🔄 ${N} Rounds</span>
+          <span class="meta-chip">✅ Fully Validated</span>
+        </div>
+
+        <div class="action-row" style="justify-content:flex-start; margin-bottom:20px;">
+          <button class="btn btn-secondary" onclick="generateSchedule()">🔀 Regenerate</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Round</th>
+                <th>🎤 Presenter</th>
+                <th>💬 Feedback Provider</th>
+                <th>❓ Questioner</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      </div>`;
+
+    wrap.style.display = 'block';
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ─── Utility ─── */
+  function esc(s) {
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ════════════════════════════════════════
+     Scheduler
+     Guarantees:
+       - Each student appears as Presenter       exactly once
+       - Each student appears as Feedback        exactly once
+       - Each student appears as Questioner      exactly once
+       - In every round the three students differ
+  ════════════════════════════════════════ */
+  class Scheduler {
+    constructor(names) {
+      this.names = names;
+      this.N     = names.length;
+    }
+
+    generate(prefs = []) {
+      const N        = this.N;
+      // schedule[round][roleIdx] = studentIdx  (-1 = unassigned)
+      const schedule = Array.from({length: N}, () => [-1, -1, -1]);
+      const usedBy   = [new Set(), new Set(), new Set()]; // usedBy[role] = set of studentIdxs
+
+      /* ── Apply & validate preferences ── */
+      for (const {studentIdx, roleIdx, roundIdx} of prefs) {
+        const sn = this.names[studentIdx];
+        const rn = ROLE_NAMES[roleIdx];
+
+        if (usedBy[roleIdx].has(studentIdx))
+          throw new Error(`"${sn}" is already assigned as ${rn} in another round.`);
+
+        if (schedule[roundIdx][roleIdx] !== -1)
+          throw new Error(`Round ${roundIdx + 1} already has a ${rn}: ` +
+            `"${this.names[schedule[roundIdx][roleIdx]]}".`);
+
+        for (let r = 0; r < 3; r++)
+          if (schedule[roundIdx][r] === studentIdx)
+            throw new Error(`"${sn}" is already in Round ${roundIdx + 1} as ${ROLE_NAMES[r]}.`);
+
+        schedule[roundIdx][roleIdx] = studentIdx;
+        usedBy[roleIdx].add(studentIdx);
+      }
+
+      /* ── Try to complete up to 400 times ── */
+      for (let attempt = 0; attempt < 400; attempt++) {
+        const res = this._tryComplete(
+          schedule.map(row => [...row]),
+          usedBy.map(s => new Set(s))
+        );
+        if (res) return res;
+      }
+
+      throw new Error(
+        'Could not generate a valid schedule with the given preferences. ' +
+        'Please check for conflicts, or try removing some preferences and regenerating.'
+      );
+    }
+
+    _tryComplete(sched, usedBy) {
+      /* Complete roles in order: Presenter → Feedback → Questioner.
+         Each completion is a permutation assignment with round-conflict constraints,
+         solved with randomised backtracking. */
+      for (let role = 0; role < 3; role++) {
+        const openRounds = [];
+        for (let r = 0; r < this.N; r++)
+          if (sched[r][role] === -1) openRounds.push(r);
+
+        const freeStudents = [];
+        for (let s = 0; s < this.N; s++)
+          if (!usedBy[role].has(s)) freeStudents.push(s);
+
+        this._shuffle(freeStudents);
+
+        if (!this._bt(sched, role, openRounds, freeStudents, 0))
+          return null;
+      }
+      return sched;
+    }
+
+    _bt(sched, role, rounds, students, idx) {
+      if (idx === rounds.length) return true;
+      const round = rounds[idx];
+
+      for (let si = idx; si < students.length; si++) {
+        const stu = students[si];
+
+        // Check round conflict (same student in another role this round)
+        let bad = false;
+        for (let r = 0; r < 3; r++)
+          if (r !== role && sched[round][r] === stu) { bad = true; break; }
+        if (bad) continue;
+
+        // Assign
+        [students[idx], students[si]] = [students[si], students[idx]];
+        sched[round][role] = stu;
+
+        if (this._bt(sched, role, rounds, students, idx + 1)) return true;
+
+        // Undo
+        [students[idx], students[si]] = [students[si], students[idx]];
+        sched[round][role] = -1;
+      }
+      return false;
+    }
+
+    _shuffle(a) {
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = (Math.random() * (i + 1)) | 0;
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+    }
+  }
+</script>
+</body>
+</html>
