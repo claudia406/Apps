@@ -89,9 +89,6 @@
     .hero-photo {
       position: absolute;
       inset: 0;
-      background-image: url('https://picsum.photos/seed/klcc-night/1920/1080');
-      background-size: cover;
-      background-position: center 40%;
     }
 
     .hero-overlay {
@@ -910,6 +907,76 @@
       letter-spacing: 1px;
     }
 
+    /* ===== ELC ABOUT ===== */
+    .elc-sec {
+      background: var(--off-white);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .elc-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 440px;
+    }
+
+    .elc-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 56px;
+    }
+
+    .elc-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .elc-fact {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    }
+
+    .elc-fact-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .elc-fact-label {
+      font-size: 12px;
+      color: var(--txt-mid);
+      line-height: 1.4;
+    }
+
+    .elc-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .elc-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s ease;
+    }
+
+    .elc-photo:hover img { transform: scale(1.04); }
+
+    .elc-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,168,150,.1), rgba(13,43,78,.25));
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .sec { padding: 64px 24px; }
@@ -920,6 +987,9 @@
       .features { grid-template-columns: repeat(3, 1fr); }
       .life-inner { grid-template-columns: 1fr; }
       .life-photo { min-height: 300px; }
+      .elc-inner { grid-template-columns: 1fr; flex-direction: column-reverse; }
+      .elc-photo { min-height: 280px; order: -1; }
+      .elc-text { padding: 48px 24px; }
       .cost-grid { grid-template-columns: 1fr; }
       .steps { flex-direction: column; gap: 28px; }
       .steps::before { display: none; }
@@ -948,8 +1018,7 @@
 <!-- ========== HERO ========== -->
 <section class="hero">
   <div class="hero-photo">
-    <!-- クアラルンプール夜景イメージ (本番では実写真に差し替えてください) -->
-    <img src="https://picsum.photos/seed/kl-skyline/1920/1080" alt="クアラルンプール夜景" style="width:100%;height:100%;object-fit:cover">
+    <img src="photos/KL%20city.jpg" alt="クアラルンプール夜景" style="width:100%;height:100%;object-fit:cover;object-position:center 60%">
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
@@ -996,15 +1065,15 @@
 <!-- マレーシア市内・留学生活の写真ストリップ -->
 <div class="gallery-strip">
   <div class="gallery-item">
-    <img src="https://picsum.photos/seed/kl-towers/800/500" alt="クアラルンプール市街">
+    <img src="photos/KL%20city.png" alt="クアラルンプール市街">
     <div class="gallery-label">クアラルンプール市内</div>
   </div>
   <div class="gallery-item">
-    <img src="https://picsum.photos/seed/malaysia-campus/400/500" alt="大学キャンパス">
+    <img src="photos/malaysia.jpg" alt="マレーシアの街並み">
     <div class="gallery-label">大学キャンパス</div>
   </div>
   <div class="gallery-item">
-    <img src="https://picsum.photos/seed/student-life/400/500" alt="留学生活">
+    <img src="photos/ELC.jpg" alt="ELC 留学生活">
     <div class="gallery-label">多国籍な学生生活</div>
   </div>
 </div>
@@ -1092,8 +1161,7 @@
 <section class="life-sec">
   <div class="life-inner">
     <div class="life-photo">
-      <!-- KL市内・ペトロナスタワー周辺イメージ -->
-      <img src="https://picsum.photos/seed/kl-city-life/900/600" alt="マレーシア・クアラルンプール">
+      <img src="photos/malaysia.jpg" alt="マレーシア・クアラルンプール">
       <div class="life-photo-overlay"></div>
     </div>
     <div class="life-text">
@@ -1136,8 +1204,7 @@
 
       <div class="uni-card">
         <div class="uni-header">
-          <!-- Taylor's University キャンパスイメージ -->
-          <img src="https://picsum.photos/seed/taylors-univ/400/220" alt="Taylor's University">
+          <img src="photos/Taylor's%20University.png" alt="Taylor's University">
           <div class="uni-header-overlay"></div>
           <div class="uni-header-content">
             <div class="uni-rank">QS アジア 41位</div>
@@ -1155,7 +1222,7 @@
 
       <div class="uni-card">
         <div class="uni-header">
-          <img src="https://picsum.photos/seed/sunway-univ/400/220" alt="Sunway University">
+          <img src="photos/Sunway%20University.jpg" alt="Sunway University">
           <div class="uni-header-overlay"></div>
           <div class="uni-header-content">
             <div class="uni-rank">提携：ASU / Lancaster</div>
@@ -1173,7 +1240,7 @@
 
       <div class="uni-card">
         <div class="uni-header">
-          <img src="https://picsum.photos/seed/apu-malaysia/400/220" alt="Asia Pacific University">
+          <img src="photos/Asia%20Pacific%20University.jpg" alt="Asia Pacific University">
           <div class="uni-header-overlay"></div>
           <div class="uni-header-content">
             <div class="uni-rank">QS アジア 184位</div>
@@ -1191,7 +1258,7 @@
 
       <div class="uni-card">
         <div class="uni-header">
-          <img src="https://picsum.photos/seed/help-university/400/220" alt="HELP University">
+          <img src="photos/HELP%20University.jpg" alt="HELP University">
           <div class="uni-header-overlay"></div>
           <div class="uni-header-content">
             <div class="uni-rank">QS 8カテゴリ ★★★★★</div>
@@ -1215,7 +1282,7 @@
 
       <div class="uni-card">
         <div class="uni-header">
-          <img src="https://picsum.photos/seed/monash-my/400/220" alt="Monash University Malaysia">
+          <img src="photos/Monash%20University.jpg" alt="Monash University Malaysia">
           <div class="uni-header-overlay"></div>
           <div class="uni-header-content">
             <div class="uni-rank">世界 Top 37</div>
@@ -1233,7 +1300,7 @@
 
       <div class="uni-card">
         <div class="uni-header">
-          <img src="https://picsum.photos/seed/nottingham-my/400/220" alt="University of Nottingham Malaysia">
+          <img src="photos/Nottingham%20University.png" alt="University of Nottingham Malaysia">
           <div class="uni-header-overlay"></div>
           <div class="uni-header-content">
             <div class="uni-rank">世界 100位前後</div>
@@ -1251,7 +1318,7 @@
 
       <div class="uni-card">
         <div class="uni-header">
-          <img src="https://picsum.photos/seed/heriotwatt-my/400/220" alt="Heriot-Watt University Malaysia">
+          <img src="photos/Heriot%20Watt%20University.jpg" alt="Heriot-Watt University Malaysia">
           <div class="uni-header-overlay"></div>
           <div class="uni-header-content">
             <div class="uni-rank">世界 300位前後</div>
@@ -1269,7 +1336,7 @@
 
       <div class="uni-card">
         <div class="uni-header">
-          <img src="https://picsum.photos/seed/uow-malaysia/400/220" alt="University of Wollongong Malaysia">
+          <img src="photos/University%20of%20Wollongong.png" alt="University of Wollongong Malaysia">
           <div class="uni-header-overlay"></div>
           <div class="uni-header-content">
             <div class="uni-rank">世界 190位前後</div>
@@ -1293,8 +1360,7 @@
 <!-- ========== COST ========== -->
 <section class="cost-sec">
   <div class="cost-sec-bg">
-    <!-- 背景にKL市内の写真をうっすら -->
-    <img src="https://picsum.photos/seed/kl-city-dark/1600/900" alt="">
+    <img src="photos/KL%20city.jpg" alt="">
   </div>
   <div class="container" style="position:relative;z-index:1">
     <div class="tag">Program Cost</div>
@@ -1371,6 +1437,40 @@
           <p style="margin-top:8px;color:rgba(255,255,255,.5);font-size:13px">の節約も可能（欧米との比較）</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== ELC ABOUT ========== -->
+<section class="elc-sec">
+  <div class="elc-inner">
+    <div class="elc-text">
+      <p class="tag">About ELC Malaysia</p>
+      <h2 class="h2-jp">南半球最高評価の<br>パートナー語学学校</h2>
+      <p class="sub">ELC（English Language Company）はオーストラリア発祥の名門語学学校。IELTS試験会場近郊の2キャンパスで、大学進学に特化した集中英語プログラムを提供します。</p>
+      <div class="elc-facts">
+        <div class="elc-fact">
+          <div class="elc-fact-num">約10名</div>
+          <div class="elc-fact-label">1クラスの<br>少人数制授業</div>
+        </div>
+        <div class="elc-fact">
+          <div class="elc-fact-num">5h/日</div>
+          <div class="elc-fact-label">平日5時間の<br>集中英語研修</div>
+        </div>
+        <div class="elc-fact">
+          <div class="elc-fact-num">2拠点</div>
+          <div class="elc-fact-label">KL・UOWの<br>2キャンパス</div>
+        </div>
+        <div class="elc-fact">
+          <div class="elc-fact-num">IELTS</div>
+          <div class="elc-fact-label">試験会場近郊<br>受験環境が整う</div>
+        </div>
+      </div>
+    </div>
+    <div class="elc-photo">
+      <img src="photos/ELC.png" alt="ELC Malaysia キャンパス">
+      <div class="elc-photo-overlay"></div>
     </div>
   </div>
 </section>
