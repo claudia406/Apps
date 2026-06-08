@@ -32,7 +32,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== PRINT BUTTON ===== */
     .print-btn {
       position: fixed; top: 20px; right: 20px; z-index: 9999;
       background: var(--navy); color: var(--white);
@@ -42,7 +41,6 @@
     }
     .print-btn:hover { background: var(--teal); }
 
-    /* ===== PAGE BASE ===== */
     .page {
       width: 210mm; height: 297mm;
       overflow: hidden; position: relative; background: var(--white);
@@ -52,7 +50,6 @@
     }
     .page:last-of-type { break-after: avoid; page-break-after: avoid; }
 
-    /* ===== PAGE CHROME ===== */
     .ph {
       height: 9mm; background: var(--navy);
       display: flex; align-items: center; justify-content: space-between;
@@ -67,7 +64,6 @@
     }
     .pf p { font-family:'Montserrat',sans-serif; font-size:6.5px; color:rgba(255,255,255,.35); letter-spacing:1px; }
 
-    /* ===== SHARED ===== */
     .tag {
       font-family:'Montserrat',sans-serif; font-size:7.5px; font-weight:700;
       letter-spacing:3px; text-transform:uppercase; color:var(--teal); margin-bottom:4px;
@@ -85,9 +81,9 @@
     .cover-overlay {
       position:absolute; inset:0;
       background: linear-gradient(160deg,
-        rgba(7,18,32,.2) 0%,
-        rgba(13,43,78,.6) 45%,
-        rgba(3,10,22,.95) 100%);
+        rgba(7,18,32,.1) 0%,
+        rgba(13,43,78,.55) 40%,
+        rgba(3,10,22,.96) 100%);
     }
     .cover-inner {
       position:absolute; inset:0;
@@ -103,7 +99,7 @@
       padding:5px 16px; border-radius:50px; margin-bottom:6mm; align-self:flex-start;
     }
     .cover-en {
-      font-family:'Montserrat',sans-serif; font-size:76px; font-weight:900; color:var(--white);
+      font-family:'Montserrat',sans-serif; font-size:80px; font-weight:900; color:var(--white);
       line-height:.9; letter-spacing:-3px; margin-bottom:4mm;
     }
     .cover-en span { color:var(--teal-lt); }
@@ -111,13 +107,12 @@
     .cover-stats { display:flex; gap:4mm; margin-bottom:10mm; }
     .cs {
       background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18);
-      backdrop-filter:blur(8px); border-radius:10px; padding:4mm 6mm; text-align:center; min-width:30mm;
+      backdrop-filter:blur(8px); border-radius:10px; padding:5mm 6mm; text-align:center; min-width:32mm;
     }
-    .cs-n { font-family:'Montserrat',sans-serif; font-size:28px; font-weight:900; color:var(--teal-lt); line-height:1; margin-bottom:2mm; }
+    /* 数字を大きく */
+    .cs-n { font-family:'Montserrat',sans-serif; font-size:36px; font-weight:900; color:var(--teal-lt); line-height:1; margin-bottom:2mm; }
     .cs-l { font-size:7.5px; color:rgba(255,255,255,.6); line-height:1.45; }
-    .cover-logos {
-      display:flex; align-items:center; gap:8px;
-    }
+    .cover-logos { display:flex; align-items:center; gap:8px; }
     .cover-logo { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:900; color:rgba(255,255,255,.55); letter-spacing:1.5px; }
     .cover-sep { width:28px; height:1.5px; background:linear-gradient(90deg, var(--teal), var(--gold)); }
 
@@ -136,21 +131,22 @@
       gap:4mm; flex-shrink:0;
     }
     .big-stat {
-      border-radius:12px; padding:5mm 4mm;
+      border-radius:12px; padding:6mm 4mm;
       text-align:center;
     }
     .big-stat.navy  { background:var(--navy); }
     .big-stat.teal  { background:linear-gradient(135deg,var(--teal),var(--teal-lt)); }
     .big-stat.gold  { background:var(--gold); }
+    /* 数字を大きく */
     .big-num {
-      font-family:'Montserrat',sans-serif; font-size:52px; font-weight:900; line-height:1;
-      margin-bottom:2mm;
+      font-family:'Montserrat',sans-serif; font-size:66px; font-weight:900; line-height:1;
+      margin-bottom:2.5mm;
     }
     .big-stat.navy .big-num { color:var(--teal-lt); }
     .big-stat.teal .big-num { color:var(--white); }
     .big-stat.gold .big-num { color:var(--navy); }
-    .big-num sup { font-size:26px; vertical-align:top; margin-top:6px; }
-    .big-stat-lbl { font-size:9px; font-weight:600; line-height:1.45; }
+    .big-num sup { font-size:33px; vertical-align:top; margin-top:8px; }
+    .big-stat-lbl { font-size:9.5px; font-weight:600; line-height:1.45; }
     .big-stat.navy .big-stat-lbl { color:rgba(255,255,255,.65); }
     .big-stat.teal .big-stat-lbl { color:rgba(255,255,255,.85); }
     .big-stat.gold .big-stat-lbl { color:rgba(10,22,40,.65); }
@@ -159,51 +155,53 @@
       background:var(--gray-lt); border-radius:12px; padding:5mm 6mm; flex-shrink:0;
     }
     .compare-lbl { font-family:'Montserrat',sans-serif; font-size:7px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--txt-lt); margin-bottom:4mm; }
-    .bar-row { display:flex; align-items:center; gap:4mm; margin-bottom:3mm; }
+    .bar-row { display:flex; align-items:center; gap:4mm; margin-bottom:3.5mm; }
     .bar-country { font-size:9px; font-weight:700; color:var(--txt-mid); width:20mm; flex-shrink:0; }
-    .bar-wrap { flex:1; height:10px; background:rgba(0,0,0,.08); border-radius:6px; overflow:hidden; }
-    .bar-f { height:100%; border-radius:6px; }
+    /* バーを太く */
+    .bar-wrap { flex:1; height:14px; background:rgba(0,0,0,.08); border-radius:8px; overflow:hidden; }
+    .bar-f { height:100%; border-radius:8px; }
     .bar-f.my { width:22%; background:linear-gradient(90deg,var(--teal),var(--teal-lt)); }
     .bar-f.uk { width:70%; background:linear-gradient(90deg,#b83232,#e04040); }
     .bar-f.us { width:100%; background:linear-gradient(90deg,#8a1c1c,#c03030); }
-    .bar-amt { font-family:'Montserrat',sans-serif; font-size:8.5px; font-weight:700; width:32mm; flex-shrink:0; text-align:right; }
+    .bar-amt { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; width:32mm; flex-shrink:0; text-align:right; }
     .bar-amt.good { color:var(--teal); }
     .bar-amt.bad  { color:#c03030; }
 
     .feat5 { display:grid; grid-template-columns:repeat(5,1fr); gap:3mm; flex-shrink:0; }
-    .feat-box { background:var(--off); border-radius:8px; padding:3.5mm 3mm; text-align:center; }
+    .feat-box { background:var(--off); border-radius:8px; padding:4mm 3mm; text-align:center; }
     .feat-ico {
-      width:28px; height:28px; border-radius:7px;
+      width:32px; height:32px; border-radius:8px;
       background:linear-gradient(135deg,var(--navy),var(--navy-mid));
-      color:var(--white); font-family:'Montserrat',sans-serif; font-size:9px; font-weight:900;
-      display:flex; align-items:center; justify-content:center; margin:0 auto 2.5mm;
+      color:var(--white); font-family:'Montserrat',sans-serif; font-size:10px; font-weight:900;
+      display:flex; align-items:center; justify-content:center; margin:0 auto 3mm;
     }
     .feat-t { font-size:8px; font-weight:700; color:var(--navy); line-height:1.4; }
 
 
     /* ========================================================
        P3 — LIVING IN MALAYSIA
+       写真比率 50%→60%
     ======================================================== */
     .p3-body {
       height:calc(297mm - 9mm - 7.5mm);
-      display:grid; grid-template-columns:1fr 1fr;
+      display:grid; grid-template-columns:3fr 2fr;
     }
     .life-photo { position:relative; overflow:hidden; }
     .life-photo img { width:100%; height:100%; object-fit:cover; }
-    .life-photo-ov { position:absolute; inset:0; background:linear-gradient(135deg,rgba(13,43,78,.4),rgba(0,168,150,.12)); }
+    .life-photo-ov { position:absolute; inset:0; background:linear-gradient(135deg,rgba(13,43,78,.35),rgba(0,168,150,.08)); }
     .life-text-box {
-      background:var(--navy); padding:9mm 8mm;
+      background:var(--navy); padding:8mm 7mm;
       display:flex; flex-direction:column; justify-content:center; color:var(--white);
     }
-    .life-text-box .tag { color:var(--gold); margin-bottom:4mm; }
+    .life-text-box .tag { color:var(--gold); margin-bottom:3.5mm; }
     .life-text-box h2 {
-      font-family:'Montserrat',sans-serif; font-size:22px; font-weight:900;
+      font-family:'Montserrat',sans-serif; font-size:20px; font-weight:900;
       color:var(--white); line-height:1.15; margin-bottom:5mm;
     }
-    .life-num-row { display:flex; gap:4mm; margin-bottom:6mm; }
-    .life-num-box { flex:1; background:rgba(255,255,255,.08); border-radius:8px; padding:4mm; text-align:center; }
+    .life-num-row { display:flex; gap:3mm; margin-bottom:5mm; }
+    .life-num-box { flex:1; background:rgba(255,255,255,.08); border-radius:8px; padding:3.5mm; text-align:center; }
     .life-num { font-family:'Montserrat',sans-serif; font-size:20px; font-weight:900; color:var(--teal-lt); line-height:1; margin-bottom:2px; }
-    .life-num-l { font-size:7.5px; color:rgba(255,255,255,.6); line-height:1.4; }
+    .life-num-l { font-size:7px; color:rgba(255,255,255,.6); line-height:1.4; }
     .life-pts { display:flex; flex-direction:column; gap:3mm; }
     .life-pt { display:flex; align-items:flex-start; gap:7px; font-size:9px; color:rgba(255,255,255,.82); line-height:1.55; }
     .life-dot { width:7px; height:7px; border-radius:50%; background:var(--teal-lt); flex-shrink:0; margin-top:3px; }
@@ -227,7 +225,7 @@
       font-family:'Montserrat',sans-serif; font-size:22px; font-weight:900;
       color:var(--white); line-height:1.15; margin-bottom:6mm;
     }
-    .timeline { display:flex; flex-direction:column; gap:0; }
+    .timeline { display:flex; flex-direction:column; }
     .tl-item { display:flex; align-items:flex-start; gap:5mm; }
     .tl-track { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
     .tl-dot {
@@ -249,12 +247,13 @@
     .tl-tag { font-size:7px; font-weight:700; padding:2px 7px; border-radius:20px; }
     .tl-tag.tl { background:rgba(0,196,174,.15); color:var(--teal-lt); }
     .tl-tag.gd { background:rgba(201,168,76,.15); color:var(--gold-lt); }
+    /* P4右側: 写真のopacityを上げてビジュアルを活かす */
     .p4-right { position:relative; overflow:hidden; }
-    .p4-right img { width:100%; height:100%; object-fit:cover; opacity:.35; }
+    .p4-right img { width:100%; height:100%; object-fit:cover; opacity:.5; }
     .p4-right-ov {
       position:absolute; inset:0;
-      background:linear-gradient(90deg, #071220 0%, transparent 50%),
-                 linear-gradient(to bottom, transparent 30%, rgba(7,18,32,.7) 100%);
+      background:linear-gradient(90deg, #071220 0%, transparent 45%),
+                 linear-gradient(to bottom, transparent 30%, rgba(7,18,32,.65) 100%);
     }
     .p4-tagline {
       position:absolute; bottom:10mm; left:50%; transform:translateX(-50%);
@@ -268,21 +267,49 @@
 
     /* ========================================================
        P5 & P6 — UNIVERSITIES
+       写真高さ 34mm → 52mm（約53%拡大）
+       ヒーローバッジを追加
     ======================================================== */
     .p5-body {
       height:calc(297mm - 9mm - 7.5mm);
-      padding:5mm 8mm; display:flex; flex-direction:column; gap:3.5mm;
+      padding:4mm 8mm 5mm; display:flex; flex-direction:column; gap:2.5mm;
     }
     .p5-header { flex-shrink:0; }
-    .uni-2x2 { display:grid; grid-template-columns:1fr 1fr; gap:3.5mm; flex:1; }
+    .uni-2x2 { display:grid; grid-template-columns:1fr 1fr; gap:3mm; flex:1; }
+
     .uni-c {
       background:var(--white); border-radius:10px; overflow:hidden;
       box-shadow:0 2px 10px rgba(0,0,0,.07);
       display:flex; flex-direction:column;
     }
-    .uni-ph { height:34mm; position:relative; overflow:hidden; flex-shrink:0; }
+    /* 写真エリアを大きく */
+    .uni-ph { height:52mm; position:relative; overflow:hidden; flex-shrink:0; }
     .uni-ph img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .uni-ph-ov { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.05) 55%); }
+    .uni-ph-ov { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.05) 50%); }
+
+    /* ヒーローバッジ — 各大学の強みを右上に大きく表示 */
+    .uni-hero {
+      position:absolute; top:3mm; right:3mm; z-index:3;
+      border-radius:9px; padding:2.5mm 3.5mm; text-align:center; line-height:1;
+    }
+    .uni-hero.gold { background:var(--gold); }
+    .uni-hero.teal { background:var(--teal-lt); }
+    .uni-hero.dark { background:rgba(13,43,78,.85); border:1px solid rgba(255,255,255,.2); }
+    .uni-hero-key {
+      font-family:'Montserrat',sans-serif;
+      font-size:26px; font-weight:900; display:block; line-height:1;
+    }
+    .uni-hero.gold .uni-hero-key { color:var(--navy); }
+    .uni-hero.teal .uni-hero-key { color:var(--navy); }
+    .uni-hero.dark .uni-hero-key { color:var(--white); }
+    .uni-hero-lab {
+      font-family:'Montserrat',sans-serif;
+      font-size:6.5px; font-weight:700; letter-spacing:.5px; display:block; margin-top:1.5px;
+    }
+    .uni-hero.gold .uni-hero-lab { color:rgba(10,22,40,.65); }
+    .uni-hero.teal .uni-hero-lab { color:rgba(10,22,40,.65); }
+    .uni-hero.dark .uni-hero-lab { color:rgba(255,255,255,.65); }
+
     .uni-ph-ct { position:absolute; bottom:0; left:0; right:0; padding:2.5mm 3.5mm; z-index:1; }
     .uni-rnk {
       display:inline-block; background:rgba(255,255,255,.9); color:var(--navy);
@@ -290,21 +317,22 @@
       padding:2px 7px; border-radius:4px; margin-bottom:2px;
     }
     .uni-nm { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700; color:var(--white); line-height:1.2; }
-    .uni-body-c { padding:3mm 4mm; flex:1; display:flex; flex-direction:column; }
-    /* 最強の一言 — 目立たせる */
+
+    .uni-body-c { padding:2.5mm 3.5mm; flex:1; display:flex; flex-direction:column; }
+    /* 最強の一言 */
     .uni-catch {
       font-family:'Montserrat',sans-serif; font-size:13px; font-weight:900;
-      color:var(--navy); line-height:1.2; margin-bottom:2.5mm;
+      color:var(--navy); line-height:1.2; margin-bottom:2mm;
     }
-    .uni-loc { font-size:7.5px; color:var(--txt-lt); margin-bottom:2mm; }
-    .uni-pts { display:flex; flex-direction:column; gap:1.5mm; flex:1; }
+    .uni-loc { font-size:7px; color:var(--txt-lt); margin-bottom:1.5mm; }
+    .uni-pts { display:flex; flex-direction:column; gap:1mm; flex:1; }
     .uni-pt {
       font-size:7.5px; color:var(--txt-mid); padding-left:9px; position:relative; line-height:1.4;
     }
     .uni-pt::before { content:'▸'; position:absolute; left:0; color:var(--teal); font-size:7px; }
     .uni-bdg {
       display:inline-block; background:rgba(0,168,150,.1); color:var(--teal);
-      font-size:7px; font-weight:700; padding:2px 6px; border-radius:4px; margin-top:2mm; align-self:flex-start;
+      font-size:7px; font-weight:700; padding:2px 6px; border-radius:4px; margin-top:1.5mm; align-self:flex-start;
     }
     .uni-section-lbl {
       font-family:'Montserrat',sans-serif; font-size:7px; font-weight:700;
@@ -321,10 +349,10 @@
       display:flex; flex-direction:column;
     }
     .p7-top {
-      background:var(--off); padding:6mm 9mm; flex-shrink:0;
+      background:var(--off); padding:5mm 9mm; flex-shrink:0;
     }
-    .p7-top .tag { margin-bottom:3mm; }
-    .support-intro { font-size:8.5px; color:var(--txt-mid); line-height:1.7; margin-bottom:4mm; }
+    .p7-top .tag { margin-bottom:2.5mm; }
+    .support-intro { font-size:8.5px; color:var(--txt-mid); line-height:1.7; margin-bottom:3.5mm; }
     .support-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2.5mm; }
     .sup-c {
       background:var(--white); border-radius:8px; padding:3mm 3.5mm;
@@ -339,18 +367,19 @@
     }
     .sup-t { font-size:7.5px; font-weight:600; color:var(--navy); line-height:1.4; }
 
+    /* ELC写真を大きく */
     .elc-mini {
-      display:flex; align-items:center; gap:5mm; margin-top:4mm;
-      background:var(--white); border-radius:8px; padding:3.5mm 4mm;
+      display:flex; align-items:center; gap:5mm; margin-top:3.5mm;
+      background:var(--white); border-radius:8px; padding:3mm 4mm;
       box-shadow:0 1px 6px rgba(0,0,0,.05);
     }
-    .elc-mini-ph { width:22mm; height:15mm; border-radius:6px; overflow:hidden; flex-shrink:0; }
+    .elc-mini-ph { width:36mm; height:22mm; border-radius:6px; overflow:hidden; flex-shrink:0; }
     .elc-mini-ph img { width:100%; height:100%; object-fit:cover; }
     .elc-mini-text { flex:1; }
     .elc-mini-name { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; color:var(--navy); margin-bottom:1mm; }
     .elc-mini-desc { font-size:7.5px; color:var(--txt-mid); line-height:1.5; }
-    .elc-mini-facts { display:flex; gap:3mm; margin-top:1.5mm; }
-    .elc-mf { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:900; color:var(--teal); }
+    .elc-mini-facts { display:flex; gap:3mm; margin-top:2mm; }
+    .elc-mf { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:900; color:var(--teal); }
     .elc-mf-l { font-size:7px; color:var(--txt-lt); margin-top:1px; }
 
     .p7-bot {
@@ -387,7 +416,7 @@
     .cmp-amt { font-family:'Montserrat',sans-serif; font-weight:700; }
     .cmp-amt.g { color:var(--teal-lt); }
     .cmp-amt.b { color:#ff8080; }
-    .cmp-tr { height:8px; background:rgba(255,255,255,.08); border-radius:8px; overflow:hidden; }
+    .cmp-tr { height:10px; background:rgba(255,255,255,.08); border-radius:8px; overflow:hidden; }
     .cmp-bar { height:100%; border-radius:8px; }
     .cmp-bar.my { width:22%; background:linear-gradient(90deg,var(--teal),var(--teal-lt)); }
     .cmp-bar.uk { width:70%; background:linear-gradient(90deg,#a01a1a,#de3030); }
@@ -448,8 +477,6 @@
     .email8 { font-size:9.5px; color:rgba(255,255,255,.85); margin-bottom:1.5mm; }
     .addr8 { font-size:7px; color:rgba(255,255,255,.5); line-height:1.75; text-align:right; }
 
-
-    /* ===== PRINT ===== */
     @media print {
       html, body { background:none; margin:0; padding:0; }
       .print-btn { display:none; }
@@ -474,10 +501,8 @@
     <div class="cover-overlay"></div>
     <div class="cover-inner">
       <div class="cover-badge">JAAC × ELC MALAYSIA &nbsp;|&nbsp; PATHWAY PROGRAM</div>
-
       <div class="cover-en">MALAYSIA<br><span>PATHWAY</span></div>
       <p class="cover-jp">アジアから、世界へ。大学進学の新選択</p>
-
       <div class="cover-stats">
         <div class="cs">
           <div class="cs-n">1/4</div>
@@ -496,7 +521,6 @@
           <div class="cs-l">選択可能な<br>進学先大学</div>
         </div>
       </div>
-
       <div class="cover-logos">
         <span class="cover-logo">JAAC</span>
         <div class="cover-sep"></div>
@@ -523,14 +547,13 @@
       <p class="sub">「安い・世界レベル・国際的」— その3つが、マレーシアで同時に手に入ります。</p>
     </div>
 
-    <!-- 大きな数字3つ -->
     <div class="p2-big-row">
       <div class="big-stat navy">
         <div class="big-num">75<sup>%</sup></div>
         <div class="big-stat-lbl">欧米比<br>学費削減率</div>
       </div>
       <div class="big-stat teal">
-        <div class="big-num">Top<br>37</div>
+        <div class="big-num">Top<br style="line-height:.5">37</div>
         <div class="big-stat-lbl">世界大学ランキング<br>上位校へ直接進学</div>
       </div>
       <div class="big-stat gold">
@@ -539,7 +562,6 @@
       </div>
     </div>
 
-    <!-- コスト比較バー -->
     <div class="cost-compare">
       <p class="compare-lbl">年間コスト比較（学費 + 生活費）</p>
       <div class="bar-row">
@@ -559,7 +581,6 @@
       </div>
     </div>
 
-    <!-- 5つの特徴 -->
     <div class="feat5">
       <div class="feat-box">
         <div class="feat-ico">¥</div>
@@ -605,7 +626,6 @@
     <div class="life-text-box">
       <p class="tag">Living in Malaysia</p>
       <h2>安全で活気ある<br>多文化都市で学ぶ</h2>
-
       <div class="life-num-row">
         <div class="life-num-box">
           <div class="life-num">5〜8万</div>
@@ -620,28 +640,12 @@
           <div class="life-num-l">フライトで<br>帰国できる距離</div>
         </div>
       </div>
-
       <div class="life-pts">
-        <div class="life-pt">
-          <div class="life-dot"></div>
-          <span>英語が公用語として機能し、日常生活も英語中心の完全英語環境</span>
-        </div>
-        <div class="life-pt">
-          <div class="life-dot"></div>
-          <span>治安が安定しており、初めての海外留学でも安心して生活できる</span>
-        </div>
-        <div class="life-pt">
-          <div class="life-dot"></div>
-          <span>マレー・中華・インド系が共存する多民族国家でのグローバル体験</span>
-        </div>
-        <div class="life-pt">
-          <div class="life-dot"></div>
-          <span>物価が安く、欧米の1/4以下のコストで快適な学生生活が送れる</span>
-        </div>
-        <div class="life-pt">
-          <div class="life-dot"></div>
-          <span>クアラルンプールは公共交通が整備された国際都市</span>
-        </div>
+        <div class="life-pt"><div class="life-dot"></div><span>英語が公用語として機能し、日常生活も英語中心の完全英語環境</span></div>
+        <div class="life-pt"><div class="life-dot"></div><span>治安が安定しており、初めての海外留学でも安心して生活できる</span></div>
+        <div class="life-pt"><div class="life-dot"></div><span>マレー・中華・インド系が共存する多民族国家でのグローバル体験</span></div>
+        <div class="life-pt"><div class="life-dot"></div><span>物価が安く、欧米の1/4以下のコストで快適な学生生活が送れる</span></div>
+        <div class="life-pt"><div class="life-dot"></div><span>クアラルンプールは公共交通が整備された国際都市</span></div>
       </div>
     </div>
   </div>
@@ -663,7 +667,6 @@
     <div class="p4-left">
       <p class="tag">Your Future</p>
       <h2>マレーシアから<br>始まる国際キャリア</h2>
-
       <div class="timeline">
         <div class="tl-item">
           <div class="tl-track">
@@ -679,7 +682,6 @@
             </div>
           </div>
         </div>
-
         <div class="tl-item">
           <div class="tl-track">
             <div class="tl-dot s2">学</div>
@@ -694,7 +696,6 @@
             </div>
           </div>
         </div>
-
         <div class="tl-item">
           <div class="tl-track">
             <div class="tl-dot s3">院</div>
@@ -709,7 +710,6 @@
             </div>
           </div>
         </div>
-
         <div class="tl-item">
           <div class="tl-track">
             <div class="tl-dot s4">職</div>
@@ -724,7 +724,6 @@
             </div>
           </div>
         </div>
-
         <div class="tl-item">
           <div class="tl-track">
             <div class="tl-dot s5">★</div>
@@ -740,7 +739,6 @@
         </div>
       </div>
     </div>
-
     <div class="p4-right">
       <img src="photos/campus.webp" alt="大学キャンパス">
       <div class="p4-right-ov"></div>
@@ -777,6 +775,11 @@
         <div class="uni-ph">
           <img src="photos/Taylor's%20University.png" alt="Taylor's University">
           <div class="uni-ph-ov"></div>
+          <!-- ヒーローバッジ -->
+          <div class="uni-hero gold">
+            <span class="uni-hero-key">No.1</span>
+            <span class="uni-hero-lab">東南アジア私立</span>
+          </div>
           <div class="uni-ph-ct">
             <div class="uni-rnk">QS アジア 41位</div>
             <div class="uni-nm">Taylor's University</div>
@@ -798,6 +801,10 @@
         <div class="uni-ph">
           <img src="photos/Sunway%20University.jpg" alt="Sunway University">
           <div class="uni-ph-ov"></div>
+          <div class="uni-hero teal">
+            <span class="uni-hero-key">2×</span>
+            <span class="uni-hero-lab">デュアル学位</span>
+          </div>
           <div class="uni-ph-ct">
             <div class="uni-rnk">提携：ASU / Lancaster</div>
             <div class="uni-nm">Sunway University</div>
@@ -819,6 +826,10 @@
         <div class="uni-ph">
           <img src="photos/Asia%20Pacific%20University.jpg" alt="Asia Pacific University">
           <div class="uni-ph-ov"></div>
+          <div class="uni-hero dark">
+            <span class="uni-hero-key">50<span style="font-size:16px">%+</span></span>
+            <span class="uni-hero-lab">留学生比率</span>
+          </div>
           <div class="uni-ph-ct">
             <div class="uni-rnk">QS アジア 184位</div>
             <div class="uni-nm">Asia Pacific University</div>
@@ -840,6 +851,10 @@
         <div class="uni-ph">
           <img src="photos/HELP%20University.jpg" alt="HELP University">
           <div class="uni-ph-ov"></div>
+          <div class="uni-hero gold">
+            <span class="uni-hero-key" style="font-size:18px">★×8</span>
+            <span class="uni-hero-lab">QS 5つ星</span>
+          </div>
           <div class="uni-ph-ct">
             <div class="uni-rnk">QS 8カテゴリ ★★★★★</div>
             <div class="uni-nm">HELP University</div>
@@ -887,6 +902,10 @@
         <div class="uni-ph">
           <img src="photos/Monash%20University.jpg" alt="Monash University Malaysia">
           <div class="uni-ph-ov"></div>
+          <div class="uni-hero gold">
+            <span class="uni-hero-key">#37</span>
+            <span class="uni-hero-lab">QS World</span>
+          </div>
           <div class="uni-ph-ct">
             <div class="uni-rnk">QS 世界 Top 37</div>
             <div class="uni-nm">Monash University<br><span style="font-size:8px;font-weight:400">豪州本校</span></div>
@@ -908,6 +927,10 @@
         <div class="uni-ph">
           <img src="photos/Nottingham%20University.png" alt="University of Nottingham Malaysia">
           <div class="uni-ph-ov"></div>
+          <div class="uni-hero teal">
+            <span class="uni-hero-key">Top<br style="line-height:.3">100</span>
+            <span class="uni-hero-lab">QS World</span>
+          </div>
           <div class="uni-ph-ct">
             <div class="uni-rnk">世界 100位前後</div>
             <div class="uni-nm">University of Nottingham<br><span style="font-size:8px;font-weight:400">英国本校</span></div>
@@ -929,6 +952,10 @@
         <div class="uni-ph">
           <img src="photos/Heriot%20Watt%20University.jpg" alt="Heriot-Watt University Malaysia">
           <div class="uni-ph-ov"></div>
+          <div class="uni-hero teal">
+            <span class="uni-hero-key">95<span style="font-size:16px">%</span></span>
+            <span class="uni-hero-lab">就職率</span>
+          </div>
           <div class="uni-ph-ct">
             <div class="uni-rnk">世界 300位前後</div>
             <div class="uni-nm">Heriot-Watt University<br><span style="font-size:8px;font-weight:400">スコットランド本校</span></div>
@@ -950,6 +977,10 @@
         <div class="uni-ph">
           <img src="photos/University%20of%20Wollongong.png" alt="University of Wollongong Malaysia">
           <div class="uni-ph-ov"></div>
+          <div class="uni-hero dark">
+            <span class="uni-hero-key">2×</span>
+            <span class="uni-hero-lab">学位取得</span>
+          </div>
           <div class="uni-ph-ct">
             <div class="uni-rnk">世界 190位前後</div>
             <div class="uni-nm">University of Wollongong<br><span style="font-size:8px;font-weight:400">豪州本校</span></div>
@@ -984,12 +1015,10 @@
   </div>
 
   <div class="p7-body">
-    <!-- 上半分: サポート -->
     <div class="p7-top">
       <div class="tag">JAAC × ELC Malaysia — Full Support</div>
       <div class="h2" style="margin-bottom:2mm">出願から入学まで、ぜんぶ任せられる</div>
       <p class="support-intro">JAAC（日米学術センター）と ELC Malaysia が、渡航準備から大学入学後まで一貫してサポートします。</p>
-
       <div class="support-grid">
         <div class="sup-c"><div class="sup-ico">書</div><span class="sup-t">出願書類<br>添削サービス</span></div>
         <div class="sup-c"><div class="sup-ico">学</div><span class="sup-t">大学キャンパス<br>ツアー</span></div>
@@ -1000,7 +1029,6 @@
         <div class="sup-c"><div class="sup-ico">前</div><span class="sup-t">渡航前<br>オリエンテーション</span></div>
         <div class="sup-c"><div class="sup-ico">特</div><span class="sup-t">JAAC限定<br>特別講座</span></div>
       </div>
-
       <div class="elc-mini">
         <div class="elc-mini-ph">
           <img src="photos/ELC.jpg" alt="ELC Malaysia">
@@ -1018,7 +1046,6 @@
       </div>
     </div>
 
-    <!-- 下半分: 費用 -->
     <div class="p7-bot">
       <div class="p7-bot-bg"><img src="photos/KL%20city.jpg" alt=""></div>
       <div class="tag">Program Cost</div>
@@ -1079,7 +1106,6 @@
       <div class="tag">How It Works</div>
       <div class="h2">進学までの流れ</div>
       <p class="sub">カウンセリングから大学入学まで、JAAСと ELC が一貫してサポートします。</p>
-
       <div class="steps5">
         <div class="st">
           <div class="st-n">1</div>
@@ -1107,7 +1133,6 @@
           <p class="st-d">合格後、ファウンデーション免除で1年次から入学。</p>
         </div>
       </div>
-
       <p style="font-family:'Montserrat',sans-serif;font-size:7px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--txt-lt);margin-top:5mm;margin-bottom:2.5mm">Full Support Included</p>
       <div class="sup-row8">
         <div class="si8"><div class="si8-ico">書</div><span class="si8-t">出願書類<br>添削</span></div>
@@ -1121,7 +1146,6 @@
       </div>
     </div>
 
-    <!-- 参加条件 -->
     <div class="req-row">
       <div class="req-c">
         <div class="req-ic">1</div>
@@ -1141,7 +1165,6 @@
       </div>
     </div>
 
-    <!-- お問い合わせ -->
     <div class="contact-s">
       <div class="contact-in">
         <div class="contact-l">
@@ -1160,7 +1183,7 @@
       </div>
     </div>
 
-    <div class="pf" style="position:static;height:7.5mm;background:var(--navy);display:flex;align-items:center;justify-content:center">
+    <div style="height:7.5mm;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0">
       <p style="font-family:'Montserrat',sans-serif;font-size:6.5px;color:rgba(255,255,255,.35);letter-spacing:1px">© JAAC 日米学術センター &nbsp;|&nbsp; 無断複製・転載を禁じます</p>
     </div>
   </div>
