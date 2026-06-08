@@ -37,7 +37,6 @@
 
     /* ===== SHARED ===== */
     .container { max-width: 1100px; margin: 0 auto; }
-
     .sec { padding: 96px 40px; }
 
     .tag {
@@ -78,30 +77,40 @@
     /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
-      background:
-        radial-gradient(ellipse at 70% 30%, rgba(0,168,150,.12) 0%, transparent 60%),
-        linear-gradient(150deg, #071220 0%, #0d2b4e 45%, #0f3560 100%);
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 80px 40px 120px;
-      position: relative;
+      padding: 80px 40px 130px;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://picsum.photos/seed/klcc-night/1920/1080');
+      background-size: cover;
+      background-position: center 40%;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(7,18,32,.55) 0%, rgba(13,43,78,.7) 60%, rgba(7,18,32,.9) 100%);
+    }
+
+    .hero-grid {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,168,150,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,168,150,.04) 1px, transparent 1px);
+        linear-gradient(rgba(0,168,150,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,168,150,.06) 1px, transparent 1px);
       background-size: 64px 64px;
     }
 
-    .hero::after {
-      content: '';
+    .hero-wave {
       position: absolute;
       bottom: -1px; left: 0; right: 0;
       height: 100px;
@@ -121,7 +130,7 @@
       align-items: center;
       gap: 10px;
       border: 1px solid rgba(201,168,76,.5);
-      background: rgba(201,168,76,.08);
+      background: rgba(201,168,76,.1);
       color: var(--gold);
       font-family: 'Montserrat', sans-serif;
       font-size: 11px;
@@ -163,12 +172,13 @@
       line-height: 1;
       letter-spacing: -3px;
       margin-bottom: 6px;
+      text-shadow: 0 4px 40px rgba(0,0,0,.4);
     }
 
     .hero-sub {
       font-size: clamp(16px, 2.5vw, 22px);
       font-weight: 300;
-      color: rgba(255,255,255,.65);
+      color: rgba(255,255,255,.75);
       letter-spacing: 5px;
       margin-bottom: 56px;
     }
@@ -182,9 +192,9 @@
     }
 
     .hero-stat {
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      backdrop-filter: blur(12px);
       border-radius: 18px;
       padding: 24px 28px;
       min-width: 140px;
@@ -200,11 +210,7 @@
       margin-bottom: 8px;
     }
 
-    .stat-lbl {
-      font-size: 12px;
-      color: rgba(255,255,255,.6);
-      line-height: 1.4;
-    }
+    .stat-lbl { font-size: 12px; color: rgba(255,255,255,.65); line-height: 1.4; }
 
     .hero-cta {
       display: inline-block;
@@ -223,7 +229,46 @@
     .hero-cta:hover {
       background: var(--gold-lt);
       transform: translateY(-2px);
-      box-shadow: 0 10px 36px rgba(201,168,76,.35);
+      box-shadow: 0 10px 36px rgba(201,168,76,.4);
+    }
+
+    /* ===== GALLERY STRIP ===== */
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 240px;
+      gap: 4px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item.tall {
+      grid-row: span 2;
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.65));
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 24px 16px 12px;
+      letter-spacing: 1px;
     }
 
     /* ===== WHY MALAYSIA ===== */
@@ -264,19 +309,9 @@
       margin-bottom: 10px;
     }
 
-    .bar-track {
-      height: 12px;
-      background: rgba(0,0,0,.08);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 6px;
-    }
+    .bar-track { height: 12px; background: rgba(0,0,0,.08); border-radius: 8px; overflow: hidden; margin-bottom: 6px; }
 
-    .bar-fill {
-      height: 100%;
-      border-radius: 8px;
-    }
-
+    .bar-fill { height: 100%; border-radius: 8px; }
     .bar-fill.my  { width: 22%; background: linear-gradient(90deg, var(--teal), var(--teal-lt)); }
     .bar-fill.uk  { width: 70%; background: linear-gradient(90deg, #c0392b, #e74c3c); }
     .bar-fill.us  { width: 100%; background: linear-gradient(90deg, #962d2d, #c0392b); }
@@ -330,56 +365,15 @@
       line-height: 1;
     }
 
-    .big-pct sup {
-      font-size: 44px;
-      vertical-align: top;
-      margin-top: 10px;
-    }
+    .big-pct sup { font-size: 44px; vertical-align: top; margin-top: 10px; }
 
-    .big-saving-desc {
-      font-size: 15px;
-      color: rgba(255,255,255,.65);
-      margin-top: 10px;
-      line-height: 1.6;
-    }
+    .big-saving-desc { font-size: 15px; color: rgba(255,255,255,.65); margin-top: 10px; line-height: 1.6; }
+    .big-saving-note { margin-top: 20px; font-size: 14px; color: var(--teal-lt); font-weight: 700; }
 
-    .big-saving-note {
-      margin-top: 20px;
-      font-size: 14px;
-      color: var(--teal-lt);
-      font-weight: 700;
-    }
-
-    .quality-box {
-      background: var(--gold);
-      border-radius: 24px;
-      padding: 32px;
-      text-align: center;
-    }
-
-    .quality-box .qtag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: rgba(10,22,40,.6);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .quality-box .qtext {
-      font-size: clamp(18px, 2vw, 24px);
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.3;
-    }
-
-    .quality-box .qnote {
-      font-size: 12px;
-      color: rgba(10,22,40,.6);
-      margin-top: 12px;
-      line-height: 1.5;
-    }
+    .quality-box { background: var(--gold); border-radius: 24px; padding: 32px; text-align: center; }
+    .quality-box .qtag { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(10,22,40,.6); margin-bottom: 12px; text-transform: uppercase; }
+    .quality-box .qtext { font-size: clamp(18px, 2vw, 24px); font-weight: 700; color: var(--navy); line-height: 1.3; }
+    .quality-box .qnote { font-size: 12px; color: rgba(10,22,40,.6); margin-top: 12px; line-height: 1.5; }
 
     .features {
       display: grid;
@@ -400,8 +394,7 @@
     .feat:hover { border-color: var(--teal); transform: translateY(-4px); }
 
     .feat-icon {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       border-radius: 14px;
       background: linear-gradient(135deg, var(--navy), var(--navy-mid));
       color: var(--white);
@@ -414,11 +407,89 @@
       margin: 0 auto 16px;
     }
 
-    .feat-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.4;
+    .feat-title { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.4; }
+
+    /* ===== MALAYSIA LIFE PHOTO SECTION ===== */
+    .life-sec {
+      background: var(--navy);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .life-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+
+    .life-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .life-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s ease;
+    }
+
+    .life-photo:hover img { transform: scale(1.04); }
+
+    .life-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,43,78,.5), rgba(0,168,150,.2));
+    }
+
+    .life-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 56px;
+      color: var(--white);
+    }
+
+    .life-text .tag { color: var(--gold); }
+
+    .life-text h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .life-text p {
+      font-size: 15px;
+      color: rgba(255,255,255,.7);
+      line-height: 1.8;
+      max-width: 440px;
+    }
+
+    .life-points {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .life-point {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,.85);
+    }
+
+    .life-point-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--teal-lt);
+      flex-shrink: 0;
     }
 
     /* ===== UNIVERSITIES ===== */
@@ -452,29 +523,53 @@
     }
 
     .uni-card:hover {
-      box-shadow: 0 10px 40px rgba(0,0,0,.13);
-      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(0,0,0,.14);
+      transform: translateY(-5px);
     }
 
     .uni-header {
-      height: 110px;
+      height: 160px;
       position: relative;
+      overflow: hidden;
       display: flex;
       align-items: flex-end;
-      padding: 16px;
+    }
+
+    .uni-header img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .5s ease;
+    }
+
+    .uni-card:hover .uni-header img { transform: scale(1.06); }
+
+    .uni-header-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.1) 60%);
+    }
+
+    .uni-header-content {
+      position: relative;
+      z-index: 1;
+      padding: 14px 16px;
+      width: 100%;
     }
 
     .uni-rank {
-      position: absolute;
-      top: 12px;
-      right: 12px;
+      display: inline-block;
       background: rgba(255,255,255,.88);
       color: var(--navy);
       font-family: 'Montserrat', sans-serif;
       font-size: 10px;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 3px 10px;
       border-radius: 6px;
+      margin-bottom: 8px;
     }
 
     .uni-name {
@@ -487,14 +582,7 @@
 
     .uni-body { padding: 18px; }
 
-    .uni-loc {
-      font-size: 11px;
-      color: var(--txt-lt);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
+    .uni-loc { font-size: 11px; color: var(--txt-lt); margin-bottom: 12px; }
 
     .uni-pt {
       font-size: 12px;
@@ -505,13 +593,7 @@
       line-height: 1.4;
     }
 
-    .uni-pt::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--teal);
-      font-size: 10px;
-    }
+    .uni-pt::before { content: '▸'; position: absolute; left: 0; color: var(--teal); font-size: 10px; }
 
     .uni-tag {
       display: inline-block;
@@ -524,20 +606,24 @@
       margin-top: 10px;
     }
 
-    /* university header gradients */
-    .g-taylors   { background: linear-gradient(135deg, #1a4a7a, #2d6db0); }
-    .g-sunway    { background: linear-gradient(135deg, #145c36, #1e8052); }
-    .g-apu       { background: linear-gradient(135deg, #4a126e, #7b28b0); }
-    .g-help      { background: linear-gradient(135deg, #6a1212, #a82020); }
-    .g-monash    { background: linear-gradient(135deg, #002147, #1a4080); }
-    .g-notts     { background: linear-gradient(135deg, #003d00, #1a6e1a); }
-    .g-hw        { background: linear-gradient(135deg, #14146e, #2424b0); }
-    .g-uow       { background: linear-gradient(135deg, #5a1a00, #a83600); }
-
     /* ===== COST ===== */
     .cost-sec {
       background: linear-gradient(150deg, #071220 0%, #0d2b4e 100%);
       padding: 96px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cost-sec-bg {
+      position: absolute;
+      inset: 0;
+      opacity: .06;
+    }
+
+    .cost-sec-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .cost-sec .tag { color: var(--gold); }
@@ -556,6 +642,8 @@
       border: 1px solid rgba(255,255,255,.11);
       border-radius: 24px;
       padding: 40px;
+      position: relative;
+      z-index: 1;
     }
 
     .glass-title {
@@ -621,30 +709,14 @@
 
     .cmp-item { margin-bottom: 24px; }
 
-    .cmp-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
+    .cmp-header { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; }
     .cmp-country { color: rgba(255,255,255,.75); font-weight: 600; }
 
-    .cmp-amount {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-    }
-
+    .cmp-amount { font-family: 'Montserrat', sans-serif; font-weight: 700; }
     .cmp-amount.good { color: var(--teal-lt); }
     .cmp-amount.bad  { color: #ff8080; }
 
-    .cmp-track {
-      height: 10px;
-      background: rgba(255,255,255,.08);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
+    .cmp-track { height: 10px; background: rgba(255,255,255,.08); border-radius: 10px; overflow: hidden; }
     .cmp-bar { height: 100%; border-radius: 10px; }
     .cmp-bar.my  { width: 22%; background: linear-gradient(90deg, var(--teal), var(--teal-lt)); }
     .cmp-bar.uk  { width: 70%; background: linear-gradient(90deg, #a0201a, #e03030); }
@@ -659,11 +731,7 @@
       text-align: center;
     }
 
-    .saving-highlight p {
-      font-size: 14px;
-      color: rgba(255,255,255,.6);
-      margin-bottom: 8px;
-    }
+    .saving-highlight p { font-size: 14px; color: rgba(255,255,255,.6); margin-bottom: 8px; }
 
     .saving-highlight strong {
       font-family: 'Montserrat', sans-serif;
@@ -686,25 +754,16 @@
     .steps::before {
       content: '';
       position: absolute;
-      top: 26px;
-      left: 26px;
-      right: 26px;
+      top: 26px; left: 26px; right: 26px;
       height: 2px;
       background: linear-gradient(90deg, var(--teal), var(--navy));
       z-index: 0;
     }
 
-    .step {
-      flex: 1;
-      text-align: center;
-      padding: 0 12px;
-      position: relative;
-      z-index: 1;
-    }
+    .step { flex: 1; text-align: center; padding: 0 12px; position: relative; z-index: 1; }
 
     .step-num {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       border-radius: 50%;
       background: var(--navy);
       color: var(--white);
@@ -718,19 +777,8 @@
       box-shadow: 0 0 0 4px var(--white), 0 0 0 6px var(--teal);
     }
 
-    .step-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .step-desc {
-      font-size: 12px;
-      color: var(--txt-lt);
-      line-height: 1.6;
-    }
+    .step-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+    .step-desc { font-size: 12px; color: var(--txt-lt); line-height: 1.6; }
 
     .support {
       display: grid;
@@ -749,8 +797,7 @@
     }
 
     .sup-icon {
-      width: 38px;
-      height: 38px;
+      width: 38px; height: 38px;
       border-radius: 10px;
       background: linear-gradient(135deg, var(--teal), var(--teal-lt));
       color: var(--white);
@@ -763,25 +810,12 @@
       flex-shrink: 0;
     }
 
-    .sup-text {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.4;
-    }
+    .sup-text { font-size: 13px; font-weight: 600; color: var(--navy); line-height: 1.4; }
 
     /* ===== ENTRY REQ ===== */
-    .entry {
-      background: var(--off-white);
-      padding: 72px 40px;
-    }
+    .entry { background: var(--off-white); padding: 72px 40px; }
 
-    .req-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 40px;
-    }
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
 
     .req-card {
       background: var(--white);
@@ -794,8 +828,7 @@
     }
 
     .req-num {
-      width: 48px;
-      height: 48px;
+      width: 48px; height: 48px;
       border-radius: 12px;
       background: linear-gradient(135deg, var(--teal), var(--teal-lt));
       color: var(--white);
@@ -808,28 +841,12 @@
       flex-shrink: 0;
     }
 
-    .req-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
-
-    .req-val {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
-      font-weight: 900;
-      color: var(--navy);
-      line-height: 1;
-    }
-
+    .req-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .req-val { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: var(--navy); line-height: 1; }
     .req-note { font-size: 12px; color: var(--txt-lt); margin-top: 6px; }
 
     /* ===== CONTACT ===== */
-    .contact {
-      background: linear-gradient(135deg, var(--teal), #007a6a);
-      padding: 80px 40px;
-    }
+    .contact { background: linear-gradient(135deg, var(--teal), #007a6a); padding: 80px 40px; }
 
     .contact-inner {
       max-width: 1100px;
@@ -865,12 +882,7 @@
 
     .email { font-size: 15px; color: rgba(255,255,255,.8); margin-bottom: 12px; }
 
-    .addr {
-      font-size: 12px;
-      color: rgba(255,255,255,.55);
-      line-height: 1.8;
-      text-align: right;
-    }
+    .addr { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.8; text-align: right; }
 
     .cta-btn {
       display: inline-block;
@@ -889,11 +901,7 @@
     .cta-btn:hover { background: var(--gold); color: var(--navy); }
 
     /* ===== FOOTER ===== */
-    footer {
-      background: var(--navy);
-      padding: 24px 40px;
-      text-align: center;
-    }
+    footer { background: var(--navy); padding: 24px 40px; text-align: center; }
 
     footer p {
       font-family: 'Montserrat', sans-serif;
@@ -905,9 +913,13 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .sec { padding: 64px 24px; }
+      .gallery-strip { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px; }
+      .gallery-strip .gallery-item:last-child { display: none; }
       .why-grid { grid-template-columns: 1fr; }
       .uni-grid { grid-template-columns: repeat(2, 1fr); }
       .features { grid-template-columns: repeat(3, 1fr); }
+      .life-inner { grid-template-columns: 1fr; }
+      .life-photo { min-height: 300px; }
       .cost-grid { grid-template-columns: 1fr; }
       .steps { flex-direction: column; gap: 28px; }
       .steps::before { display: none; }
@@ -922,6 +934,7 @@
       .uni-grid { grid-template-columns: 1fr; }
       .features { grid-template-columns: repeat(2, 1fr); }
       .support { grid-template-columns: 1fr; }
+      .gallery-strip { grid-template-columns: 1fr; grid-template-rows: repeat(2, 200px); }
     }
 
     @media print {
@@ -934,6 +947,13 @@
 
 <!-- ========== HERO ========== -->
 <section class="hero">
+  <div class="hero-photo">
+    <!-- クアラルンプール夜景イメージ (本番では実写真に差し替えてください) -->
+    <img src="https://picsum.photos/seed/kl-skyline/1920/1080" alt="クアラルンプール夜景" style="width:100%;height:100%;object-fit:cover">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+
   <div class="hero-inner">
     <div class="hero-badge">JAAC × ELC MALAYSIA &nbsp;|&nbsp; PATHWAY PROGRAM</div>
 
@@ -967,7 +987,27 @@
 
     <a href="#contact" class="hero-cta">無料カウンセリングを予約する</a>
   </div>
+
+  <div class="hero-wave"></div>
 </section>
+
+
+<!-- ========== GALLERY STRIP ========== -->
+<!-- マレーシア市内・留学生活の写真ストリップ -->
+<div class="gallery-strip">
+  <div class="gallery-item">
+    <img src="https://picsum.photos/seed/kl-towers/800/500" alt="クアラルンプール市街">
+    <div class="gallery-label">クアラルンプール市内</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://picsum.photos/seed/malaysia-campus/400/500" alt="大学キャンパス">
+    <div class="gallery-label">大学キャンパス</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://picsum.photos/seed/student-life/400/500" alt="留学生活">
+    <div class="gallery-label">多国籍な学生生活</div>
+  </div>
+</div>
 
 
 <!-- ========== WHY MALAYSIA ========== -->
@@ -978,30 +1018,23 @@
     <p class="sub">欧米と同等の教育を、驚くほどリーズナブルな費用で。<br>初めての海外留学でも安心して挑戦できる環境が整っています。</p>
 
     <div class="why-grid">
-      <!-- 左：比較バー -->
       <div class="compare-panel">
         <p class="compare-label">年間コスト比較（学費）</p>
 
         <div class="bar-group">
-          <div class="bar-header">
-            <span>マレーシア</span>
-          </div>
+          <div class="bar-header"><span>マレーシア</span></div>
           <div class="bar-track"><div class="bar-fill my"></div></div>
           <p class="bar-note">年間学費：約 30〜80万円</p>
         </div>
 
         <div class="bar-group">
-          <div class="bar-header">
-            <span>イギリス</span>
-          </div>
+          <div class="bar-header"><span>イギリス</span></div>
           <div class="bar-track"><div class="bar-fill uk"></div></div>
           <p class="bar-note">年間学費：約 200〜400万円</p>
         </div>
 
         <div class="bar-group" style="margin-bottom:0">
-          <div class="bar-header">
-            <span>アメリカ</span>
-          </div>
+          <div class="bar-header"><span>アメリカ</span></div>
           <div class="bar-track"><div class="bar-fill us"></div></div>
           <p class="bar-note">年間学費：約 300〜500万円</p>
         </div>
@@ -1013,7 +1046,6 @@
         </div>
       </div>
 
-      <!-- 右：ハイライトカード -->
       <div class="right-stack">
         <div class="big-saving">
           <p class="big-saving-tag">Cost Performance</p>
@@ -1030,7 +1062,6 @@
       </div>
     </div>
 
-    <!-- 5 Features -->
     <div class="features">
       <div class="feat">
         <div class="feat-icon">¥</div>
@@ -1049,8 +1080,43 @@
         <div class="feat-title">豊富な<br>交換留学制度</div>
       </div>
       <div class="feat">
-        <div class="feat-icon" style="font-size:16px">多文化</div>
+        <div class="feat-icon" style="font-size:14px">多文化</div>
         <div class="feat-title">多民族国家ならではの<br>グローバル体験</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== MALAYSIA LIFE ========== -->
+<section class="life-sec">
+  <div class="life-inner">
+    <div class="life-photo">
+      <!-- KL市内・ペトロナスタワー周辺イメージ -->
+      <img src="https://picsum.photos/seed/kl-city-life/900/600" alt="マレーシア・クアラルンプール">
+      <div class="life-photo-overlay"></div>
+    </div>
+    <div class="life-text">
+      <p class="tag">Living in Malaysia</p>
+      <h2>安全で活気ある<br>多文化都市で学ぶ</h2>
+      <p>マレーシアはマレー系・中華系・インド系が共存する多民族国家。130カ国以上の留学生と共に英語で学ぶ国際環境が、グローバルな視野と人脈を育みます。</p>
+      <div class="life-points">
+        <div class="life-point">
+          <div class="life-point-dot"></div>
+          <span>英語が公用語として機能し、日常生活も英語中心</span>
+        </div>
+        <div class="life-point">
+          <div class="life-point-dot"></div>
+          <span>治安が安定しており、初めての海外でも安心</span>
+        </div>
+        <div class="life-point">
+          <div class="life-point-dot"></div>
+          <span>物価が安く、月5〜8万円で快適に生活できる</span>
+        </div>
+        <div class="life-point">
+          <div class="life-point-dot"></div>
+          <span>クアラルンプールは交通アクセスも抜群</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1069,9 +1135,14 @@
     <div class="uni-grid">
 
       <div class="uni-card">
-        <div class="uni-header g-taylors">
-          <div class="uni-rank">QS アジア 41位</div>
-          <div class="uni-name">Taylor's University</div>
+        <div class="uni-header">
+          <!-- Taylor's University キャンパスイメージ -->
+          <img src="https://picsum.photos/seed/taylors-univ/400/220" alt="Taylor's University">
+          <div class="uni-header-overlay"></div>
+          <div class="uni-header-content">
+            <div class="uni-rank">QS アジア 41位</div>
+            <div class="uni-name">Taylor's University</div>
+          </div>
         </div>
         <div class="uni-body">
           <p class="uni-loc">&#9679; セランゴール州スバン・ジャヤ</p>
@@ -1083,9 +1154,13 @@
       </div>
 
       <div class="uni-card">
-        <div class="uni-header g-sunway">
-          <div class="uni-rank">提携：ASU / Lancaster</div>
-          <div class="uni-name">Sunway University</div>
+        <div class="uni-header">
+          <img src="https://picsum.photos/seed/sunway-univ/400/220" alt="Sunway University">
+          <div class="uni-header-overlay"></div>
+          <div class="uni-header-content">
+            <div class="uni-rank">提携：ASU / Lancaster</div>
+            <div class="uni-name">Sunway University</div>
+          </div>
         </div>
         <div class="uni-body">
           <p class="uni-loc">&#9679; セランゴール州スバン・ジャヤ</p>
@@ -1097,9 +1172,13 @@
       </div>
 
       <div class="uni-card">
-        <div class="uni-header g-apu">
-          <div class="uni-rank">QS アジア 184位</div>
-          <div class="uni-name">Asia Pacific University</div>
+        <div class="uni-header">
+          <img src="https://picsum.photos/seed/apu-malaysia/400/220" alt="Asia Pacific University">
+          <div class="uni-header-overlay"></div>
+          <div class="uni-header-content">
+            <div class="uni-rank">QS アジア 184位</div>
+            <div class="uni-name">Asia Pacific University</div>
+          </div>
         </div>
         <div class="uni-body">
           <p class="uni-loc">&#9679; クアラルンプール（TPM）</p>
@@ -1111,9 +1190,13 @@
       </div>
 
       <div class="uni-card">
-        <div class="uni-header g-help">
-          <div class="uni-rank">QS 5カテゴリ ★★★★★</div>
-          <div class="uni-name">HELP University</div>
+        <div class="uni-header">
+          <img src="https://picsum.photos/seed/help-university/400/220" alt="HELP University">
+          <div class="uni-header-overlay"></div>
+          <div class="uni-header-content">
+            <div class="uni-rank">QS 8カテゴリ ★★★★★</div>
+            <div class="uni-name">HELP University</div>
+          </div>
         </div>
         <div class="uni-body">
           <p class="uni-loc">&#9679; クアラルンプール</p>
@@ -1131,9 +1214,13 @@
     <div class="uni-grid">
 
       <div class="uni-card">
-        <div class="uni-header g-monash">
-          <div class="uni-rank">世界 Top 37</div>
-          <div class="uni-name">Monash University<br><span style="font-size:11px;font-weight:400">豪州本校</span></div>
+        <div class="uni-header">
+          <img src="https://picsum.photos/seed/monash-my/400/220" alt="Monash University Malaysia">
+          <div class="uni-header-overlay"></div>
+          <div class="uni-header-content">
+            <div class="uni-rank">世界 Top 37</div>
+            <div class="uni-name">Monash University<br><span style="font-size:11px;font-weight:400">豪州本校</span></div>
+          </div>
         </div>
         <div class="uni-body">
           <p class="uni-loc">&#9679; セランゴール州バンダー・サンウェイ</p>
@@ -1145,9 +1232,13 @@
       </div>
 
       <div class="uni-card">
-        <div class="uni-header g-notts">
-          <div class="uni-rank">世界 100位前後</div>
-          <div class="uni-name">University of Nottingham<br><span style="font-size:11px;font-weight:400">英国本校</span></div>
+        <div class="uni-header">
+          <img src="https://picsum.photos/seed/nottingham-my/400/220" alt="University of Nottingham Malaysia">
+          <div class="uni-header-overlay"></div>
+          <div class="uni-header-content">
+            <div class="uni-rank">世界 100位前後</div>
+            <div class="uni-name">University of Nottingham<br><span style="font-size:11px;font-weight:400">英国本校</span></div>
+          </div>
         </div>
         <div class="uni-body">
           <p class="uni-loc">&#9679; セランゴール州セメニヒ</p>
@@ -1159,9 +1250,13 @@
       </div>
 
       <div class="uni-card">
-        <div class="uni-header g-hw">
-          <div class="uni-rank">世界 300位前後</div>
-          <div class="uni-name">Heriot-Watt University<br><span style="font-size:11px;font-weight:400">スコットランド本校</span></div>
+        <div class="uni-header">
+          <img src="https://picsum.photos/seed/heriotwatt-my/400/220" alt="Heriot-Watt University Malaysia">
+          <div class="uni-header-overlay"></div>
+          <div class="uni-header-content">
+            <div class="uni-rank">世界 300位前後</div>
+            <div class="uni-name">Heriot-Watt University<br><span style="font-size:11px;font-weight:400">スコットランド本校</span></div>
+          </div>
         </div>
         <div class="uni-body">
           <p class="uni-loc">&#9679; プトラジャヤ</p>
@@ -1173,9 +1268,13 @@
       </div>
 
       <div class="uni-card">
-        <div class="uni-header g-uow">
-          <div class="uni-rank">世界 190位前後</div>
-          <div class="uni-name">University of Wollongong<br><span style="font-size:11px;font-weight:400">豪州本校</span></div>
+        <div class="uni-header">
+          <img src="https://picsum.photos/seed/uow-malaysia/400/220" alt="University of Wollongong Malaysia">
+          <div class="uni-header-overlay"></div>
+          <div class="uni-header-content">
+            <div class="uni-rank">世界 190位前後</div>
+            <div class="uni-name">University of Wollongong<br><span style="font-size:11px;font-weight:400">豪州本校</span></div>
+          </div>
         </div>
         <div class="uni-body">
           <p class="uni-loc">&#9679; シャーアラム</p>
@@ -1193,13 +1292,16 @@
 
 <!-- ========== COST ========== -->
 <section class="cost-sec">
-  <div class="container">
+  <div class="cost-sec-bg">
+    <!-- 背景にKL市内の写真をうっすら -->
+    <img src="https://picsum.photos/seed/kl-city-dark/1600/900" alt="">
+  </div>
+  <div class="container" style="position:relative;z-index:1">
     <div class="tag">Program Cost</div>
     <h2 class="h2-en" style="color:var(--white)">費用シミュレーション</h2>
     <p class="sub">「結局いくらかかるの？」に、わかりやすくお答えします。</p>
 
     <div class="cost-grid">
-      <!-- モデルケース -->
       <div class="glass-card">
         <p class="glass-title">モデルケース：48週間プログラム（約9ヶ月）</p>
 
@@ -1236,7 +1338,6 @@
         </p>
       </div>
 
-      <!-- 国際比較 -->
       <div class="glass-card">
         <p class="compare-title">年間コスト比較（学費 + 生活費）</p>
 
@@ -1310,7 +1411,6 @@
       </div>
     </div>
 
-    <!-- Support items -->
     <p style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--txt-lt);text-transform:uppercase;margin-top:72px;margin-bottom:28px">Full Support Included</p>
     <div class="support">
       <div class="sup-item">
