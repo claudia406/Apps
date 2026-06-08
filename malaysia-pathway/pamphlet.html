@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>マレーシア大学進学パスウェイプログラム | JAAC × ELC Malaysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    :root {
+      --navy:      #0d2b4e;
+      --navy-mid:  #1a3d6b;
+      --teal:      #00a896;
+      --teal-lt:   #00c4ae;
+      --gold:      #c9a84c;
+      --gold-lt:   #e4c06e;
+      --white:     #ffffff;
+      --off-white: #f7fafd;
+      --gray-lt:   #eef2f8;
+      --txt-dark:  #0a1628;
+      --txt-mid:   #3a5070;
+      --txt-lt:    #6b8099;
+    }
+
+    html, body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #c0c0c0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== PRINT BUTTON ===== */
+    .print-btn {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 9999;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 12px 28px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+      transition: background .2s;
+    }
+    .print-btn:hover { background: var(--teal); }
+
+    /* ===== PAGE BASE ===== */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      position: relative;
+      background: var(--white);
+      margin: 20px auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+      break-after: page;
+      page-break-after: always;
+    }
+
+    .page:last-of-type {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    /* ===== SHARED ELEMENTS ===== */
+    .tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+
+    .h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .sub {
+      font-size: 9px;
+      color: var(--txt-lt);
+      line-height: 1.7;
+    }
+
+    /* ===== PAGE HEADER / FOOTER ===== */
+    .p-header {
+      height: 10mm;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10mm;
+    }
+
+    .p-header .brand {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,.6);
+    }
+
+    .p-header .pn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 600;
+      color: rgba(255,255,255,.4);
+    }
+
+    .p-footer {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 8mm;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .p-footer p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7px;
+      color: rgba(255,255,255,.35);
+      letter-spacing: 1px;
+    }
+
+    /* ===== P1: COVER ===== */
+    .cover {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover-photo {
+      position: absolute;
+      inset: 0;
+    }
+
+    .cover-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+
+    .cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(7,18,32,.4) 0%,
+        rgba(13,43,78,.65) 50%,
+        rgba(7,18,32,.92) 100%);
+    }
+
+    .cover-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 20mm;
+    }
+
+    .cover-badge {
+      display: inline-block;
+      border: 1px solid rgba(201,168,76,.6);
+      background: rgba(201,168,76,.12);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      padding: 5px 16px;
+      border-radius: 50px;
+      margin-bottom: 14mm;
+    }
+
+    .cover-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10mm;
+    }
+
+    .cover-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .cover-sep {
+      width: 36px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+    }
+
+    .cover-main {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 4mm;
+    }
+
+    .cover-tagline {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,.7);
+      letter-spacing: 4px;
+      margin-bottom: 12mm;
+    }
+
+    .cover-stats {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 12mm;
+    }
+
+    .cover-stat {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 12px;
+      padding: 10px 14px;
+      text-align: center;
+      min-width: 32mm;
+    }
+
+    .cs-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--teal-lt);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .cs-lbl {
+      font-size: 7.5px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.4;
+    }
+
+    .cover-caption {
+      font-size: 10px;
+      color: rgba(255,255,255,.5);
+      letter-spacing: 2px;
+    }
+
+    /* ===== P2: WHY MALAYSIA ===== */
+    .p2-body {
+      padding: 6mm 10mm 6mm;
+      height: calc(297mm - 10mm - 8mm);
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      flex: 1;
+    }
+
+    .compare-panel {
+      background: var(--gray-lt);
+      border-radius: 10px;
+      padding: 6mm 7mm;
+    }
+
+    .compare-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--txt-lt);
+      margin-bottom: 5mm;
+    }
+
+    .bar-group { margin-bottom: 4mm; }
+
+    .bar-header {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--txt-mid);
+      margin-bottom: 3px;
+    }
+
+    .bar-track { height: 8px; background: rgba(0,0,0,.1); border-radius: 6px; overflow: hidden; margin-bottom: 2px; }
+    .bar-fill { height: 100%; border-radius: 6px; }
+    .bar-fill.my { width: 22%; background: linear-gradient(90deg, var(--teal), var(--teal-lt)); }
+    .bar-fill.uk { width: 70%; background: linear-gradient(90deg, #c0392b, #e74c3c); }
+    .bar-fill.us { width: 100%; background: linear-gradient(90deg, #962d2d, #c0392b); }
+
+    .bar-note { font-size: 8px; color: var(--txt-lt); }
+
+    .living-box {
+      margin-top: 4mm;
+      padding: 3mm 4mm;
+      background: rgba(0,168,150,.08);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+    }
+    .living-box p { font-size: 8px; color: var(--txt-mid); }
+    .living-box strong {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--navy);
+      display: block;
+      margin: 2px 0;
+    }
+
+    .right-stack { display: flex; flex-direction: column; gap: 4mm; }
+
+    .big-saving {
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      border-radius: 10px;
+      padding: 6mm;
+      text-align: center;
+      color: var(--white);
+      flex: 1;
+    }
+
+    .big-saving-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 3mm;
+      text-transform: uppercase;
+    }
+
+    .big-pct {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .big-pct sup { font-size: 28px; vertical-align: top; margin-top: 6px; }
+    .big-saving-desc { font-size: 9px; color: rgba(255,255,255,.65); margin-top: 2mm; }
+    .big-saving-note { margin-top: 2mm; font-size: 8px; color: var(--teal-lt); font-weight: 700; }
+
+    .quality-box { background: var(--gold); border-radius: 10px; padding: 5mm; text-align: center; }
+    .quality-box .qtag { font-family: 'Montserrat', sans-serif; font-size: 7px; font-weight: 700; letter-spacing: 2px; color: rgba(10,22,40,.6); margin-bottom: 2mm; text-transform: uppercase; }
+    .quality-box .qtext { font-size: 11px; font-weight: 700; color: var(--navy); line-height: 1.35; }
+    .quality-box .qnote { font-size: 7.5px; color: rgba(10,22,40,.6); margin-top: 2mm; line-height: 1.5; }
+
+    .features-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 3mm;
+    }
+
+    .feat {
+      background: var(--off-white);
+      border-radius: 8px;
+      padding: 4mm 3mm;
+      text-align: center;
+    }
+
+    .feat-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 900;
+      margin: 0 auto 3mm;
+    }
+
+    .feat-title { font-size: 8px; font-weight: 700; color: var(--navy); line-height: 1.4; }
+
+    /* ===== P3: LIFE + ELC ===== */
+    .p3-body {
+      height: calc(297mm - 10mm - 8mm);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .life-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      flex: 1;
+    }
+
+    .life-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .life-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .life-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,43,78,.45), rgba(0,168,150,.15));
+    }
+
+    .life-text {
+      background: var(--navy);
+      padding: 7mm 8mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: var(--white);
+    }
+
+    .life-text .tag { color: var(--gold); margin-bottom: 3mm; }
+    .life-text h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 3mm;
+    }
+
+    .life-text p { font-size: 8.5px; color: rgba(255,255,255,.7); line-height: 1.75; margin-bottom: 4mm; }
+
+    .life-pts { display: flex; flex-direction: column; gap: 2mm; }
+    .life-pt { display: flex; align-items: center; gap: 6px; font-size: 8.5px; color: rgba(255,255,255,.85); }
+    .life-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-lt); flex-shrink: 0; }
+
+    .elc-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 45%;
+    }
+
+    .elc-text-p3 {
+      background: var(--off-white);
+      padding: 6mm 8mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .elc-text-p3 .tag { color: var(--teal); }
+
+    .elc-facts-sm {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2mm;
+      margin-top: 3mm;
+    }
+
+    .elc-fact-sm {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 3mm;
+    }
+
+    .elc-fact-num-sm {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .elc-fact-lbl-sm { font-size: 7px; color: var(--txt-mid); line-height: 1.35; }
+
+    .elc-photo-p3 {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .elc-photo-p3 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .elc-photo-overlay-p3 {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,168,150,.1), rgba(13,43,78,.3));
+    }
+
+    /* ===== P4 & P5: UNIVERSITIES ===== */
+    .p4-body {
+      padding: 5mm 8mm 6mm;
+      height: calc(297mm - 10mm - 8mm);
+      display: flex;
+      flex-direction: column;
+      gap: 4mm;
+    }
+
+    .uni-section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--txt-lt);
+      border-bottom: 1.5px solid var(--gray-lt);
+      padding-bottom: 2mm;
+    }
+
+    .uni-grid-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4mm;
+      flex: 1;
+    }
+
+    .uni-card-p {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,.07);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .uni-ph {
+      height: 32mm;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .uni-ph img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .uni-ph-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.08) 60%);
+    }
+
+    .uni-ph-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2mm 3mm;
+      z-index: 1;
+    }
+
+    .uni-rank-p {
+      display: inline-block;
+      background: rgba(255,255,255,.9);
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 2px;
+    }
+
+    .uni-name-p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+    }
+
+    .uni-body-p {
+      padding: 3mm 4mm;
+      flex: 1;
+    }
+
+    .uni-loc-p { font-size: 7.5px; color: var(--txt-lt); margin-bottom: 2mm; }
+
+    .uni-pt-p {
+      font-size: 8px;
+      color: var(--txt-mid);
+      padding-left: 10px;
+      position: relative;
+      margin-bottom: 2px;
+      line-height: 1.4;
+    }
+    .uni-pt-p::before { content: '▸'; position: absolute; left: 0; color: var(--teal); font-size: 7px; }
+
+    .uni-badge {
+      display: inline-block;
+      background: rgba(0,168,150,.1);
+      color: var(--teal);
+      font-size: 7px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 2mm;
+    }
+
+    /* ===== P6: ELC PROGRAM ===== */
+    .p6-body {
+      height: calc(297mm - 10mm - 8mm);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .p6-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .p6-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .p6-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,43,78,.35), rgba(0,168,150,.15));
+    }
+
+    .p6-text {
+      padding: 8mm 9mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--off-white);
+    }
+
+    .p6-text .h2 { margin-bottom: 4mm; }
+
+    .elc-facts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+      margin-top: 4mm;
+      margin-bottom: 4mm;
+    }
+
+    .elc-fact-big {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 4mm;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+
+    .elc-fact-big-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 2mm;
+    }
+
+    .elc-fact-big-lbl { font-size: 8px; color: var(--txt-mid); line-height: 1.45; }
+
+    .program-pts { display: flex; flex-direction: column; gap: 2.5mm; margin-top: 2mm; }
+
+    .prog-pt {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 9px;
+      color: var(--txt-mid);
+      line-height: 1.45;
+    }
+
+    .prog-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ===== P7: COST ===== */
+    .p7-body {
+      height: calc(297mm - 10mm - 8mm);
+      background: linear-gradient(150deg, #071220 0%, #0d2b4e 100%);
+      padding: 7mm 10mm;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .p7-bg {
+      position: absolute;
+      inset: 0;
+      opacity: .05;
+    }
+
+    .p7-bg img { width: 100%; height: 100%; object-fit: cover; }
+
+    .p7-header { position: relative; z-index: 1; margin-bottom: 5mm; }
+    .p7-header .tag { color: var(--gold); }
+    .p7-header .h2 { color: var(--white); }
+    .p7-header .sub { color: rgba(255,255,255,.5); }
+
+    .cost-grid-p7 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 12px;
+      padding: 5mm;
+    }
+
+    .glass-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal-lt);
+      margin-bottom: 4mm;
+    }
+
+    .cost-row-p7 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2.5mm 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      font-size: 8.5px;
+    }
+    .cost-row-p7 span:first-child { color: rgba(255,255,255,.65); }
+    .cost-row-p7 span:last-child { font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--white); }
+    .cost-row-p7.note span:last-child { color: rgba(255,255,255,.4); font-size: 8px; }
+
+    .total-row-p7 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,168,150,.15);
+      border: 1px solid rgba(0,168,150,.3);
+      border-radius: 8px;
+      padding: 3.5mm 4mm;
+      margin-top: 3mm;
+    }
+
+    .total-row-p7 .tlbl { font-size: 10px; font-weight: 700; color: var(--white); }
+    .total-row-p7 .tval { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 900; color: var(--teal-lt); }
+
+    .cost-note-p7 { font-size: 7px; color: rgba(255,255,255,.35); margin-top: 2mm; line-height: 1.6; }
+
+    .compare-title-p7 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4mm;
+    }
+
+    .cmp-item { margin-bottom: 3.5mm; }
+    .cmp-header { display: flex; justify-content: space-between; font-size: 8.5px; margin-bottom: 2px; }
+    .cmp-country { color: rgba(255,255,255,.75); font-weight: 600; }
+    .cmp-amount { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+    .cmp-amount.good { color: var(--teal-lt); }
+    .cmp-amount.bad  { color: #ff8080; }
+    .cmp-track { height: 8px; background: rgba(255,255,255,.08); border-radius: 8px; overflow: hidden; }
+    .cmp-bar { height: 100%; border-radius: 8px; }
+    .cmp-bar.my { width: 22%; background: linear-gradient(90deg, var(--teal), var(--teal-lt)); }
+    .cmp-bar.uk { width: 70%; background: linear-gradient(90deg, #a0201a, #e03030); }
+    .cmp-bar.us { width: 100%; background: linear-gradient(90deg, #801414, #c02020); }
+
+    .saving-highlight-p7 {
+      margin-top: 4mm;
+      border: 2px solid rgba(201,168,76,.4);
+      background: rgba(201,168,76,.07);
+      border-radius: 8px;
+      padding: 4mm;
+      text-align: center;
+    }
+
+    .saving-highlight-p7 p { font-size: 9px; color: rgba(255,255,255,.6); margin-bottom: 2mm; }
+    .saving-highlight-p7 strong { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: var(--gold); display: block; }
+    .saving-highlight-p7 span { font-size: 8px; color: rgba(255,255,255,.45); display: block; margin-top: 1mm; }
+
+    /* ===== P8: FLOW + CONTACT ===== */
+    .p8-body {
+      height: calc(297mm - 10mm - 8mm);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flow-section {
+      padding: 6mm 10mm;
+      flex: 1;
+    }
+
+    .steps-row {
+      display: flex;
+      gap: 0;
+      margin-top: 5mm;
+      position: relative;
+    }
+
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 15px; left: 15px; right: 15px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--navy));
+      z-index: 0;
+    }
+
+    .step-p8 { flex: 1; text-align: center; padding: 0 4px; position: relative; z-index: 1; }
+
+    .step-num-p8 {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 3mm;
+      box-shadow: 0 0 0 3px var(--white), 0 0 0 4.5px var(--teal);
+    }
+
+    .step-title-p8 { font-size: 8px; font-weight: 700; color: var(--navy); margin-bottom: 2mm; line-height: 1.3; }
+    .step-desc-p8  { font-size: 7.5px; color: var(--txt-lt); line-height: 1.55; }
+
+    .support-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5mm;
+      margin-top: 5mm;
+    }
+
+    .sup-item-p8 {
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+      background: var(--off-white);
+      border-radius: 8px;
+      padding: 3mm 3.5mm;
+    }
+
+    .sup-icon-p8 {
+      width: 26px; height: 26px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-lt));
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .sup-text-p8 { font-size: 7.5px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+
+    .req-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+      padding: 0 10mm;
+      margin-bottom: 4mm;
+    }
+
+    .req-card-p8 {
+      background: var(--gray-lt);
+      border-radius: 8px;
+      padding: 4mm;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .req-num-p8 {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-lt));
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .req-title-p8 { font-size: 8px; font-weight: 700; color: var(--navy); margin-bottom: 1px; }
+    .req-val-p8 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 900; color: var(--navy); line-height: 1; }
+    .req-note-p8 { font-size: 7px; color: var(--txt-lt); margin-top: 2px; }
+
+    .contact-strip {
+      background: linear-gradient(135deg, var(--teal), #007a6a);
+      padding: 5mm 10mm;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      align-items: center;
+    }
+
+    .contact-left h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 2mm;
+    }
+
+    .contact-left p { font-size: 9px; color: rgba(255,255,255,.8); }
+
+    .contact-right { text-align: right; }
+
+    .phone-p8 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 1.5mm;
+    }
+
+    .email-p8 { font-size: 10px; color: rgba(255,255,255,.85); margin-bottom: 1mm; }
+
+    .addr-p8 { font-size: 7.5px; color: rgba(255,255,255,.55); line-height: 1.7; text-align: right; }
+
+    /* ===== PRINT ===== */
+    @media print {
+      html, body { background: none; margin: 0; padding: 0; }
+      .print-btn { display: none; }
+      .page { margin: 0; box-shadow: none; }
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">印刷する</button>
+
+
+<!-- ===================== PAGE 1: COVER ===================== -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-photo">
+      <img src="photos/KL%20city.jpg" alt="クアラルンプール夜景">
+    </div>
+    <div class="cover-overlay"></div>
+
+    <div class="cover-inner">
+      <div class="cover-badge">JAAC × ELC MALAYSIA &nbsp;|&nbsp; PATHWAY PROGRAM</div>
+
+      <div class="cover-logos">
+        <span class="cover-logo">JAAC</span>
+        <div class="cover-sep"></div>
+        <span class="cover-logo">ELC MALAYSIA</span>
+      </div>
+
+      <div class="cover-main">MALAYSIA</div>
+      <p class="cover-tagline">アジアから、世界へ。大学進学の新選択</p>
+
+      <div class="cover-stats">
+        <div class="cover-stat">
+          <div class="cs-num">1/4</div>
+          <div class="cs-lbl">欧米比<br>学費・生活費</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cs-num">Top37</div>
+          <div class="cs-lbl">QS世界ランク校へ<br>直接進学</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cs-num">9mo</div>
+          <div class="cs-lbl">約9ヶ月で<br>学部入学可能</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cs-num">8</div>
+          <div class="cs-lbl">選択可能な<br>進学先大学</div>
+        </div>
+      </div>
+
+      <p class="cover-caption">JAAC 日米学術センター &nbsp;×&nbsp; ELC Malaysia</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===================== PAGE 2: WHY MALAYSIA ===================== -->
+<div class="page">
+  <div class="p-header">
+    <span class="brand">JAAC × ELC MALAYSIA PATHWAY</span>
+    <span class="pn">02 / 08</span>
+  </div>
+
+  <div class="p2-body">
+    <div>
+      <div class="tag">Why Malaysia</div>
+      <div class="h2" style="font-size:16px">なぜ、マレーシアなのか？</div>
+      <p class="sub">欧米と同等の教育を、驚くほどリーズナブルな費用で。初めての海外留学でも安心して挑戦できます。</p>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-panel">
+        <p class="compare-label">年間コスト比較（学費）</p>
+
+        <div class="bar-group">
+          <div class="bar-header">マレーシア</div>
+          <div class="bar-track"><div class="bar-fill my"></div></div>
+          <p class="bar-note">年間学費：約 30〜80万円</p>
+        </div>
+        <div class="bar-group">
+          <div class="bar-header">イギリス</div>
+          <div class="bar-track"><div class="bar-fill uk"></div></div>
+          <p class="bar-note">年間学費：約 200〜400万円</p>
+        </div>
+        <div class="bar-group">
+          <div class="bar-header">アメリカ</div>
+          <div class="bar-track"><div class="bar-fill us"></div></div>
+          <p class="bar-note">年間学費：約 300〜500万円</p>
+        </div>
+
+        <div class="living-box">
+          <p>月間生活費（寮費込）</p>
+          <strong>5〜8万円 / 月</strong>
+          <p>欧米は 15〜25万円/月 が相場</p>
+        </div>
+      </div>
+
+      <div class="right-stack">
+        <div class="big-saving">
+          <p class="big-saving-tag">Cost Performance</p>
+          <div class="big-pct">75<sup>%</sup></div>
+          <p class="big-saving-desc">欧米比 学費削減率</p>
+          <p class="big-saving-note">4年間の総費用差額は最大 1,400万円以上</p>
+        </div>
+
+        <div class="quality-box">
+          <p class="qtag">Education Quality</p>
+          <p class="qtext">世界レベルの学位を<br>アジア価格で取得できる</p>
+          <p class="qnote">英国・豪州大学の分校では本校と<br>同じカリキュラム・学位が取得可能</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="features-row">
+      <div class="feat">
+        <div class="feat-icon">¥</div>
+        <div class="feat-title">圧倒的な<br>コスト優位</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">ENG</div>
+        <div class="feat-title">英語で学ぶ<br>国際環境</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">卒</div>
+        <div class="feat-title">世界認定<br>学位の取得</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="font-size:7px">交換</div>
+        <div class="feat-title">豊富な<br>交換留学制度</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon" style="font-size:7px">多文化</div>
+        <div class="feat-title">多民族国家の<br>グローバル体験</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-footer"><p>JAAC 日米学術センター &nbsp;|&nbsp; admission@jaac.co.jp &nbsp;|&nbsp; 0120-525-626</p></div>
+</div>
+
+
+<!-- ===================== PAGE 3: LIFE + ELC ===================== -->
+<div class="page">
+  <div class="p-header">
+    <span class="brand">JAAC × ELC MALAYSIA PATHWAY</span>
+    <span class="pn">03 / 08</span>
+  </div>
+
+  <div class="p3-body">
+    <div class="life-row" style="flex:1">
+      <div class="life-photo">
+        <img src="photos/malaysia%20city.jpg" alt="マレーシア・クアラルンプール">
+        <div class="life-photo-overlay"></div>
+      </div>
+      <div class="life-text">
+        <p class="tag">Living in Malaysia</p>
+        <h2>安全で活気ある<br>多文化都市で学ぶ</h2>
+        <p>マレーシアはマレー系・中華系・インド系が共存する多民族国家。130カ国以上の留学生と共に英語で学ぶ国際環境が、グローバルな視野と人脈を育みます。</p>
+        <div class="life-pts">
+          <div class="life-pt"><div class="life-dot"></div><span>英語が公用語として機能し、日常生活も英語中心</span></div>
+          <div class="life-pt"><div class="life-dot"></div><span>治安が安定しており、初めての海外でも安心</span></div>
+          <div class="life-pt"><div class="life-dot"></div><span>物価が安く、月5〜8万円で快適に生活できる</span></div>
+          <div class="life-pt"><div class="life-dot"></div><span>クアラルンプールは交通アクセスも抜群</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="elc-row">
+      <div class="elc-text-p3">
+        <p class="tag">About ELC Malaysia</p>
+        <div class="h2" style="font-size:14px">南半球最高評価の<br>パートナー語学学校</div>
+        <p class="sub">オーストラリア発祥の名門語学学校。大学進学に特化した集中英語プログラムを提供します。</p>
+        <div class="elc-facts-sm">
+          <div class="elc-fact-sm">
+            <div class="elc-fact-num-sm">約10名</div>
+            <div class="elc-fact-lbl-sm">少人数制<br>クラス</div>
+          </div>
+          <div class="elc-fact-sm">
+            <div class="elc-fact-num-sm">5h/日</div>
+            <div class="elc-fact-lbl-sm">集中英語<br>研修</div>
+          </div>
+          <div class="elc-fact-sm">
+            <div class="elc-fact-num-sm">2拠点</div>
+            <div class="elc-fact-lbl-sm">KL・UOWの<br>2キャンパス</div>
+          </div>
+          <div class="elc-fact-sm">
+            <div class="elc-fact-num-sm">IELTS</div>
+            <div class="elc-fact-lbl-sm">試験会場<br>近郊</div>
+          </div>
+        </div>
+      </div>
+      <div class="elc-photo-p3">
+        <img src="photos/ELC.jpg" alt="ELC Malaysia キャンパス">
+        <div class="elc-photo-overlay-p3"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-footer"><p>JAAC 日米学術センター &nbsp;|&nbsp; admission@jaac.co.jp &nbsp;|&nbsp; 0120-525-626</p></div>
+</div>
+
+
+<!-- ===================== PAGE 4: マレーシア私立大学 ===================== -->
+<div class="page">
+  <div class="p-header">
+    <span class="brand">JAAC × ELC MALAYSIA PATHWAY</span>
+    <span class="pn">04 / 08</span>
+  </div>
+
+  <div class="p4-body">
+    <div>
+      <div class="tag">Partner Universities</div>
+      <div class="h2">進学先大学 — マレーシアの私立大学</div>
+      <p class="sub">東南アジアのトップ私立大学から選択できます。</p>
+    </div>
+
+    <p class="uni-section-label">マレーシア私立大学</p>
+
+    <div class="uni-grid-2x2">
+
+      <div class="uni-card-p">
+        <div class="uni-ph">
+          <img src="photos/Taylor's%20University.png" alt="Taylor's University">
+          <div class="uni-ph-overlay"></div>
+          <div class="uni-ph-content">
+            <div class="uni-rank-p">QS アジア 41位</div>
+            <div class="uni-name-p">Taylor's University</div>
+          </div>
+        </div>
+        <div class="uni-body-p">
+          <p class="uni-loc-p">&#9679; セランゴール州スバン・ジャヤ</p>
+          <p class="uni-pt-p">東南アジア私立大学5年連続 No.1</p>
+          <p class="uni-pt-p">100カ国以上から学生が集まる</p>
+          <p class="uni-pt-p">ホスピタリティ・デザイン分野で高評価</p>
+          <span class="uni-badge">留学生比率 25%</span>
+        </div>
+      </div>
+
+      <div class="uni-card-p">
+        <div class="uni-ph">
+          <img src="photos/Sunway%20University.jpg" alt="Sunway University">
+          <div class="uni-ph-overlay"></div>
+          <div class="uni-ph-content">
+            <div class="uni-rank-p">提携：ASU / Lancaster</div>
+            <div class="uni-name-p">Sunway University</div>
+          </div>
+        </div>
+        <div class="uni-body-p">
+          <p class="uni-loc-p">&#9679; セランゴール州スバン・ジャヤ</p>
+          <p class="uni-pt-p">アリゾナ州立大学等と提携</p>
+          <p class="uni-pt-p">デュアルディグリープログラム</p>
+          <p class="uni-pt-p">ビジネス・工学・IT など幅広い学部</p>
+          <span class="uni-badge">留学生比率 18%</span>
+        </div>
+      </div>
+
+      <div class="uni-card-p">
+        <div class="uni-ph">
+          <img src="photos/Asia%20Pacific%20University.jpg" alt="Asia Pacific University">
+          <div class="uni-ph-overlay"></div>
+          <div class="uni-ph-content">
+            <div class="uni-rank-p">QS アジア 184位</div>
+            <div class="uni-name-p">Asia Pacific University</div>
+          </div>
+        </div>
+        <div class="uni-body-p">
+          <p class="uni-loc-p">&#9679; クアラルンプール（TPM）</p>
+          <p class="uni-pt-p">130カ国から約13,000名が在籍</p>
+          <p class="uni-pt-p">テクノロジー・イノベーション特化</p>
+          <p class="uni-pt-p">留学生比率50%以上のグローバル環境</p>
+          <span class="uni-badge">留学生比率 50%以上</span>
+        </div>
+      </div>
+
+      <div class="uni-card-p">
+        <div class="uni-ph">
+          <img src="photos/HELP%20University.jpg" alt="HELP University">
+          <div class="uni-ph-overlay"></div>
+          <div class="uni-ph-content">
+            <div class="uni-rank-p">QS 8カテゴリ ★★★★★</div>
+            <div class="uni-name-p">HELP University</div>
+          </div>
+        </div>
+        <div class="uni-body-p">
+          <p class="uni-loc-p">&#9679; クアラルンプール</p>
+          <p class="uni-pt-p">8カテゴリで5つ星を獲得</p>
+          <p class="uni-pt-p">英・豪・米・加など多数の提携大学</p>
+          <p class="uni-pt-p">幅広い分野で学位プログラムを提供</p>
+          <span class="uni-badge">留学生比率 25%</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="p-footer"><p>JAAC 日米学術センター &nbsp;|&nbsp; admission@jaac.co.jp &nbsp;|&nbsp; 0120-525-626</p></div>
+</div>
+
+
+<!-- ===================== PAGE 5: 海外分校（TNE） ===================== -->
+<div class="page">
+  <div class="p-header">
+    <span class="brand">JAAC × ELC MALAYSIA PATHWAY</span>
+    <span class="pn">05 / 08</span>
+  </div>
+
+  <div class="p4-body">
+    <div>
+      <div class="tag">Transnational Education</div>
+      <div class="h2">進学先大学 — 海外名門大学の分校（TNE）</div>
+      <p class="sub">英国・豪州の名門大学の分校。本校と同じカリキュラム・学位が、アジア価格で取得できます。</p>
+    </div>
+
+    <p class="uni-section-label">海外名門大学の分校（TNE）— 本校と同じ学位が取得できます</p>
+
+    <div class="uni-grid-2x2">
+
+      <div class="uni-card-p">
+        <div class="uni-ph">
+          <img src="photos/Monash%20University.jpg" alt="Monash University Malaysia">
+          <div class="uni-ph-overlay"></div>
+          <div class="uni-ph-content">
+            <div class="uni-rank-p">世界 Top 37</div>
+            <div class="uni-name-p">Monash University<br><span style="font-size:8px;font-weight:400">豪州本校</span></div>
+          </div>
+        </div>
+        <div class="uni-body-p">
+          <p class="uni-loc-p">&#9679; セランゴール州バンダー・サンウェイ</p>
+          <p class="uni-pt-p">豪州 Go8 名門大学の初の海外校</p>
+          <p class="uni-pt-p">工学・IT・医学・薬学など多彩な学部</p>
+          <p class="uni-pt-p">伊・印・中国キャンパスへの留学制度</p>
+          <span class="uni-badge">留学生比率 35%</span>
+        </div>
+      </div>
+
+      <div class="uni-card-p">
+        <div class="uni-ph">
+          <img src="photos/Nottingham%20University.png" alt="University of Nottingham Malaysia">
+          <div class="uni-ph-overlay"></div>
+          <div class="uni-ph-content">
+            <div class="uni-rank-p">世界 100位前後</div>
+            <div class="uni-name-p">University of Nottingham<br><span style="font-size:8px;font-weight:400">英国本校</span></div>
+          </div>
+        </div>
+        <div class="uni-body-p">
+          <p class="uni-loc-p">&#9679; セランゴール州セメニヒ</p>
+          <p class="uni-pt-p">マレーシア資格機関（MQA）自己認定</p>
+          <p class="uni-pt-p">英国・中国キャンパスへの留学可能</p>
+          <p class="uni-pt-p">就職率 90%以上</p>
+          <span class="uni-badge">留学生比率 36%</span>
+        </div>
+      </div>
+
+      <div class="uni-card-p">
+        <div class="uni-ph">
+          <img src="photos/Heriot%20Watt%20University.jpg" alt="Heriot-Watt University Malaysia">
+          <div class="uni-ph-overlay"></div>
+          <div class="uni-ph-content">
+            <div class="uni-rank-p">世界 300位前後</div>
+            <div class="uni-name-p">Heriot-Watt University<br><span style="font-size:8px;font-weight:400">スコットランド本校</span></div>
+          </div>
+        </div>
+        <div class="uni-body-p">
+          <p class="uni-loc-p">&#9679; プトラジャヤ</p>
+          <p class="uni-pt-p">英国・ドバイキャンパスへの転校が可能</p>
+          <p class="uni-pt-p">卒業後6ヶ月以内の就職率 95%</p>
+          <p class="uni-pt-p">英国本校と同等の高品質な教育</p>
+          <span class="uni-badge">留学生比率 20%</span>
+        </div>
+      </div>
+
+      <div class="uni-card-p">
+        <div class="uni-ph">
+          <img src="photos/University%20of%20Wollongong.png" alt="University of Wollongong Malaysia">
+          <div class="uni-ph-overlay"></div>
+          <div class="uni-ph-content">
+            <div class="uni-rank-p">世界 190位前後</div>
+            <div class="uni-name-p">University of Wollongong<br><span style="font-size:8px;font-weight:400">豪州本校</span></div>
+          </div>
+        </div>
+        <div class="uni-body-p">
+          <p class="uni-loc-p">&#9679; シャーアラム</p>
+          <p class="uni-pt-p">豪州・マレーシア両方の学位を取得可</p>
+          <p class="uni-pt-p">デュアルディグリープログラム</p>
+          <p class="uni-pt-p">業界連携で実践的なスキルを習得</p>
+          <span class="uni-badge">持続可能なキャンパス</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="p-footer"><p>JAAC 日米学術センター &nbsp;|&nbsp; admission@jaac.co.jp &nbsp;|&nbsp; 0120-525-626</p></div>
+</div>
+
+
+<!-- ===================== PAGE 6: ELC PROGRAM ===================== -->
+<div class="page">
+  <div class="p-header">
+    <span class="brand">JAAC × ELC MALAYSIA PATHWAY</span>
+    <span class="pn">06 / 08</span>
+  </div>
+
+  <div class="p6-body">
+    <div class="p6-photo">
+      <img src="photos/ELC.jpg" alt="ELC Malaysia キャンパス">
+      <div class="p6-photo-overlay"></div>
+    </div>
+
+    <div class="p6-text">
+      <div class="tag">About ELC Malaysia</div>
+      <div class="h2">南半球最高評価の<br>パートナー語学学校</div>
+      <p class="sub" style="margin-bottom:0">ELC（English Language Company）はオーストラリア発祥の名門語学学校。IELTS試験会場近郊の2キャンパスで、大学進学に特化した集中英語プログラムを提供します。</p>
+
+      <div class="elc-facts-grid">
+        <div class="elc-fact-big">
+          <div class="elc-fact-big-num">約10名</div>
+          <div class="elc-fact-big-lbl">1クラスの<br>少人数制授業</div>
+        </div>
+        <div class="elc-fact-big">
+          <div class="elc-fact-big-num">5h/日</div>
+          <div class="elc-fact-big-lbl">平日5時間の<br>集中英語研修</div>
+        </div>
+        <div class="elc-fact-big">
+          <div class="elc-fact-big-num">2拠点</div>
+          <div class="elc-fact-big-lbl">KL・UOWの<br>2キャンパス</div>
+        </div>
+        <div class="elc-fact-big">
+          <div class="elc-fact-big-num">IELTS</div>
+          <div class="elc-fact-big-lbl">試験会場近郊<br>受験環境が整う</div>
+        </div>
+      </div>
+
+      <div class="program-pts">
+        <div class="prog-pt">
+          <div class="prog-dot">1</div>
+          <span>アカデミック英語 + IELTS対策の集中プログラム（約48週間）</span>
+        </div>
+        <div class="prog-pt">
+          <div class="prog-dot">2</div>
+          <span>レベル別クラス編成で、英語力に関わらずスタート可能</span>
+        </div>
+        <div class="prog-pt">
+          <div class="prog-dot">3</div>
+          <span>ELC修了後、ファウンデーション免除で大学1年次に直接入学</span>
+        </div>
+        <div class="prog-pt">
+          <div class="prog-dot">4</div>
+          <span>学習・生活・進路すべてをJAAC＆ELCが一貫サポート</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-footer"><p>JAAC 日米学術センター &nbsp;|&nbsp; admission@jaac.co.jp &nbsp;|&nbsp; 0120-525-626</p></div>
+</div>
+
+
+<!-- ===================== PAGE 7: COST SIMULATION ===================== -->
+<div class="page">
+  <div class="p-header">
+    <span class="brand">JAAC × ELC MALAYSIA PATHWAY</span>
+    <span class="pn">07 / 08</span>
+  </div>
+
+  <div class="p7-body">
+    <div class="p7-bg">
+      <img src="photos/KL%20city.jpg" alt="">
+    </div>
+
+    <div class="p7-header">
+      <div class="tag">Program Cost</div>
+      <div class="h2" style="color:var(--white)">費用シミュレーション</div>
+      <p class="sub" style="color:rgba(255,255,255,.5)">「結局いくらかかるの？」に、わかりやすくお答えします。</p>
+    </div>
+
+    <div class="cost-grid-p7">
+      <div class="glass-card">
+        <p class="glass-title">モデルケース：48週間プログラム（約9ヶ月）</p>
+
+        <div class="cost-row-p7">
+          <span>JAAC 申込金・手配費</span>
+          <span>約 30.8万円</span>
+        </div>
+        <div class="cost-row-p7">
+          <span>ELC 授業料・教材費</span>
+          <span>約 115万円</span>
+        </div>
+        <div class="cost-row-p7">
+          <span>寮費（48週間）</span>
+          <span>約 72万円</span>
+        </div>
+        <div class="cost-row-p7">
+          <span>学生サービス費・諸税</span>
+          <span>約 16万円</span>
+        </div>
+        <div class="cost-row-p7 note">
+          <span>航空券・保険（別途）</span>
+          <span>約 15〜20万円 ※</span>
+        </div>
+
+        <div class="total-row-p7">
+          <span class="tlbl">合計の目安</span>
+          <span class="tval">約 230〜250万円</span>
+        </div>
+
+        <p class="cost-note-p7">
+          ※ 1 USD = 150円換算。為替レートにより変動します。<br>
+          航空券・海外傷害保険・ビザ申請費用は別途必要です。奨学金取得サポートあり。
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <p class="compare-title-p7">年間コスト比較（学費 + 生活費）</p>
+
+        <div class="cmp-item">
+          <div class="cmp-header">
+            <span class="cmp-country">マレーシア</span>
+            <span class="cmp-amount good">約 90〜160万円 / 年</span>
+          </div>
+          <div class="cmp-track"><div class="cmp-bar my"></div></div>
+        </div>
+
+        <div class="cmp-item">
+          <div class="cmp-header">
+            <span class="cmp-country">イギリス</span>
+            <span class="cmp-amount bad">約 380〜550万円 / 年</span>
+          </div>
+          <div class="cmp-track"><div class="cmp-bar uk"></div></div>
+        </div>
+
+        <div class="cmp-item">
+          <div class="cmp-header">
+            <span class="cmp-country">アメリカ</span>
+            <span class="cmp-amount bad">約 500〜700万円 / 年</span>
+          </div>
+          <div class="cmp-track"><div class="cmp-bar us"></div></div>
+        </div>
+
+        <div class="saving-highlight-p7">
+          <p>4年間で最大</p>
+          <strong>1,400万円</strong>
+          <span>の節約も可能（欧米との比較）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-footer"><p>JAAC 日米学術センター &nbsp;|&nbsp; admission@jaac.co.jp &nbsp;|&nbsp; 0120-525-626</p></div>
+</div>
+
+
+<!-- ===================== PAGE 8: FLOW + CONTACT ===================== -->
+<div class="page">
+  <div class="p-header">
+    <span class="brand">JAAC × ELC MALAYSIA PATHWAY</span>
+    <span class="pn">08 / 08</span>
+  </div>
+
+  <div class="p8-body">
+    <div class="flow-section">
+      <div class="tag">How It Works</div>
+      <div class="h2">進学までの流れ</div>
+      <p class="sub">カウンセリングから大学入学まで、JAAC と ELC が一貫してサポートします。</p>
+
+      <div class="steps-row">
+        <div class="step-p8">
+          <div class="step-num-p8">1</div>
+          <p class="step-title-p8">無料<br>カウンセリング</p>
+          <p class="step-desc-p8">目標・英語力・予算をヒアリング。最適なプランを提案します。</p>
+        </div>
+        <div class="step-p8">
+          <div class="step-num-p8">2</div>
+          <p class="step-title-p8">お申込み・<br>渡航準備</p>
+          <p class="step-desc-p8">書類提出後、ELC入学手続き・ビザ申請を開始します。</p>
+        </div>
+        <div class="step-p8">
+          <div class="step-num-p8">3</div>
+          <p class="step-title-p8">ELC で<br>英語研修スタート</p>
+          <p class="step-desc-p8">アカデミック英語 + IELTS対策を集中学習（約9ヶ月）。</p>
+        </div>
+        <div class="step-p8">
+          <div class="step-num-p8">4</div>
+          <p class="step-title-p8">大学選定・<br>出願サポート</p>
+          <p class="step-desc-p8">キャンパスツアー・書類添削・奨学金取得まで徹底支援。</p>
+        </div>
+        <div class="step-p8">
+          <div class="step-num-p8">5</div>
+          <p class="step-title-p8">大学入学</p>
+          <p class="step-desc-p8">合格後、ファウンデーション免除で1年次から入学。</p>
+        </div>
+      </div>
+
+      <p style="font-family:'Montserrat',sans-serif;font-size:7px;font-weight:700;letter-spacing:2.5px;color:var(--txt-lt);text-transform:uppercase;margin-top:6mm;margin-bottom:3mm">Full Support Included</p>
+      <div class="support-row">
+        <div class="sup-item-p8">
+          <div class="sup-icon-p8">書</div>
+          <span class="sup-text-p8">出願書類<br>添削サービス</span>
+        </div>
+        <div class="sup-item-p8">
+          <div class="sup-icon-p8">学</div>
+          <span class="sup-text-p8">大学キャンパス<br>ツアー</span>
+        </div>
+        <div class="sup-item-p8">
+          <div class="sup-icon-p8">奨</div>
+          <span class="sup-text-p8">奨学金取得<br>サポート</span>
+        </div>
+        <div class="sup-item-p8">
+          <div class="sup-icon-p8">証</div>
+          <span class="sup-text-p8">ビザ手続き<br>代行</span>
+        </div>
+        <div class="sup-item-p8">
+          <div class="sup-icon-p8">寮</div>
+          <span class="sup-text-p8">入寮・住居<br>手配サポート</span>
+        </div>
+        <div class="sup-item-p8">
+          <div class="sup-icon-p8">SOS</div>
+          <span class="sup-text-p8">緊急時<br>サポート</span>
+        </div>
+        <div class="sup-item-p8">
+          <div class="sup-icon-p8">前</div>
+          <span class="sup-text-p8">渡航前<br>オリエンテーション</span>
+        </div>
+        <div class="sup-item-p8">
+          <div class="sup-icon-p8">特</div>
+          <span class="sup-text-p8">JAAC限定<br>特別講座</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entry Requirements -->
+    <div class="req-row">
+      <div class="req-card-p8">
+        <div class="req-num-p8">1</div>
+        <div>
+          <p class="req-title-p8">英語力</p>
+          <p class="req-val-p8">IELTS 4.5</p>
+          <p class="req-note-p8">overall スコア 4.5 以上を有すること</p>
+        </div>
+      </div>
+      <div class="req-card-p8">
+        <div class="req-num-p8">2</div>
+        <div>
+          <p class="req-title-p8">高校の成績</p>
+          <p class="req-val-p8">GPA 2.0 /4.0</p>
+          <p class="req-note-p8">大学が指定する高校 GPA を満たすこと</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-strip">
+      <div class="contact-inner">
+        <div class="contact-left">
+          <h2>まずは<br>無料カウンセリングへ</h2>
+          <p>対面・オンライン、どちらでも対応しています。<br>お気軽にご相談ください。</p>
+        </div>
+        <div class="contact-right">
+          <p class="phone-p8">0120-525-626</p>
+          <p class="email-p8">admission@jaac.co.jp</p>
+          <p class="addr-p8">
+            静岡県浜松市中央区鍛冶町140 Cビル10階<br>
+            東京都中央区日本橋本石町3-2-4 共同ビル3F<br>
+            大阪府大阪市中央区内本町1-2-1 大晋第3ビル703
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-footer"><p>© JAAC 日米学術センター &nbsp;|&nbsp; 無断複製・転載を禁じます</p></div>
+</div>
+
+
+</body>
+</html>
