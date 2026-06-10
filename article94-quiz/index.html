@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>第三者判定ゲーム｜民法94条・行政書士試験対策</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;background:#f2f3f5;color:#111;min-height:100vh;}
+#app{max-width:430px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}
+
+/* ヘッダー */
+.hdr{background:#1d3a5e;color:#fff;padding:14px 16px 10px;}
+.hdr-title{font-size:13px;font-weight:700;}
+.hdr-sub{font-size:11px;opacity:.75;margin-top:2px;}
+
+/* プログレス */
+.prog-wrap{background:#b8c8dc;height:4px;}
+.prog-bar{background:#1d3a5e;height:4px;transition:width .4s ease;width:0;}
+
+/* コンテナ */
+.main{flex:1;padding:14px;}
+.hide{display:none!important;}
+
+/* カード */
+.card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 1px 6px rgba(0,0,0,.1);margin-bottom:12px;}
+
+/* スタート画面 */
+.s-icon{font-size:44px;text-align:center;margin-bottom:10px;}
+.s-title{font-size:19px;font-weight:800;color:#1d3a5e;text-align:center;margin-bottom:6px;}
+.s-desc{font-size:13px;color:#555;text-align:center;line-height:1.65;margin-bottom:16px;}
+.s-info{background:#eef2f7;border-radius:8px;padding:12px 14px;margin-bottom:18px;}
+.s-info-item{font-size:13px;color:#333;margin-bottom:5px;}
+.s-info-item:last-child{margin-bottom:0;}
+
+/* 主ボタン */
+.btn-primary{display:block;width:100%;background:#1d3a5e;color:#fff;border:none;border-radius:10px;padding:15px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;}
+.btn-primary:active{background:#122840;}
+
+/* 問題メタ */
+.q-meta{display:flex;justify-content:space-between;margin-bottom:12px;}
+.q-num{font-size:12px;color:#666;font-weight:700;}
+.q-score{font-size:12px;color:#666;}
+
+/* 問題文 */
+.q-text{font-size:15px;line-height:1.78;margin-bottom:14px;font-weight:500;}
+
+/* ヒントボタン */
+.hint-btn{display:flex;align-items:center;gap:5px;background:none;border:1.5px solid #1d3a5e;color:#1d3a5e;padding:8px 12px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;transition:background .15s,color .15s;}
+.hint-btn.open{background:#1d3a5e;color:#fff;}
+
+/* ヒント図解エリア */
+.hint-area{display:none;background:#eef2f7;border-radius:8px;padding:14px;margin-top:10px;}
+.hint-area.show{display:block;}
+.hint-label{font-size:11px;font-weight:700;color:#1d3a5e;margin-bottom:10px;letter-spacing:.04em;}
+
+/* 図解部品 */
+.diagram{display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px;margin-bottom:6px;}
+.diag-person{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.diag-name{font-size:10px;font-weight:700;color:#1d3a5e;white-space:nowrap;}
+.diag-role{font-size:9px;color:#555;text-align:center;max-width:72px;line-height:1.3;}
+.diag-arrow{font-size:10px;color:#b00;font-weight:700;white-space:nowrap;text-align:center;}
+.diag-item{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.diag-item-icon{font-size:18px;}
+.diag-item-label{font-size:9px;color:#444;text-align:center;}
+.hint-note{font-size:12px;color:#444;line-height:1.65;margin-top:10px;padding-top:8px;border-top:1px solid #c2d0e0;}
+
+/* 回答ボタン */
+.ans-area{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
+.ans-btn{border:none;border-radius:10px;padding:15px 10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.45;text-align:center;-webkit-tap-highlight-color:transparent;transition:opacity .15s,transform .1s;}
+.ans-btn:active{transform:scale(.97);}
+.ans-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+.btn-yes{background:#1d3a5e;color:#fff;}
+.btn-no{background:#eef2f7;color:#1d3a5e;border:2px solid #1d3a5e;}
+
+/* 解説 */
+.exp-card{display:none;background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.1);border-left:4px solid #1d3a5e;margin-bottom:12px;}
+.exp-card.show{display:block;}
+.exp-title{font-size:12px;font-weight:700;color:#1d3a5e;margin-bottom:8px;}
+.exp-badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:8px;}
+.badge-t{background:#d0f0d8;color:#1a7a32;}
+.badge-f{background:#fde0e0;color:#b00;}
+.exp-text{font-size:13px;line-height:1.75;color:#222;}
+
+/* 次へボタン */
+.next-btn{display:none;width:100%;background:#1d3a5e;color:#fff;border:none;border-radius:10px;padding:15px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:12px;-webkit-tap-highlight-color:transparent;}
+.next-btn.show{display:block;}
+.next-btn:active{background:#122840;}
+
+/* 結果画面 */
+.res-title{font-size:18px;font-weight:800;color:#1d3a5e;text-align:center;margin-bottom:20px;}
+.score-ring{width:116px;height:116px;border-radius:50%;background:#1d3a5e;margin:0 auto 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-n{font-size:38px;font-weight:800;color:#fff;line-height:1;}
+.score-d{font-size:13px;color:rgba(255,255,255,.7);}
+.score-pct{font-size:24px;font-weight:800;color:#1d3a5e;text-align:center;margin-bottom:12px;}
+.eval-box{background:#eef2f7;border-radius:8px;padding:14px;font-size:13px;line-height:1.72;color:#333;margin-bottom:20px;text-align:center;}
+
+/* オーバーレイ */
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.54);z-index:200;justify-content:center;align-items:center;}
+#overlay.show{display:flex;}
+.popup{background:#fff;border-radius:16px;padding:28px 22px 22px;text-align:center;width:86%;max-width:300px;animation:popIn .28s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes popIn{from{opacity:0;transform:scale(.65);}to{opacity:1;transform:scale(1);}}
+.pop-emoji{font-size:50px;margin-bottom:6px;animation:bounce .45s ease;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.pop-msg{font-size:22px;font-weight:800;margin-bottom:3px;}
+.pop-msg.ok{color:#1a7a32;}
+.pop-msg.ng{color:#b00;}
+.pop-sub{font-size:12px;color:#666;margin-bottom:18px;}
+.pop-close{background:#1d3a5e;color:#fff;border:none;border-radius:8px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;}
+.pop-close:active{background:#122840;}
+
+/* スター */
+.sparkle{position:fixed;pointer-events:none;z-index:300;font-size:20px;animation:sparkFall 1.1s ease-out forwards;}
+@keyframes sparkFall{from{opacity:1;transform:translateY(0) scale(1) rotate(0);}to{opacity:0;transform:translateY(90px) scale(.4) rotate(360deg);}}
+</style>
+</head>
+<body>
+<div id="app">
+
+<header class="hdr">
+  <div class="hdr-title">⚖️ 民法94条 第三者判定ゲーム</div>
+  <div class="hdr-sub">通謀虚偽表示 ｜ 行政書士試験対策</div>
+</header>
+<div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+
+<div class="main">
+
+  <!-- スタート画面 -->
+  <div id="scStart">
+    <div class="card">
+      <div class="s-icon">📜</div>
+      <div class="s-title">第三者にあたる？</div>
+      <p class="s-desc">民法94条2項「通謀虚偽表示」における<br>第三者の該当性をゲーム形式で学習しよう</p>
+      <div class="s-info">
+        <div class="s-info-item">📋 全12問ランダム出題</div>
+        <div class="s-info-item">💡 ヒント図解あり（任意）</div>
+        <div class="s-info-item">🎯 2択で回答</div>
+        <div class="s-info-item">📖 各問題に解説付き</div>
+      </div>
+      <button class="btn-primary" onclick="startQuiz()">スタート</button>
+    </div>
+  </div>
+
+  <!-- クイズ画面 -->
+  <div id="scQuiz" class="hide">
+    <div class="card">
+      <div class="q-meta">
+        <span class="q-num" id="qNum">問題 1 / 12</span>
+        <span class="q-score" id="qScore">正解: 0</span>
+      </div>
+      <p class="q-text" id="qText"></p>
+      <button class="hint-btn" id="hintBtn" onclick="toggleHint()">💡 ヒントを見る</button>
+      <div class="hint-area" id="hintArea">
+        <div class="hint-label">【状況の図解】</div>
+        <div id="hintContent"></div>
+      </div>
+      <div class="ans-area">
+        <button class="ans-btn btn-yes" id="btnYes" onclick="answer(true)">
+          第三者にあたる<br><span style="font-size:12px;font-weight:400">（保護される）</span>
+        </button>
+        <button class="ans-btn btn-no" id="btnNo" onclick="answer(false)">
+          第三者にあたらない<br><span style="font-size:12px;font-weight:400">（保護されない）</span>
+        </button>
+      </div>
+    </div>
+    <div class="exp-card" id="expCard">
+      <div class="exp-title">📖 解説</div>
+      <span class="exp-badge" id="expBadge"></span>
+      <p class="exp-text" id="expText"></p>
+    </div>
+    <button class="next-btn" id="nextBtn" onclick="nextQ()"></button>
+  </div>
+
+  <!-- 結果画面 -->
+  <div id="scResult" class="hide">
+    <div class="card" style="text-align:center;">
+      <div class="res-title">学習完了！</div>
+      <div class="score-ring">
+        <div class="score-n" id="resScore">0</div>
+        <div class="score-d">/ 12</div>
+      </div>
+      <div class="score-pct" id="resPct">0%</div>
+      <div class="eval-box" id="resEval"></div>
+    </div>
+    <button class="btn-primary" onclick="restart()">もう一度チャレンジ</button>
+  </div>
+
+</div>
+</div>
+
+<!-- 演出オーバーレイ -->
+<div id="overlay">
+  <div class="popup">
+    <div class="pop-emoji" id="popEmoji"></div>
+    <div class="pop-msg" id="popMsg"></div>
+    <div class="pop-sub" id="popSub"></div>
+    <button class="pop-close" onclick="closeOverlay()">解説を見る</button>
+  </div>
+</div>
+
+<script>
+/* ── 図解パーツ生成 ── */
+function sv(name, role) {
+  return `<div class="diag-person">
+    <svg width="26" height="32" viewBox="0 0 26 32" fill="none" stroke="#1d3a5e" stroke-width="2" stroke-linecap="round">
+      <circle cx="13" cy="6.5" r="5"/>
+      <line x1="13" y1="11.5" x2="13" y2="22"/>
+      <line x1="4" y1="16" x2="22" y2="16"/>
+      <line x1="13" y1="22" x2="6" y2="30"/>
+      <line x1="13" y1="22" x2="20" y2="30"/>
+    </svg>
+    <div class="diag-name">${name}</div>
+    ${role ? `<div class="diag-role">${role}</div>` : ''}
+  </div>`;
+}
+function ar(label, c) {
+  return `<div class="diag-arrow" style="color:${c||'#b00'}">${label}</div>`;
+}
+function it(icon, label) {
+  return `<div class="diag-item"><div class="diag-item-icon">${icon}</div><div class="diag-item-label">${label}</div></div>`;
+}
+
+/* ── 問題データ ── */
+const QS = [
+  {
+    text: "不動産の仮装譲受人から、さらに不動産を譲り受けた者は、民法94条2項の「第三者」にあたるか？",
+    ans: true,
+    hint: `
+      <div class="diagram">
+        ${sv('A','真の所有者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">仮装譲渡</div></div>
+        ${sv('B','仮装譲受人')}
+        <div style="text-align:center">${ar('━━▶','#1d3a5e')}<div style="font-size:9px;color:#1d3a5e">譲渡</div></div>
+        ${sv('C','第三者？')}
+      </div>
+      <div class="diagram">${it('🏠','不動産')}</div>
+      <div class="hint-note">AとBが通謀し、AがBに不動産を仮装譲渡。その後、BがCに不動産を譲渡した。Cの立場は？</div>`,
+    exp: "BはAとの通謀による仮装譲受人ですが、CはそのBからさらに不動産を取得した者です。Cは当事者でも包括承継人でもなく、虚偽表示によって形成された外観（B名義）を信頼して新たに法律上の利害関係を取得した第三者にあたります。善意であることが保護の要件です。"
+  },
+  {
+    text: "不動産の仮装譲受人から抵当権の設定を受けた者は、民法94条2項の「第三者」にあたるか？",
+    ans: true,
+    hint: `
+      <div class="diagram">
+        ${sv('A','真の所有者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">仮装譲渡</div></div>
+        ${sv('B','仮装譲受人')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('C','抵当権者？')}
+        <div style="text-align:center">${ar('◀━━','#1d3a5e')}<div style="font-size:9px;color:#1d3a5e">抵当権設定</div></div>
+        ${sv('B','')}
+        ${it('🏠','B名義の不動産')}
+      </div>
+      <div class="hint-note">AとBが通謀し仮装譲渡。Bが当該不動産にCのための抵当権を設定した。Cの立場は？</div>`,
+    exp: "Cは仮装譲受人Bが所有者であるとの外観を信頼し、抵当権の設定を受けた者です。抵当権者は不動産について新たな法律上の利害関係を持つ者として、94条2項の第三者にあたります。善意であることが保護の要件です。"
+  },
+  {
+    text: "虚偽表示の目的物（不動産）に対して差押えをした者は、民法94条2項の「第三者」にあたるか？",
+    ans: true,
+    hint: `
+      <div class="diagram">
+        ${sv('A','真の所有者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">仮装譲渡</div></div>
+        ${sv('B','仮装譲受人')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('C','Bの債権者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">差押え</div></div>
+        ${it('🏠','B名義の不動産')}
+      </div>
+      <div class="hint-note">AとBが通謀し仮装譲渡。BのCに対する債務につき、CがB名義の不動産を差押えた。Cの立場は？</div>`,
+    exp: "差押えは、目的物について法律上の利害関係を生じさせる行為です。差押えをした者は、虚偽表示によって形成された外観（B名義）を信頼して具体的な差押えを行った者として、94条2項の第三者にあたります。"
+  },
+  {
+    text: "発生を仮装した債権の譲受人は、民法94条2項の「第三者」にあたるか？",
+    ans: true,
+    hint: `
+      <div class="diagram">
+        ${sv('A','')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">仮装債権の発生</div></div>
+        ${sv('B','仮装債権者')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('B','')}
+        <div style="text-align:center">${ar('━━▶','#1d3a5e')}<div style="font-size:9px;color:#1d3a5e">債権譲渡</div></div>
+        ${sv('C','譲受人？')}
+        ${it('💰','仮装された債権')}
+      </div>
+      <div class="hint-note">AとBが通謀し、存在しない債権を仮装。BがCにその債権を譲渡した。Cの立場は？</div>`,
+    exp: "仮装された債権をBが第三者Cに譲渡した場合、Cはその債権が実在すると信頼して取得した者です。Cは虚偽表示によって形成された外観を信頼した第三者にあたります。善意であることが保護の要件です。"
+  },
+  {
+    text: "仮装譲受人Bの一般債権者Cは、民法94条2項の「第三者」にあたるか？",
+    ans: false,
+    hint: `
+      <div class="diagram">
+        ${sv('A','真の所有者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">仮装譲渡</div></div>
+        ${sv('B','仮装譲受人')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('C','Bへの一般債権者')}
+        <div style="text-align:center">${ar('━━▶','#888')}<div style="font-size:9px;color:#888">金銭債権のみ</div></div>
+        ${sv('B','')}
+      </div>
+      <div class="diagram">${it('🏠','不動産（Cは差押えしていない）')}</div>
+      <div class="hint-note">CはBに金銭を貸しているだけ。B名義の不動産に対して差押え等の具体的行為を行っていない。</div>`,
+    exp: "一般債権者は、仮装された不動産自体について直接の法律上の利害関係を持つわけではありません。単にBの債権者であるに過ぎず、不動産に対して差押え等の具体的な行為を行っていない限り、94条2項の「第三者」にはあたりません。"
+  },
+  {
+    text: "代理人Aが本人Bのために相手方Cと通謀して虚偽表示をした場合、本人Bは民法94条2項の「第三者」にあたるか？",
+    ans: false,
+    hint: `
+      <div class="diagram">
+        ${sv('B','本人')}
+        <div style="text-align:center">${ar('━━▶','#888')}<div style="font-size:9px;color:#888">代理権付与</div></div>
+        ${sv('A','代理人')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('A','代理人')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">通謀・仮装</div></div>
+        ${sv('C','相手方')}
+      </div>
+      <div class="hint-note">代理人Aの行為の効果はBに帰属する。BはAを通じて虚偽表示の「当事者」と同視される立場。</div>`,
+    exp: "代理人が虚偽表示を行った場合、その効果は本人に帰属します（民法99条）。本人Bは虚偽表示の当事者と同視される立場であり、94条2項の「第三者」にはあたりません。"
+  },
+  {
+    text: "AのCに対する債権が、AとBの通謀によりBに仮装譲渡された場合、債務者Cは民法94条2項の「第三者」にあたるか？",
+    ans: false,
+    hint: `
+      <div class="diagram">
+        ${sv('A','真の債権者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">仮装譲渡</div></div>
+        ${sv('B','仮装譲受人')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${it('💰','AのCに対する債権')}
+        <div style="text-align:center">${ar('━━▶','#888')}<div style="font-size:9px;color:#888">弁済義務</div></div>
+        ${sv('C','債務者')}
+      </div>
+      <div class="hint-note">Cはこの債権の債務者として最初から当事者側にいる。外観を信頼して新たな利害関係を持ったわけではない。</div>`,
+    exp: "債務者Cは、仮装譲渡された債権の当事者側に位置する者です。Cは虚偽表示によって形成された外観を信頼して「新たな法律上の利害関係」を取得した者ではなく、94条2項の「第三者」にはあたりません。"
+  },
+  {
+    text: "1番抵当権が仮装で放棄され、自己の順位が上昇したと誤信した2番抵当権者は、民法94条2項の「第三者」にあたるか？",
+    ans: false,
+    hint: `
+      <div class="diagram">${it('🏠','B所有の不動産')}</div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('A','1番抵当権者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">仮装放棄</div></div>
+        ${it('🚫','1番抵当権')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('C','2番抵当権者')}
+        <div style="font-size:11px;color:#888;padding:4px">「自分が1番に<br>なった！」と誤信</div>
+      </div>
+      <div class="hint-note">Cは仮装放棄の前から2番抵当権者として利害関係人だった。仮装放棄で「新たに」利害関係を持ったわけではない。</div>`,
+    exp: "Cは2番抵当権者として抵当権を取得した段階で既に利害関係人でした。Aの抵当権放棄によってCが「新たに」法律上の利害関係を取得したわけではなく、既存の権利関係が変化したと誤信しているに過ぎません。94条2項の「第三者」にはあたりません。"
+  },
+  {
+    text: "土地の仮装譲受人Bから、その土地上の建物を賃借した者Cは、民法94条2項の「第三者」にあたるか？",
+    ans: false,
+    hint: `
+      <div class="diagram">
+        ${sv('A','真の土地所有者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">土地を仮装譲渡</div></div>
+        ${sv('B','仮装譲受人')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${it('🌍','土地（虚偽表示の目的物）')}
+        ${it('🏠','建物（B所有）')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('B','建物所有者')}
+        <div style="text-align:center">${ar('━━▶','#1d3a5e')}<div style="font-size:9px;color:#1d3a5e">建物を賃貸</div></div>
+        ${sv('C','建物賃借人？')}
+      </div>
+      <div class="hint-note">Cが賃借したのは「建物」。虚偽表示の目的物は「土地」。Cは土地について新たな法律関係を持っていない。</div>`,
+    exp: "Cが賃借したのは建物であり、虚偽表示の目的物である「土地」について直接の法律上の利害関係を持つわけではありません。建物賃借人は土地の仮装譲渡について新たな利害関係を有した者ではないため、94条2項の「第三者」にはあたりません。"
+  },
+  {
+    text: "土地賃借人Aが自己所有建物を虚偽表示によりBに譲渡して登記を経由した場合、AはAとBとの間の法律関係につき民法94条2項の「第三者」にあたるか？",
+    ans: false,
+    hint: `
+      <div class="diagram">
+        ${sv('地主D','土地所有者')}
+        <div style="text-align:center">${ar('━━▶','#888')}<div style="font-size:9px;color:#888">土地賃貸</div></div>
+        ${sv('A','土地賃借人・<br>建物所有者')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('A','虚偽表示の当事者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">建物を仮装譲渡</div></div>
+        ${sv('B','仮装譲受人')}
+      </div>
+      <div class="diagram">${it('🏠','建物（虚偽表示の目的物）')}</div>
+      <div class="hint-note">Aはこの虚偽表示の当事者本人。土地賃借人という別の立場があっても、建物の仮装譲渡の「当事者」であることは変わらない。</div>`,
+    exp: "Aは虚偽表示の当事者本人です。自ら通謀して虚偽表示を行ったAは、AとBとの間の法律関係について「第三者」にはなり得ません。Aが土地賃借人という別の立場を持っていることは、この結論を変えません。"
+  },
+  {
+    text: "財産の仮装譲渡を受けた仮装譲受人Bが死亡し、BをCが相続した場合、相続人Cは民法94条2項の「第三者」にあたるか？",
+    ans: false,
+    hint: `
+      <div class="diagram">
+        ${sv('A','真の所有者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">仮装譲渡</div></div>
+        ${sv('B','仮装譲受人')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('B','死亡')}
+        <div style="text-align:center">${ar('━━▶','#888')}<div style="font-size:9px;color:#888">包括承継</div></div>
+        ${sv('C','相続人')}
+      </div>
+      <div class="diagram">${it('📋','CはBの法的地位をそのまま引き継ぐ')}</div>
+      <div class="hint-note">相続（包括承継）は、Bの「仮装譲受人」という立場ごと引き継ぐ。Cが新たに法律関係を取得したわけではない。</div>`,
+    exp: "相続人Cは包括承継人として、被相続人Bの法的地位をそのまま引き継ぎます。CはBが仮装譲受人であった地位を承継するのであり、新たな法律上の利害関係を取得した第三者にはあたりません。"
+  },
+  {
+    text: "債権の仮装譲渡を受けた仮装譲受人Bから、Cが取り立てのために当該債権を譲り受けた場合、Cは民法94条2項の「第三者」にあたるか？",
+    ans: false,
+    hint: `
+      <div class="diagram">
+        ${sv('A','真の債権者')}
+        <div style="text-align:center">${ar('━━▶','#b00')}<div style="font-size:9px;color:#b00">仮装譲渡</div></div>
+        ${sv('B','仮装譲受人')}
+      </div>
+      <div class="diagram" style="margin-top:6px">
+        ${sv('B','')}
+        <div style="text-align:center">${ar('━━▶','#888')}<div style="font-size:9px;color:#888">取立のために<br>債権譲渡</div></div>
+        ${sv('C','取立人？')}
+        ${it('💰','仮装された債権')}
+      </div>
+      <div class="hint-note">「取り立てのために」とは、BのためにCが取立業務を行う実質的代理人的立場。Cは自己の独立した利益のために取得したわけではない。</div>`,
+    exp: "「取り立てのために」債権を譲り受けた者は、実質的にBの取立代理人的な立場であり、独立した利益のために債権を取得したわけではありません。このような取立委任的な譲受人は、94条2項による保護に値する独自の法律上の利害関係を有さず、第三者にはあたりません。"
+  }
+];
+
+/* ── ゲーム状態 ── */
+let shuffled = [], idx = 0, score = 0;
+
+function rnd(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function showScreen(id) {
+  ['scStart','scQuiz','scResult'].forEach(s => document.getElementById(s).classList.add('hide'));
+  document.getElementById(id).classList.remove('hide');
+}
+
+function startQuiz() {
+  shuffled = shuffle(QS);
+  idx = 0; score = 0;
+  showScreen('scQuiz');
+  loadQ();
+}
+
+function loadQ() {
+  const q = shuffled[idx];
+  document.getElementById('qNum').textContent   = `問題 ${idx + 1} / 12`;
+  document.getElementById('qScore').textContent = `正解: ${score}`;
+  document.getElementById('prog').style.width   = `${(idx / 12) * 100}%`;
+  document.getElementById('qText').textContent  = q.text;
+  document.getElementById('hintContent').innerHTML = q.hint;
+  document.getElementById('hintArea').classList.remove('show');
+  const hb = document.getElementById('hintBtn');
+  hb.textContent = '💡 ヒントを見る';
+  hb.classList.remove('open');
+  document.getElementById('btnYes').disabled = false;
+  document.getElementById('btnNo').disabled  = false;
+  document.getElementById('expCard').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleHint() {
+  const area = document.getElementById('hintArea');
+  const btn  = document.getElementById('hintBtn');
+  const open = area.classList.toggle('show');
+  btn.textContent = open ? '💡 ヒントを隠す' : '💡 ヒントを見る';
+  btn.classList.toggle('open', open);
+}
+
+const OK = [
+  { e:'🎉', m:'正解！',     s:'すばらしい判断力です' },
+  { e:'⭐',  m:'ナイス！',   s:'正しく理解できています' },
+  { e:'🏆', m:'その調子！', s:'完璧な判断です' },
+  { e:'🔥', m:'完璧！',     s:'迷いのない正解' },
+  { e:'✅', m:'正解です！', s:'しっかり押さえていますね' },
+];
+const NG = [
+  { e:'😢', m:'惜しい！',          s:'解説で確認してみましょう' },
+  { e:'💦', m:'もう一度整理しよう', s:'解説をしっかり読んでください' },
+  { e:'📚', m:'解説を確認しよう',   s:'ここが試験の重要ポイントです' },
+  { e:'🤔', m:'難問でした',         s:'解説で理解を深めましょう' },
+];
+
+function answer(isYes) {
+  const q  = shuffled[idx];
+  const ok = isYes === q.ans;
+  if (ok) score++;
+  document.getElementById('btnYes').disabled = true;
+  document.getElementById('btnNo').disabled  = true;
+
+  const m = rnd(ok ? OK : NG);
+  document.getElementById('popEmoji').textContent = m.e;
+  document.getElementById('popMsg').textContent   = m.m;
+  document.getElementById('popMsg').className     = 'pop-msg ' + (ok ? 'ok' : 'ng');
+  document.getElementById('popSub').textContent   = m.s;
+  document.getElementById('overlay').classList.add('show');
+
+  if (ok) spawnSparkles();
+}
+
+function spawnSparkles() {
+  const icons = ['⭐','✨','🌟','💫'];
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'sparkle';
+      el.textContent = rnd(icons);
+      el.style.left = (10 + Math.random() * 80) + '%';
+      el.style.top  = (10 + Math.random() * 60) + '%';
+      el.style.animationDelay = (Math.random() * .35) + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1600);
+    }, i * 65);
+  }
+}
+
+function closeOverlay() {
+  document.getElementById('overlay').classList.remove('show');
+  const q = shuffled[idx];
+  const label = q.ans ? '第三者にあたる（保護される）' : '第三者にあたらない（保護されない）';
+  document.getElementById('expBadge').textContent = `正解：${label}`;
+  document.getElementById('expBadge').className   = 'exp-badge ' + (q.ans ? 'badge-t' : 'badge-f');
+  document.getElementById('expText').textContent  = q.exp;
+  document.getElementById('expCard').classList.add('show');
+  const nb = document.getElementById('nextBtn');
+  nb.textContent = (idx < 11) ? '次の問題へ →' : '結果を見る';
+  nb.classList.add('show');
+  setTimeout(() => {
+    document.getElementById('expCard').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }, 150);
+}
+
+function nextQ() {
+  idx++;
+  if (idx >= 12) showResult();
+  else loadQ();
+}
+
+function showResult() {
+  showScreen('scResult');
+  document.getElementById('prog').style.width = '100%';
+  const pct = Math.round(score / 12 * 100);
+  document.getElementById('resScore').textContent = score;
+  document.getElementById('resPct').textContent   = pct + '%';
+  let ev = '';
+  if      (pct === 100) ev = '🏆 満点！第三者の該当性を完璧にマスターしました。本番でも自信を持って解答できます！';
+  else if (pct >= 83)   ev = '⭐ 優秀！ほぼ理解できています。間違えた問題の解説を再確認すれば万全です。';
+  else if (pct >= 67)   ev = '📚 もう少し！基本的な理解はできています。難しい問題の解説を重点的に復習しましょう。';
+  else if (pct >= 50)   ev = '💪 まだ伸びしろあり！第三者の定義と判断基準を整理し直し、繰り返し解きましょう。';
+  else                  ev = '🌱 もう一度チャレンジ！民法94条2項の「第三者」とは何かを確認してから再挑戦しましょう。';
+  document.getElementById('resEval').textContent = ev;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restart() { startQuiz(); }
+</script>
+</body>
+</html>
