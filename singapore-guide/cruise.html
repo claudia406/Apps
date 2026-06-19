@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#9B5DE5">
+  <title>クルーズガイド｜SG旅行</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="offline-banner">⚡ このページは完全オフライン対応です</div>
+
+  <header class="page-header">
+    <a href="index.html" class="back-btn">←</a>
+    <h1>🚢 クルーズガイド</h1>
+    <span class="header-badge" style="background:var(--purple);">オフライン</span>
+  </header>
+
+  <div class="hero bg-cruise">
+    <div class="hero-emoji">🚢</div>
+    <div class="hero-title">Disney Adventure</div>
+    <div class="hero-sub">9月21日〜24日 ｜ 3泊4日クルーズ</div>
+    <div class="hero-date-chip">⚡ Wi-Fiなしでも全ページ読めます</div>
+  </div>
+
+  <div style="height:200px; overflow:hidden;">
+    <img src="https://picsum.photos/seed/cruise-ship-disney/600/400"
+         alt="クルーズ船" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+  </div>
+
+  <!-- スケジュール概要 -->
+  <div class="wrap-t">
+    <div class="card" style="border:2px solid var(--purple);">
+      <div class="card-body">
+        <div style="font-size:15px;font-weight:900;color:var(--purple);margin-bottom:10px;">📅 クルーズ日程</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span class="tag tag-offline">Day 2</span>
+            <span style="font-size:14px;">9/21（月）13:00〜14:00 乗船</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span class="tag tag-offline">Day 3</span>
+            <span style="font-size:14px;">9/22（火）洋上 Day 1</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span class="tag tag-offline">Day 4</span>
+            <span style="font-size:14px;">9/23（水）洋上 Day 2</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span class="tag tag-offline">Day 5</span>
+            <span style="font-size:14px;">9/24（木）07:00〜08:00 下船</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 乗船前チェックリスト -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--purple-l);">✅</div>
+      <h2>乗船前チェックリスト</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="check-cat">📋 必須持ち物</div>
+        <ul class="checklist">
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">パスポート（必须）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">クルーズ予約確認書 / Eチケット</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">クレジットカード（船内決済登録用）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">酔い止め薬（念のため）</span>
+          </li>
+          <div class="check-cat">👗 服装</div>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">水着・ビーチサンダル（プール用）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">ディナー用のおしゃれ着（フォーマルナイトあり）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">デッキ用の羽織り（冷房対策）</span>
+          </li>
+          <div class="check-cat">🌞 ケア</div>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">日焼け止め（SPF50+）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">常備薬・洗面用具</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">カメラ・モバイルバッテリー</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 船内施設 -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--purple-l);">🏰</div>
+      <h2>船内施設ガイド</h2>
+    </div>
+    <div class="card">
+      <div class="card-body" style="padding:0 16px;">
+        <div class="cruise-facility">
+          <div class="cruise-icon">🏊</div>
+          <div>
+            <div class="cruise-name">プール・ウォータースライダー</div>
+            <div class="cruise-note">デッキエリア。水着持参必須。日焼け止めを塗ってから！</div>
+          </div>
+        </div>
+        <div class="cruise-facility">
+          <div class="cruise-icon">🎭</div>
+          <div>
+            <div class="cruise-name">シアター・エンターテインメントホール</div>
+            <div class="cruise-note">Disney / Marvel / Star Wars のショー。プログラム表で確認して早めに入場！</div>
+          </div>
+        </div>
+        <div class="cruise-facility">
+          <div class="cruise-icon">🍽️</div>
+          <div>
+            <div class="cruise-name">レストラン（複数）</div>
+            <div class="cruise-note">ビュッフェ・ファインダイニング・カジュアルと選択肢が豊富。夕食は予約制の場合あり。</div>
+          </div>
+        </div>
+        <div class="cruise-facility">
+          <div class="cruise-icon">🍸</div>
+          <div>
+            <div class="cruise-name">バー・ラウンジ</div>
+            <div class="cruise-note">デッキバー・屋内バー各種。船内はアルコール飲み放題パッケージもある場合あり。</div>
+          </div>
+        </div>
+        <div class="cruise-facility">
+          <div class="cruise-icon">💆</div>
+          <div>
+            <div class="cruise-name">スパ・ウェルネスセンター</div>
+            <div class="cruise-note">マッサージ・フェイシャル等。事前予約推奨。追加料金あり。</div>
+          </div>
+        </div>
+        <div class="cruise-facility">
+          <div class="cruise-icon">🛍️</div>
+          <div>
+            <div class="cruise-name">免税ショップ</div>
+            <div class="cruise-note">Disney グッズ・香水・アクセサリー・お酒。市内より安いことも。</div>
+          </div>
+        </div>
+        <div class="cruise-facility">
+          <div class="cruise-icon">🎮</div>
+          <div>
+            <div class="cruise-name">アーケード・ゲームルーム</div>
+            <div class="cruise-note">ゲーム機・ビリヤード等。大人も楽しめる。</div>
+          </div>
+        </div>
+        <div class="cruise-facility">
+          <div class="cruise-icon">👶</div>
+          <div>
+            <div class="cruise-name">キッズクラブ</div>
+            <div class="cruise-note">子どもも大人も楽しめるアクティビティ。詳細は乗船後の案内を参照。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 豆知識 -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--teal-l);">💡</div>
+      <h2>クルーズ豆知識</h2>
+    </div>
+    <div class="info-box ib-purple mb-8">
+      <strong>💳 船内決済について</strong>
+      乗船時にクレジットカードを登録することで、船内での支払いはすべてカードキー1枚で完結。現金は不要。
+    </div>
+    <div class="info-box ib-info mb-8">
+      <strong>🌊 揺れが気になるときは</strong>
+      船の中央部・下層階が揺れが少ない。気分が悪くなったらデッキに出て遠くの水平線を見よう。生姜飴や酔い止めリストバンドも効果的。
+    </div>
+    <div class="info-box ib-success mb-8">
+      <strong>📸 写真のベストスポット</strong>
+      朝のデッキが一番空いていて撮りやすい。夕日・夜のデッキも絶景。キャラクターとの写真はプロフォトグラファーが撮影するイベントもある。
+    </div>
+    <div class="info-box ib-warn">
+      <strong>🔌 電源・Wi-Fi</strong>
+      船内Wi-FiはSlow & 有料のことが多い。オフラインを前提に。このアプリの全ページは事前にキャッシュされているので安心！
+    </div>
+  </div>
+
+  <!-- 下船の流れ -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--coral-l);">🚢</div>
+      <h2>下船の流れ（Day 5 朝）</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="timeline" style="padding:0;">
+          <div class="tl-item">
+            <div class="tl-time">前夜</div>
+            <div class="tl-dot" style="color:var(--purple);"></div>
+            <div class="tl-body">
+              <h3>スーツケースをドアの外に出す</h3>
+              <p>大型荷物は前夜23:00頃までにドアの外へ。翌朝指定の場所で受け取れる。（船内案内で確認）</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">7:00<br>〜8:00</div>
+            <div class="tl-dot" style="color:var(--coral);"></div>
+            <div class="tl-body">
+              <h3>下船</h3>
+              <p>指定時間に下船。パスポートと手荷物を持って下船口へ。スーツケースはターミナルで受け取り。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">下船後</div>
+            <div class="tl-dot" style="color:var(--teal);"></div>
+            <div class="tl-body">
+              <h3>Grab で Hotel Waterloo へ</h3>
+              <p>Marina Bay Cruise Centre からGrabを呼んでホテルへ。荷物を預けて観光スタート！</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap-t mb-16">
+    <a href="day3.html" class="btn btn-purple">Day 3（洋上）のプランを見る →</a>
+    <div style="height:10px;"></div>
+    <a href="day4.html" class="btn" style="background:linear-gradient(135deg,#9B5DE5,#48CAE4);color:white;">Day 4（洋上）のプランを見る →</a>
+  </div>
+
+  <div class="page-end"></div>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">ホーム</span></a>
+    <a href="schedule.html" class="nav-item"><span class="nav-icon">📅</span><span class="nav-label">日程</span></a>
+    <a href="spots.html" class="nav-item"><span class="nav-icon">🗺️</span><span class="nav-label">スポット</span></a>
+    <a href="gourmet.html" class="nav-item"><span class="nav-icon">🍜</span><span class="nav-label">グルメ</span></a>
+    <a href="prep.html" class="nav-item"><span class="nav-icon">✅</span><span class="nav-label">準備</span></a>
+  </nav>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

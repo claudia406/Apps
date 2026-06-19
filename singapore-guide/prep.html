@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#48CAE4">
+  <title>旅の準備｜SG旅行</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <a href="index.html" class="back-btn">←</a>
+    <h1>✅ 旅の準備</h1>
+  </header>
+
+  <div class="hero bg-sky">
+    <div class="hero-emoji">🧳</div>
+    <div class="hero-title">旅の準備ガイド</div>
+    <div class="hero-sub">持ち物・フライト・交通・緊急情報</div>
+  </div>
+
+  <!-- 持ち物チェックリスト -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--sky-l);">✅</div>
+      <h2>持ち物チェックリスト</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+
+        <div class="check-cat">📄 必須書類</div>
+        <ul class="checklist">
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">パスポート（有効期限6ヶ月以上確認）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">航空券 / E-チケット（スクショ保存も）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">クルーズ予約確認書</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">ホテル予約確認書（各ホテル分）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">海外旅行保険証（保険会社の連絡先も）</span>
+          </li>
+
+          <div class="check-cat">💳 お金・決済</div>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">クレジットカード（VISA / Mastercard 推奨）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">シンガポールドル（SGD）現金</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">予備のクレジットカード（1枚は別保管）</span>
+          </li>
+
+          <div class="check-cat">📱 スマホ・電子機器</div>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">スマホ（Grabアプリ・このアプリをキャッシュ済み）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">海外対応SIMカード or eSIM（事前購入推奨）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">充電器・変換プラグ（シンガポール: BFタイプ）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">モバイルバッテリー</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">カメラ・SDカード</span>
+          </li>
+
+          <div class="check-cat">👗 衣類・身支度</div>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">薄手の服（半袖 / 通気性のいいもの）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">羽織り / カーディガン（冷房対策必須！）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">歩きやすいサンダル / スニーカー</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">水着（クルーズ用）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">モスク・寺院用のスカーフ・長ズボン</span>
+          </li>
+
+          <div class="check-cat">💊 健康・衛生</div>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">日焼け止め（SPF50+）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">虫除けスプレー</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">常備薬（胃腸薬・頭痛薬・バンドエイド）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">酔い止め（クルーズ用）</span>
+          </li>
+          <li class="check-item" onclick="this.querySelector('.checklist-checkbox').click()">
+            <div class="checklist-checkbox"></div>
+            <span class="check-text">ウェットティッシュ / ポケットティッシュ</span>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- フライト・ホテル一覧 -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--gold-l);">✈️</div>
+      <h2>フライト情報</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div style="font-weight:800; margin-bottom:8px;">🛫 行き</div>
+        <div class="flight-row">
+          <div class="f-city"><div class="f-time">18:40</div><div class="f-airport">9/19（土）成田 NRT</div></div>
+          <div class="f-arrow">→</div>
+          <div class="f-city"><div class="f-time">0:45</div><div class="f-airport">9/20（日）チャンギ SIN</div></div>
+        </div>
+        <div style="font-weight:800; margin-top:12px; margin-bottom:8px;">🛬 帰り</div>
+        <div class="flight-row">
+          <div class="f-city"><div class="f-time">0:50</div><div class="f-airport">9/27（日）チャンギ SIN</div></div>
+          <div class="f-arrow">→</div>
+          <div class="f-city"><div class="f-time">8:55</div><div class="f-airport">9/27（日）成田 NRT</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 交通ガイド -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--green-l);">🚇</div>
+      <h2>シンガポールの交通</h2>
+    </div>
+
+    <div class="card mb-12">
+      <div class="card-body">
+        <div style="font-size:16px;font-weight:900;margin-bottom:8px;">🟢 Grab（グラブ）</div>
+        <p class="card-text">東南アジア版Uber。シンガポールで最もよく使う移動手段。アプリで目的地を入力→料金確認→配車まで数分。クレカ払いで現金不要。</p>
+        <div class="info-box ib-success mt-8" style="font-size:12px;">
+          💡 出発前にアプリをダウンロード＆クレカ登録を済ませておこう。空港到着後すぐ使える！
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <div style="font-size:16px;font-weight:900;margin-bottom:8px;">🔵 MRT（地下鉄）</div>
+        <p class="card-text">シンガポールの地下鉄。清潔・時間通り・安い。路線はカラーコードで分かりやすい。</p>
+        <div class="info-box ib-info mt-8" style="font-size:12px;">
+          💡 <strong>EZ-Link カード</strong>（Suica的なもの）またはクレカのタッチ決済で乗れる。空港のTransit Linkにて購入可能。
+        </div>
+        <div class="info-box ib-warn mt-8" style="font-size:12px;">
+          ⚠️ MRT車内は<strong>飲食厳禁・ガム持込禁止</strong>（シンガポール全般でガムは禁止）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 緊急情報 -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--coral-l);">🆘</div>
+      <h2>緊急・便利情報</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;">
+            <div style="font-size:20px; width:28px; flex-shrink:0;">🚨</div>
+            <div>
+              <div style="font-weight:800;font-size:14px;">緊急電話（シンガポール）</div>
+              <div style="font-size:15px;font-weight:900;color:var(--coral);">999（警察・救急）</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="font-size:20px; width:28px; flex-shrink:0;">🏛️</div>
+            <div>
+              <div style="font-weight:800;font-size:14px;">在シンガポール日本国大使館</div>
+              <div style="font-size:13px;color:var(--gray);">16 Nassim Road, Singapore 258390</div>
+              <div style="font-size:13px;color:var(--gray);">Tel: +65-6235-8855</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="font-size:20px; width:28px; flex-shrink:0;">🌡️</div>
+            <div>
+              <div style="font-weight:800;font-size:14px;">9月の気候</div>
+              <div style="font-size:13px;color:var(--gray);">気温 27〜34℃ / 湿度高め / スコール多い<br>日焼け止め・折りたたみ傘は必須！</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="font-size:20px; width:28px; flex-shrink:0;">💰</div>
+            <div>
+              <div style="font-weight:800;font-size:14px;">通貨</div>
+              <div style="font-size:13px;color:var(--gray);">シンガポールドル（SGD）<br>1 SGD ≈ 110〜115円（変動あり）<br>空港・市内の両替所 or ATMで</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="font-size:20px; width:28px; flex-shrink:0;">🔌</div>
+            <div>
+              <div style="font-weight:800;font-size:14px;">コンセント</div>
+              <div style="font-size:13px;color:var(--gray);">Bタイプ（日本と同じ）とBFタイプ（UK式3穴）が混在。変換プラグあると安心。電圧：230V。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-section"></div>
+  <div class="page-end"></div>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">ホーム</span></a>
+    <a href="schedule.html" class="nav-item"><span class="nav-icon">📅</span><span class="nav-label">日程</span></a>
+    <a href="spots.html" class="nav-item"><span class="nav-icon">🗺️</span><span class="nav-label">スポット</span></a>
+    <a href="gourmet.html" class="nav-item"><span class="nav-icon">🍜</span><span class="nav-label">グルメ</span></a>
+    <a href="prep.html" class="nav-item active"><span class="nav-icon">✅</span><span class="nav-label">準備</span></a>
+  </nav>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

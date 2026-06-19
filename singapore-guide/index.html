@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FF6B6B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SG旅行">
+  <title>母娘シンガポール旅行 2026</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── カウントダウン ── -->
+  <section class="countdown-section">
+    <div class="countdown-label">✈️ シンガポールまで あと</div>
+    <div class="countdown-number" id="countdown-days">--</div>
+    <div class="countdown-unit">日</div>
+    <div class="countdown-date">2026年9月19日（土）18:40 成田出発</div>
+    <div id="trip-status"></div>
+  </section>
+
+  <!-- ── 今日のプラン（旅行中のみ表示） ── -->
+  <div id="today-plan" style="display:none; padding:16px 16px 0;">
+    <a id="today-plan-link" href="#" class="btn btn-coral">
+      📅 今日のプランを見る →
+    </a>
+  </div>
+
+  <!-- ── クイックナビ ── -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--coral-l);">🧭</div>
+      <h2>クイックナビ</h2>
+    </div>
+    <div class="quick-nav">
+      <a href="schedule.html" class="qnav-item" style="background:#FFF0F0;">
+        <span class="qnav-emoji">📅</span>
+        <span class="qnav-label">日程プラン</span>
+      </a>
+      <a href="spots.html" class="qnav-item" style="background:#E0FFF6;">
+        <span class="qnav-emoji">🗺️</span>
+        <span class="qnav-label">スポット図鑑</span>
+      </a>
+      <a href="gourmet.html" class="qnav-item" style="background:#FFF8E1;">
+        <span class="qnav-emoji">🍜</span>
+        <span class="qnav-label">グルメ図鑑</span>
+      </a>
+      <a href="cruise.html" class="qnav-item" style="background:#F3E8FF;">
+        <span class="qnav-emoji">🚢</span>
+        <span class="qnav-label">クルーズガイド</span>
+      </a>
+      <a href="prep.html" class="qnav-item" style="background:#E0F7FF;">
+        <span class="qnav-emoji">✅</span>
+        <span class="qnav-label">旅の準備</span>
+      </a>
+      <a href="basics.html" class="qnav-item" style="background:#E8F8F0;">
+        <span class="qnav-emoji">📖</span>
+        <span class="qnav-label">基礎知識</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── 旅行概要 ── -->
+  <div class="wrap-t">
+    <div class="sec-header">
+      <div class="sec-icon" style="background:var(--gold-l);">🗓️</div>
+      <h2>旅行概要</h2>
+    </div>
+
+    <!-- フライト -->
+    <div class="card mb-12">
+      <div class="card-body">
+        <div class="card-title">✈️ フライト</div>
+        <div class="flight-row">
+          <div class="f-city">
+            <div class="f-time">18:40</div>
+            <div class="f-airport">9/19（土）成田 NRT</div>
+          </div>
+          <div class="f-arrow">→</div>
+          <div class="f-city">
+            <div class="f-time">0:45</div>
+            <div class="f-airport">9/20（日）チャンギ SIN</div>
+          </div>
+        </div>
+        <div class="flight-row">
+          <div class="f-city">
+            <div class="f-time">0:50</div>
+            <div class="f-airport">9/27（日）チャンギ SIN</div>
+          </div>
+          <div class="f-arrow">→</div>
+          <div class="f-city">
+            <div class="f-time">8:55</div>
+            <div class="f-airport">9/27（日）成田 NRT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ホテル -->
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">🏨 ホテル</div>
+        <div class="hotel-row">
+          <span class="hotel-chip">9/19-20</span>
+          <div>
+            <div class="hotel-name">Changi Cove</div>
+            <div class="hotel-note">チャンギエリア ｜ 深夜着のみ</div>
+          </div>
+        </div>
+        <div class="hotel-row">
+          <span class="hotel-chip">9/20-21</span>
+          <div>
+            <div class="hotel-name">Aurum Royal</div>
+            <div class="hotel-note">タンジョンパガー ｜ 33 Erskine Rd</div>
+          </div>
+        </div>
+        <div class="hotel-row">
+          <span class="hotel-chip" style="background:var(--purple-l);color:var(--purple);">9/21-24</span>
+          <div>
+            <div class="hotel-name">🚢 Disney Adventure（クルーズ）</div>
+            <div class="hotel-note">3泊 ｜ 洋上</div>
+          </div>
+        </div>
+        <div class="hotel-row">
+          <span class="hotel-chip">9/24-26</span>
+          <div>
+            <div class="hotel-name">Hotel Waterloo Singapore</div>
+            <div class="hotel-note">Waterloo St ｜ アラブ街・ブギスエリア</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- メンバー -->
+    <div class="card mt-12">
+      <div class="card-body">
+        <div class="card-title">👭 旅行メンバー</div>
+        <div style="display:flex; gap:12px;">
+          <div style="flex:1; background:var(--coral-l); border-radius:12px; padding:12px; text-align:center;">
+            <div style="font-size:28px;">🧑</div>
+            <div style="font-weight:800; font-size:14px; margin-top:4px;">私</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:4px;">20代中盤・活発<br>シンガポール経験あり</div>
+          </div>
+          <div style="flex:1; background:var(--teal-l); border-radius:12px; padding:12px; text-align:center;">
+            <div style="font-size:28px;">🧓</div>
+            <div style="font-weight:800; font-size:14px; margin-top:4px;">お母さん</div>
+            <div style="font-size:11px; color:var(--gray); margin-top:4px;">40代後半・元気<br>シンガポール初訪問</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-section"></div>
+  <div class="page-end"></div>
+
+  <!-- ── ボトムナビ ── -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item active">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">ホーム</span>
+    </a>
+    <a href="schedule.html" class="nav-item">
+      <span class="nav-icon">📅</span>
+      <span class="nav-label">日程</span>
+    </a>
+    <a href="spots.html" class="nav-item">
+      <span class="nav-icon">🗺️</span>
+      <span class="nav-label">スポット</span>
+    </a>
+    <a href="gourmet.html" class="nav-item">
+      <span class="nav-icon">🍜</span>
+      <span class="nav-label">グルメ</span>
+    </a>
+    <a href="prep.html" class="nav-item">
+      <span class="nav-icon">✅</span>
+      <span class="nav-label">準備</span>
+    </a>
+  </nav>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
