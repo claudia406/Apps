@@ -274,6 +274,40 @@ body{
   font-weight:600;cursor:pointer;margin-top:4px;
   -webkit-tap-highlight-color:transparent;
 }
+
+/* ── Birthday ── */
+.bday-banner{
+  border-radius:20px;padding:20px 16px;margin-bottom:14px;
+  text-align:center;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#FF6B9D 0%,#FF9A57 40%,#FFD93D 70%,#6BCFFF 100%);
+  box-shadow:0 6px 28px rgba(255,107,157,.45);
+  animation:bdayGlow 3s ease-in-out infinite;
+}
+@keyframes bdayGlow{
+  0%,100%{box-shadow:0 6px 28px rgba(255,107,157,.45)}
+  50%{box-shadow:0 6px 40px rgba(255,107,157,.75),0 0 80px rgba(255,200,80,.2)}
+}
+.bday-emoji{font-size:40px;display:block;margin-bottom:8px;animation:bdayBounce 1.2s ease infinite}
+@keyframes bdayBounce{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-8px) rotate(5deg)}}
+.bday-title{font-size:22px;font-weight:900;text-shadow:0 2px 6px rgba(0,0,0,.2);margin-bottom:6px}
+.bday-sub{font-size:13px;opacity:.96;line-height:1.6}
+.bday-sparks{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden}
+.bday-sparks span{
+  position:absolute;font-size:16px;
+  animation:sparkFall 3s linear infinite;opacity:0;
+}
+.bday-sparks span:nth-child(1){left:5%;animation-delay:0s}
+.bday-sparks span:nth-child(2){left:20%;animation-delay:.5s}
+.bday-sparks span:nth-child(3){left:40%;animation-delay:1s}
+.bday-sparks span:nth-child(4){left:60%;animation-delay:1.5s}
+.bday-sparks span:nth-child(5){left:80%;animation-delay:2s}
+.bday-sparks span:nth-child(6){left:92%;animation-delay:2.5s}
+@keyframes sparkFall{
+  0%{top:-10%;opacity:0;transform:rotate(0deg)}
+  10%{opacity:1}
+  90%{opacity:.7}
+  100%{top:110%;opacity:0;transform:rotate(360deg)}
+}
 </style>
 </head>
 <body>
@@ -287,11 +321,8 @@ body{
 <section id="s-home" class="section active">
 
   <div class="hero">
-    <svg class="hero-bg" viewBox="0 0 400 210" preserveAspectRatio="none">
-      <polygon points="0,210 70,90 140,150 210,50 280,120 350,70 400,100 400,210" fill="white" opacity=".18"/>
-      <polygon points="0,210 90,110 170,160 240,70 310,130 380,85 400,110 400,210" fill="white" opacity=".12"/>
-      <circle cx="330" cy="40" r="28" fill="#FFE88A" opacity=".55"/>
-    </svg>
+    <img src="./Hakuba photos/Hakuba 1.jpg" alt="白馬" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(22,100,130,.55),rgba(77,184,212,.3),rgba(80,165,110,.3))"></div>
     <div class="hero-stars">★ ★ ★ ★ ★</div>
     <div class="hero-content">
       <span class="hero-emoji">🏔️</span>
@@ -308,7 +339,7 @@ body{
     <div>
       <span class="cd-num" id="cd-num">--</span><span class="cd-unit"> 日</span>
     </div>
-    <div class="cd-date" id="cd-date">出発日：2026年8月7日（金）</div>
+    <div class="cd-date" id="cd-date">出発日：2026年8月9日（日）</div>
   </div>
 
   <div class="sum-grid">
@@ -367,10 +398,20 @@ body{
 
   <!-- Day 1 -->
   <div class="day-content active" id="dc0">
-    <div class="day-hdr" style="background:linear-gradient(135deg,var(--blue-dd),var(--blue))">
-      <div class="dh-num">Day 1 ｜ 8月7日（金）</div>
+    <div class="day-hdr" style="background:linear-gradient(135deg,#FF6B9D,#FF9A57,#FFD93D,#6BCFFF)">
+      <div class="dh-num">Day 1 ｜ 8月9日（日）🎂</div>
       <div class="dh-title">横浜 → 白馬へ！</div>
     </div>
+
+    <div class="bday-banner">
+      <div class="bday-sparks">
+        <span>🎊</span><span>✨</span><span>🎈</span><span>⭐</span><span>🎉</span><span>🌟</span>
+      </div>
+      <span class="bday-emoji">🎂</span>
+      <div class="bday-title">Happy Birthday, お母さん！🎉</div>
+      <div class="bday-sub">今日はあなたの誕生日＆旅行初日！<br>最高の白馬旅を一緒に楽しもう 💕</div>
+    </div>
+
     <div class="tl">
       <div class="tl-item">
         <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
@@ -442,7 +483,7 @@ body{
   <!-- Day 2 -->
   <div class="day-content" id="dc1">
     <div class="day-hdr" style="background:linear-gradient(135deg,var(--blue-d),var(--blue))">
-      <div class="dh-num">Day 2 ｜ 8月8日（土）</div>
+      <div class="dh-num">Day 2 ｜ 8月10日（月）</div>
       <div class="dh-title">ハイキング & 白馬散策</div>
     </div>
     <div class="tl">
@@ -479,7 +520,7 @@ body{
           <div class="tl-detail">
             <strong>候補①</strong> ピラール（八方尾根 山頂イタリアン・絶景）※LO 13:00<br>
             <strong>候補②</strong> Sounds Like Cafe（ハンバーガー）<br>
-            <div class="notice" style="margin-top:8px">⚠️ Sounds Like Cafe は土・日・祝定休です。8月7〜9日の場合はピラールをおすすめします。</div>
+            <div class="notice" style="margin-top:8px;background:#EAF5EF;border-color:#5BAE82;color:#2E7D32">✅ 8月10日（月）は Sounds Like Cafe の営業日です。どちらもOK！</div>
           </div>
         </div>
       </div>
@@ -534,7 +575,7 @@ body{
   <!-- Day 3 -->
   <div class="day-content" id="dc2">
     <div class="day-hdr" style="background:linear-gradient(135deg,var(--green-d),var(--green))">
-      <div class="dh-num">Day 3 ｜ 8月9日（日）</div>
+      <div class="dh-num">Day 3 ｜ 8月11日（火・山の日）🏔️</div>
       <div class="dh-title">青木湖 & 帰路へ</div>
     </div>
     <div class="tl">
@@ -577,9 +618,17 @@ body{
           <div class="tl-time">午後</div>
           <div class="tl-title">🎁 長野駅でお土産</div>
           <div class="tl-detail">
-            <strong>八幡屋礒五郎</strong>　七味唐辛子の老舗<br>
+            <strong style="font-size:12px;color:var(--blue-d)">🍬 スイーツ・銘菓</strong><br>
             <strong>雷鳥の里</strong>　信州銘菓の定番ウエハース<br>
-            <strong>みすゞ飴</strong>　フルーツ風味の信州ゼリー
+            <strong>みすゞ飴</strong>　フルーツ風味の信州ゼリー<br>
+            <strong>くるみのお菓子 落雁</strong>　上品な信州和菓子<br>
+            <br>
+            <strong style="font-size:12px;color:var(--blue-d)">🍺 おつまみ・おかず系</strong><br>
+            <strong>八幡屋礒五郎 七味唐辛子</strong>　薬味にも料理にも<br>
+            <strong>野沢菜漬け</strong>　信州の代表的な漬物<br>
+            <strong>信州みそ</strong>　香り豊かな麹味噌<br>
+            <strong>信州サーモン甘露煮</strong>　ご飯のお供に最高<br>
+            <strong>おやき（野沢菜・きのこ）</strong>　長野駅の定番郷土菓子
           </div>
         </div>
       </div>
@@ -657,7 +706,7 @@ body{
   <!-- Day2 Lunch -->
   <div class="card">
     <div class="food-cat">Day 2 ランチ</div>
-    <div class="notice">⚠️ Sounds Like Cafe は土・日・祝日定休です。8月7〜9日のご旅行の場合、土曜はピラールをご選択ください。</div>
+    <div class="notice" style="background:#EAF5EF;border-color:#5BAE82;color:#2E7D32">✅ 8月10日（月）は Sounds Like Cafe の営業日です。ピラールとどちらもご利用いただけます。</div>
     <div class="rc">
       <div class="rc-top">
         <div class="rc-name">🍝 ピラール（Pilar）</div>
@@ -677,7 +726,7 @@ body{
       </div>
       <div class="card-sub">白馬エコーランドの人気カフェ。海外仕込みのコーヒーとボリューム満点のチキンバーガーが有名。</div>
       <div class="ir"><span class="ir-icon">🕐</span><span>9:30〜16:00（フードLO 15:00）</span></div>
-      <div class="ir"><span class="ir-icon">📅</span><span style="color:#C62828;font-weight:700">定休日：土・日・祝（⚠️ 週末旅行の方は注意）</span></div>
+      <div class="ir"><span class="ir-icon">📅</span><span>定休日：土・日・祝（8月10日月曜は営業）</span></div>
       <div class="ir"><span class="ir-icon">📞</span><span>0261-72-2040</span></div>
       <a class="map-btn" href="https://maps.google.com/?q=Sounds+Like+Cafe+白馬" target="_blank">📍 地図を開く</a>
     </div>
@@ -719,7 +768,7 @@ body{
 
   <!-- 岩岳 -->
   <div class="card">
-    <div class="spot-img" style="background:linear-gradient(135deg,#2B9BB8,#7DD4B0)">🚡</div>
+    <div class="spot-img" style="padding:0"><img src="./Hakuba photos/岩岳マウンテンリゾート.jpg" alt="岩岳マウンテンリゾート" style="width:100%;height:100%;object-fit:cover;border-radius:14px"></div>
     <div class="card-title">🚡 岩岳マウンテンリゾート</div>
     <div style="margin-bottom:10px">
       <span class="tag tag-b">Day 1</span>
@@ -742,7 +791,7 @@ body{
 
   <!-- 八方池 -->
   <div class="card">
-    <div class="spot-img" style="background:linear-gradient(135deg,#1A7BA4,#4DB8D4)">🏔️</div>
+    <div class="spot-img" style="padding:0"><img src="./Hakuba photos/八方池.jpeg" alt="八方池" style="width:100%;height:100%;object-fit:cover;border-radius:14px"></div>
     <div class="card-title">🏔️ 八方池</div>
     <div style="margin-bottom:10px">
       <span class="tag tag-b">Day 2</span>
@@ -766,7 +815,7 @@ body{
 
   <!-- 大出公園 -->
   <div class="card">
-    <div class="spot-img" style="background:linear-gradient(135deg,#5BAE82,#A8DFC0)">🌸</div>
+    <div class="spot-img" style="padding:0"><img src="./Hakuba photos/大出公園.webp" alt="大出公園" style="width:100%;height:100%;object-fit:cover;border-radius:14px"></div>
     <div class="card-title">🌸 大出公園</div>
     <div style="margin-bottom:10px">
       <span class="tag tag-b">Day 2</span>
@@ -784,7 +833,7 @@ body{
 
   <!-- 青木湖 -->
   <div class="card">
-    <div class="spot-img" style="background:linear-gradient(135deg,#1A6B8A,#4DB8D4)">🏞️</div>
+    <div class="spot-img" style="padding:0"><img src="./Hakuba photos/青木湖.jpg" alt="青木湖" style="width:100%;height:100%;object-fit:cover;border-radius:14px"></div>
     <div class="card-title">🏞️ 青木湖</div>
     <div style="margin-bottom:10px">
       <span class="tag tag-b">Day 3</span>
@@ -801,7 +850,7 @@ body{
 
   <!-- Snow Peak -->
   <div class="card">
-    <div class="spot-img" style="background:linear-gradient(135deg,#607D8B,#90A4AE)">⛺</div>
+    <div class="spot-img" style="padding:0"><img src="./Hakuba photos/Snow Peak LAND STATION HAKUBA.jpg" alt="Snow Peak LAND STATION HAKUBA" style="width:100%;height:100%;object-fit:cover;border-radius:14px"></div>
     <div class="card-title">⛺ Snow Peak LAND STATION HAKUBA</div>
     <div style="margin-bottom:10px">
       <span class="tag tag-b">Day 2</span>
@@ -932,14 +981,14 @@ function switchDay(idx) {
 
 // Countdown
 (function() {
-  const dep = new Date('2026-08-07T00:00:00');
+  const dep = new Date('2026-08-09T00:00:00');
   const now = new Date();
   const d = Math.ceil((dep - now) / 86400000);
   const el = document.getElementById('cd-num');
   const dt = document.getElementById('cd-date');
   if (d > 0) {
     el.textContent = d;
-    dt.textContent = '出発日：2026年8月7日（金）';
+    dt.textContent = '出発日：2026年8月9日（日）';
   } else if (d === 0) {
     el.style.fontSize = '32px';
     el.textContent = '今日！';
@@ -957,7 +1006,7 @@ function switchDay(idx) {
 
 // Today spot
 (function() {
-  const dep = new Date('2026-08-07T00:00:00');
+  const dep = new Date('2026-08-09T00:00:00');
   const now = new Date();
   const d = Math.floor((now - dep) / 86400000);
   const msgs = {
