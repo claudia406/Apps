@@ -1,0 +1,19 @@
+{
+  "name": "白馬 母娘旅行 2026",
+  "short_name": "白馬旅行",
+  "description": "母娘2人の白馬2泊3日旅行しおりアプリ",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#E8F7FC",
+  "theme_color": "#4DB8D4",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

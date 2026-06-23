@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>白馬 母娘旅行 2026</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#4DB8D4">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="白馬旅行">
+<link rel="apple-touch-icon" href="./icon.svg">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#4DB8D4;
+  --blue-d:#2B9BB8;
+  --blue-dd:#1A7A96;
+  --blue-l:#EBF8FC;
+  --green:#5BAE82;
+  --green-d:#3D8B60;
+  --green-l:#EAF5EF;
+  --white:#fff;
+  --text:#2C3E50;
+  --sub:#607D8B;
+  --border:#D4EEF7;
+  --shadow:0 2px 14px rgba(45,155,184,.13);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:-apple-system,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;
+  background:var(--blue-l);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:72px;
+  min-height:100vh;
+}
+
+/* ── Header ── */
+.app-header{
+  position:sticky;top:0;z-index:200;
+  background:linear-gradient(135deg,var(--blue-dd) 0%,var(--blue) 60%,#6ECBDF 100%);
+  color:#fff;padding:12px 16px 10px;text-align:center;
+  box-shadow:0 2px 12px rgba(0,0,0,.18);
+}
+.app-header h1{font-size:17px;font-weight:800;letter-spacing:.8px}
+.app-header p{font-size:11px;opacity:.85;margin-top:2px}
+
+/* ── Bottom Nav ── */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  display:flex;background:#fff;
+  border-top:1px solid var(--border);
+  box-shadow:0 -2px 12px rgba(0,0,0,.08);
+  padding-bottom:env(safe-area-inset-bottom,0);
+}
+.nav-btn{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  padding:7px 2px 9px;border:none;background:none;cursor:pointer;
+  color:var(--sub);font-size:9.5px;gap:2px;transition:color .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-btn .ni{font-size:21px;line-height:1;transition:transform .2s}
+.nav-btn.active{color:var(--blue-d)}
+.nav-btn.active .ni{transform:scale(1.12)}
+
+/* ── Sections ── */
+.section{display:none;padding:14px 14px 4px}
+.section.active{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ── Cards ── */
+.card{
+  background:#fff;border-radius:18px;padding:16px;
+  margin-bottom:14px;box-shadow:var(--shadow);
+}
+.card-title{font-size:16px;font-weight:700;margin-bottom:8px}
+.card-sub{font-size:13px;color:var(--sub);line-height:1.65}
+
+/* ── Section title ── */
+.sec-title{
+  font-size:20px;font-weight:800;margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ── Hero ── */
+.hero{
+  border-radius:22px;overflow:hidden;margin-bottom:14px;
+  position:relative;height:210px;
+  background:linear-gradient(135deg,var(--blue-dd) 0%,var(--blue) 45%,#7DD4B0 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#fff;text-align:center;
+}
+.hero-bg{position:absolute;inset:0}
+.hero-stars{position:absolute;top:14px;left:0;right:0;font-size:10px;opacity:.5;letter-spacing:6px;text-align:center}
+.hero-content{position:relative;z-index:2}
+.hero-emoji{font-size:44px;margin-bottom:6px;display:block}
+.hero-title{font-size:30px;font-weight:900;letter-spacing:2px;text-shadow:0 2px 8px rgba(0,0,0,.2)}
+.hero-sub{font-size:13px;opacity:.92;margin-top:3px;letter-spacing:.5px}
+.hero-wave{position:absolute;bottom:0;left:0;right:0}
+
+/* ── Countdown ── */
+.cd-card{
+  background:linear-gradient(135deg,var(--blue-dd),var(--blue));
+  color:#fff;border-radius:22px;padding:22px 16px;
+  text-align:center;margin-bottom:14px;
+  box-shadow:0 6px 24px rgba(77,184,212,.38);
+}
+.cd-label{font-size:13px;opacity:.9;margin-bottom:6px}
+.cd-num{font-size:68px;font-weight:900;line-height:1;display:inline-block}
+.cd-unit{font-size:22px;opacity:.9;vertical-align:bottom;margin-left:2px}
+.cd-date{font-size:12px;opacity:.8;margin-top:6px}
+
+/* ── Summary grid ── */
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.sum-item{
+  background:#fff;border-radius:14px;padding:14px 10px;
+  box-shadow:var(--shadow);text-align:center;
+}
+.sum-icon{font-size:24px;margin-bottom:4px}
+.sum-label{font-size:10px;color:var(--sub)}
+.sum-val{font-size:14px;font-weight:700;margin-top:2px}
+
+/* ── Highlight ── */
+.highlight{
+  background:linear-gradient(135deg,var(--green),var(--green-d));
+  color:#fff;border-radius:16px;padding:14px 16px;margin-bottom:14px;
+}
+.highlight .hl-title{font-size:12px;font-weight:700;opacity:.9;margin-bottom:6px}
+.highlight .hl-body{font-size:13px;line-height:1.6}
+
+/* ── Info rows ── */
+.ir{display:flex;align-items:flex-start;gap:7px;margin-top:7px;font-size:13px;color:var(--sub)}
+.ir-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+
+/* ── Tags ── */
+.tag{
+  display:inline-block;font-size:11px;padding:3px 9px;
+  border-radius:20px;margin:2px 3px 2px 0;font-weight:600;
+}
+.tag-b{background:var(--blue-l);color:var(--blue-d)}
+.tag-g{background:var(--green-l);color:var(--green-d)}
+.tag-o{background:#FFF3E0;color:#E65100}
+.tag-r{background:#FCE4EC;color:#C62828}
+
+/* ── Notice ── */
+.notice{
+  background:#FFF8E1;border-left:4px solid #FFB300;
+  border-radius:0 10px 10px 0;padding:10px 12px;
+  margin:10px 0;font-size:12.5px;color:#5D4037;line-height:1.6;
+}
+
+/* ── Map button ── */
+.map-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:12px;padding:9px 16px;
+  background:var(--blue-l);color:var(--blue-d);
+  border-radius:22px;font-size:13px;font-weight:700;
+  text-decoration:none;border:1.5px solid var(--border);
+  transition:background .2s;-webkit-tap-highlight-color:transparent;
+}
+.map-btn:active{background:var(--border)}
+
+/* ── Day tabs ── */
+.day-tabs{
+  display:flex;gap:8px;margin-bottom:14px;
+  position:sticky;top:57px;z-index:100;
+  padding:8px 0 4px;background:var(--blue-l);
+}
+.day-tab{
+  flex:1;padding:10px 4px;border:2px solid var(--border);
+  border-radius:14px;background:#fff;cursor:pointer;
+  text-align:center;font-size:13px;font-weight:700;
+  color:var(--sub);transition:all .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.day-tab.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.day-content{display:none}
+.day-content.active{display:block;animation:fadeIn .2s ease}
+
+/* ── Day header ── */
+.day-hdr{
+  border-radius:18px;padding:16px;margin-bottom:16px;
+  text-align:center;color:#fff;
+}
+.day-hdr .dh-num{font-size:13px;opacity:.9}
+.day-hdr .dh-title{font-size:20px;font-weight:800;margin-top:3px}
+
+/* ── Timeline ── */
+.tl{padding-left:4px}
+.tl-item{display:flex;gap:12px;margin-bottom:0}
+.tl-line{display:flex;flex-direction:column;align-items:center;min-width:26px}
+.tl-dot{
+  width:13px;height:13px;border-radius:50%;
+  background:var(--blue);border:2.5px solid #fff;
+  box-shadow:0 0 0 2.5px var(--blue);
+  flex-shrink:0;margin-top:4px;
+}
+.tl-dot.g{background:var(--green);box-shadow:0 0 0 2.5px var(--green)}
+.tl-connector{flex:1;width:2px;background:var(--border);min-height:18px}
+.tl-body{flex:1;padding-bottom:18px}
+.tl-time{font-size:11px;color:var(--sub);margin-bottom:2px}
+.tl-title{font-size:15px;font-weight:700}
+.tl-detail{font-size:13px;color:var(--sub);margin-top:5px;line-height:1.65}
+
+/* ── Restaurant cards ── */
+.rc{
+  background:#fff;border-radius:14px;padding:15px;
+  margin-bottom:12px;border:1.5px solid var(--border);
+}
+.rc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.rc-name{font-size:15px;font-weight:700;line-height:1.3}
+.badge{font-size:10.5px;padding:3px 9px;border-radius:20px;font-weight:700;flex-shrink:0;margin-left:6px}
+.badge-l{background:#FFF3E0;color:#E65100}
+.badge-d{background:#FCE4EC;color:#C62828}
+.badge-b{background:#E8F5E9;color:#2E7D32}
+.badge-c{background:#E3F2FD;color:#1565C0}
+.food-cat{
+  font-size:11px;font-weight:800;color:var(--blue-d);
+  letter-spacing:.6px;text-transform:uppercase;
+  margin-bottom:12px;padding-bottom:8px;
+  border-bottom:2px solid var(--blue-l);
+}
+
+/* ── Spot image placeholder ── */
+.spot-img{
+  height:150px;border-radius:14px;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:52px;overflow:hidden;
+}
+
+/* ── Map list ── */
+.map-list{list-style:none}
+.map-item{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 0;border-bottom:1px solid var(--border);
+}
+.map-item:last-child{border-bottom:none}
+.map-icon{font-size:22px;width:32px;text-align:center;flex-shrink:0}
+.map-info{flex:1}
+.map-name{font-size:15px;font-weight:700}
+.map-addr{font-size:11.5px;color:var(--sub);margin-top:2px}
+.map-go{font-size:22px;text-decoration:none;color:var(--blue);-webkit-tap-highlight-color:transparent}
+
+/* ── Packing ── */
+.pk-cat{
+  font-size:14px;font-weight:700;color:var(--blue-d);
+  margin-bottom:12px;padding-bottom:7px;
+  border-bottom:2px solid var(--blue-l);
+  display:flex;align-items:center;gap:8px;
+}
+.pk-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:10px 0;border-bottom:1px solid #F3F3F3;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.pk-item:last-child{border-bottom:none}
+.pk-box{
+  width:22px;height:22px;border-radius:7px;
+  border:2px solid var(--border);flex-shrink:0;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:#fff;transition:all .2s;
+}
+.pk-box.on{background:var(--blue);border-color:var(--blue)}
+.pk-label{font-size:14px;flex:1}
+.pk-note{font-size:11.5px;color:var(--sub);margin-top:2px}
+.pk-item.done .pk-label{text-decoration:line-through;color:var(--sub)}
+
+/* ── Reset btn ── */
+.reset-btn{
+  display:block;width:100%;padding:12px;
+  border:2px solid var(--border);border-radius:14px;
+  background:#fff;color:var(--sub);font-size:13px;
+  font-weight:600;cursor:pointer;margin-top:4px;
+  -webkit-tap-highlight-color:transparent;
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <h1>🏔 白馬 母娘旅行 2026</h1>
+  <p>2泊3日 北アルプスの夏旅</p>
+</header>
+
+<!-- ══════════ HOME ══════════ -->
+<section id="s-home" class="section active">
+
+  <div class="hero">
+    <svg class="hero-bg" viewBox="0 0 400 210" preserveAspectRatio="none">
+      <polygon points="0,210 70,90 140,150 210,50 280,120 350,70 400,100 400,210" fill="white" opacity=".18"/>
+      <polygon points="0,210 90,110 170,160 240,70 310,130 380,85 400,110 400,210" fill="white" opacity=".12"/>
+      <circle cx="330" cy="40" r="28" fill="#FFE88A" opacity=".55"/>
+    </svg>
+    <div class="hero-stars">★ ★ ★ ★ ★</div>
+    <div class="hero-content">
+      <span class="hero-emoji">🏔️</span>
+      <div class="hero-title">白 馬</div>
+      <div class="hero-sub">HAKUBA, NAGANO 2026</div>
+    </div>
+    <svg class="hero-wave" viewBox="0 0 400 30" preserveAspectRatio="none">
+      <path d="M0,20 Q100,0 200,15 Q300,30 400,10 L400,30 L0,30 Z" fill="#EBF8FC"/>
+    </svg>
+  </div>
+
+  <div class="cd-card">
+    <div class="cd-label">✈️ 出発まで</div>
+    <div>
+      <span class="cd-num" id="cd-num">--</span><span class="cd-unit"> 日</span>
+    </div>
+    <div class="cd-date" id="cd-date">出発日：2026年8月7日（金）</div>
+  </div>
+
+  <div class="sum-grid">
+    <div class="sum-item"><div class="sum-icon">🗓️</div><div class="sum-label">旅行期間</div><div class="sum-val">2泊3日</div></div>
+    <div class="sum-item"><div class="sum-icon">🚄</div><div class="sum-label">出発地</div><div class="sum-val">横浜</div></div>
+    <div class="sum-item"><div class="sum-icon">📍</div><div class="sum-label">エリア</div><div class="sum-val">白馬・大町</div></div>
+    <div class="sum-item"><div class="sum-icon">🌿</div><div class="sum-label">シーズン</div><div class="sum-val">8月上旬</div></div>
+  </div>
+
+  <div class="highlight">
+    <div class="hl-title">📌 今日のひとこと</div>
+    <div class="hl-body" id="today-msg">旅行前：持ち物チェックリストを確認しましょう！</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🏩 宿泊先</div>
+    <div style="margin-bottom:14px">
+      <div style="font-size:11px;font-weight:800;color:var(--blue-d);letter-spacing:.5px;margin-bottom:6px">1泊目 ｜ Day 1</div>
+      <div style="font-size:15px;font-weight:700">白馬龍神温泉 RYOKAN SUI</div>
+      <div class="ir"><span class="ir-icon">📍</span><span>〒399-9211 長野県北安曇郡白馬村神城21396</span></div>
+      <div class="ir"><span class="ir-icon">📞</span><span>0261-85-2803</span></div>
+      <div class="ir"><span class="ir-icon">🕐</span><span>チェックイン 15:00 / チェックアウト 10:00</span></div>
+      <div class="ir"><span class="ir-icon">🚉</span><span>JR大糸線「神城駅」より徒歩約5分</span></div>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:14px">
+      <div style="font-size:11px;font-weight:800;color:var(--blue-d);letter-spacing:.5px;margin-bottom:6px">2泊目 ｜ Day 2</div>
+      <div style="font-size:15px;font-weight:700">プチホテル アンシャンテ</div>
+      <div class="card-sub" style="margin-top:6px">全7室の隠れ家宿。シェフこだわりのフランスコース料理とソムリエ厳選ワインが自慢の美食宿。</div>
+      <div class="ir"><span class="ir-icon">📞</span><span>公式サイト enchante898.com で要確認</span></div>
+      <div class="ir"><span class="ir-icon">🕐</span><span>チェックイン 15:00 / チェックアウト 10:00</span></div>
+      <div class="ir"><span class="ir-icon">🚌</span><span>JR白馬駅・八方バスターミナルより送迎あり（要確認）</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🚄 アクセス概要</div>
+    <div class="card-sub">横浜 → 【新幹線】→ 長野 → 【バス】→ 白馬</div>
+    <div style="margin-top:10px;font-size:13px;color:var(--sub);line-height:1.7">
+      ・白馬内の移動はバス・タクシー・徒歩<br>
+      ・レンタカーなし<br>
+      ・八方バスターミナルが白馬散策の拠点
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════ ITINERARY ══════════ -->
+<section id="s-itinerary" class="section">
+  <h2 class="sec-title">🗺 旅程</h2>
+
+  <div class="day-tabs">
+    <button class="day-tab active" onclick="switchDay(0)">Day 1</button>
+    <button class="day-tab" onclick="switchDay(1)">Day 2</button>
+    <button class="day-tab" onclick="switchDay(2)">Day 3</button>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="day-content active" id="dc0">
+    <div class="day-hdr" style="background:linear-gradient(135deg,var(--blue-dd),var(--blue))">
+      <div class="dh-num">Day 1 ｜ 8月7日（金）</div>
+      <div class="dh-title">横浜 → 白馬へ！</div>
+    </div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">午前</div>
+          <div class="tl-title">🚄 横浜出発</div>
+          <div class="tl-detail">新幹線で長野駅へ。長野駅からバスで白馬へ向かいます。白馬到着後は荷物を預けて観光スタート！</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">お昼</div>
+          <div class="tl-title">🍕 ランチ</div>
+          <div class="tl-detail">
+            <strong>候補①</strong> ガーリック白馬（ピザ・パスタ）<br>
+            <strong>候補②</strong> 呑者屋（そば・ジンギスカン）<br>
+            <span class="tag tag-o" style="margin-top:6px;display:inline-block">詳細はグルメページへ</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">午後</div>
+          <div class="tl-title">🚡 岩岳マウンテンリゾート</div>
+          <div class="tl-detail">
+            ゴンドラで山頂へ。HAKUBA MOUNTAIN HARBORの絶景テラス、ヤッホースイング、ベーカリーを満喫！<br>
+            <span class="tag tag-b" style="margin-top:6px;display:inline-block">入場料 大人 ¥2,900〜</span>
+            <span class="tag tag-g">営業 8:30〜17:00</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot g"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">夕方 15:00〜</div>
+          <div class="tl-title">🏩 RYOKAN SUI チェックイン</div>
+          <div class="tl-detail">白馬龍神温泉 RYOKAN SUI。神城駅から徒歩約5分の温泉旅館。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">夕方〜夜</div>
+          <div class="tl-title">♨️ 温泉でのんびり</div>
+          <div class="tl-detail">龍神の湯で旅の疲れをほぐして。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">夜</div>
+          <div class="tl-title">🍽️ 宿で夕食</div>
+          <div class="tl-detail">旬の食材を使った夕食を宿でいただきます。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">就寝前</div>
+          <div class="tl-title">⭐ 星空観賞</div>
+          <div class="tl-detail">標高の高い白馬は星空が格別。宿の外で満天の星を眺めましょう。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-content" id="dc1">
+    <div class="day-hdr" style="background:linear-gradient(135deg,var(--blue-d),var(--blue))">
+      <div class="dh-num">Day 2 ｜ 8月8日（土）</div>
+      <div class="dh-title">ハイキング & 白馬散策</div>
+    </div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">朝食</div>
+          <div class="tl-title">☕ 近くのカフェで朝食</div>
+          <div class="tl-detail">
+            ハイキング前のエネルギーチャージ！<br>
+            <strong>候補①</strong> Lion Cafe（八方エリア、8:30〜）<br>
+            <strong>候補②</strong> What's Good Cafe（北城エリア、8:00〜）
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">午前</div>
+          <div class="tl-title">🥾 八方池ハイキング</div>
+          <div class="tl-detail">
+            ゴンドラ＆リフトで山上へ。往復2〜3時間。初心者OK！<br>
+            北アルプスを映す神秘の池が待っています。<br>
+            <span class="tag tag-g" style="margin-top:6px;display:inline-block">難易度：初心者OK</span>
+            <span class="tag tag-b">往復 2〜3時間</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">お昼</div>
+          <div class="tl-title">🍝 ランチ</div>
+          <div class="tl-detail">
+            <strong>候補①</strong> ピラール（八方尾根 山頂イタリアン・絶景）※LO 13:00<br>
+            <strong>候補②</strong> Sounds Like Cafe（ハンバーガー）<br>
+            <div class="notice" style="margin-top:8px">⚠️ Sounds Like Cafe は土・日・祝定休です。8月7〜9日の場合はピラールをおすすめします。</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">午後</div>
+          <div class="tl-title">🌸 大出公園</div>
+          <div class="tl-detail">白馬三山を背景に、吊り橋と田園風景が絵になる絶景フォトスポット。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">午後〜夕方</div>
+          <div class="tl-title">🛍️ 白馬村散策</div>
+          <div class="tl-detail">
+            <strong>Snow Peak LAND STATION HAKUBA</strong><br>
+            スノーピーク旗艦施設。ショップ・スタバ・観光案内所が集結。<br><br>
+            <strong>白馬焙煎工房</strong><br>
+            フィンランドログハウスのスペシャルティコーヒー専門店でひと休み。
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot g"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">夕方 15:00〜</div>
+          <div class="tl-title">🏩 アンシャンテ チェックイン</div>
+          <div class="tl-detail">プチホテル アンシャンテ。全7室の隠れ家ホテルへ。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot g"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">夜</div>
+          <div class="tl-title">🍷 宿でフランスコースディナー</div>
+          <div class="tl-detail">アンシャンテのシェフ自慢のフランス料理コースをソムリエ厳選ワインとともに。今夜のメインイベント！</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">就寝前</div>
+          <div class="tl-title">🌙 夜散歩</div>
+          <div class="tl-detail">みそら野エリアをゆっくり夜散歩。静かな避暑地の夜の空気を楽しんで。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-content" id="dc2">
+    <div class="day-hdr" style="background:linear-gradient(135deg,var(--green-d),var(--green))">
+      <div class="dh-num">Day 3 ｜ 8月9日（日）</div>
+      <div class="dh-title">青木湖 & 帰路へ</div>
+    </div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot g"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">朝食</div>
+          <div class="tl-title">☕ 宿で朝食</div>
+          <div class="tl-detail">アンシャンテの朝食でゆったりスタート。最終日も素敵な旅を。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot g"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">午前</div>
+          <div class="tl-title">🏞️ 青木湖</div>
+          <div class="tl-detail">
+            透明度抜群の神秘の湖。湖畔散歩はもちろん、SUP・カヌーも楽しめます。<br>
+            <span class="tag tag-b" style="margin-top:6px;display:inline-block">湖畔散歩</span>
+            <span class="tag tag-g">SUP体験</span>
+            <span class="tag tag-g">カヌー</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot g"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">お昼</div>
+          <div class="tl-title">🌊 ao LAKESIDE CAFE</div>
+          <div class="tl-detail">
+            青木湖畔の絶景カフェ。信州産・旬の食材を使ったランチと、湖を望む至福のひととき。<br>
+            <span class="tag tag-b" style="margin-top:6px;display:inline-block">営業 8:00〜21:00</span>
+            <span class="tag tag-o">定休日：水曜</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">午後</div>
+          <div class="tl-title">🎁 長野駅でお土産</div>
+          <div class="tl-detail">
+            <strong>八幡屋礒五郎</strong>　七味唐辛子の老舗<br>
+            <strong>雷鳥の里</strong>　信州銘菓の定番ウエハース<br>
+            <strong>みすゞ飴</strong>　フルーツ風味の信州ゼリー
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-time">夕方</div>
+          <div class="tl-title">🏠 横浜へ帰宅</div>
+          <div class="tl-detail">新幹線で横浜へ。素敵な思い出と一緒に帰りましょう。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOD ══════════ -->
+<section id="s-food" class="section">
+  <h2 class="sec-title">🍽️ グルメガイド</h2>
+
+  <!-- Day1 Lunch -->
+  <div class="card">
+    <div class="food-cat">Day 1 ランチ</div>
+    <div class="rc">
+      <div class="rc-top">
+        <div class="rc-name">🍕 ガーリック白馬（GARLIC）</div>
+        <div class="badge badge-l">ランチ</div>
+      </div>
+      <div class="card-sub">白馬みそら野の人気ピザ・パスタ専門店。注文ごとに生地をのばす本格ローマ風ピザが絶品。事前予約を推奨。</div>
+      <div class="ir"><span class="ir-icon">🕐</span><span>11:00〜15:00 / 18:00〜21:00</span></div>
+      <div class="ir"><span class="ir-icon">📅</span><span>定休日：水曜</span></div>
+      <div class="ir"><span class="ir-icon">📍</span><span>長野県北安曇郡白馬村みそら野828-120</span></div>
+      <div class="ir"><span class="ir-icon">📞</span><span>0261-72-6490</span></div>
+      <a class="map-btn" href="https://maps.google.com/?q=長野県北安曇郡白馬村みそら野828-120" target="_blank">📍 地図を開く</a>
+    </div>
+    <div class="rc" style="margin-top:10px">
+      <div class="rc-top">
+        <div class="rc-name">🍜 呑者屋（のんじゃえ）</div>
+        <div class="badge badge-l">ランチ</div>
+      </div>
+      <div class="card-sub">白馬村の人気居酒屋。そばとジンギスカンが名物。ランチタイムも営業。夏はテラスでペット同伴可。</div>
+      <div class="ir"><span class="ir-icon">🕐</span><span>10:30〜21:00（LO 20:00）</span></div>
+      <div class="ir"><span class="ir-icon">📅</span><span>定休日：木曜</span></div>
+      <div class="ir"><span class="ir-icon">📍</span><span>長野県北安曇郡白馬村北城3020-106</span></div>
+      <div class="ir"><span class="ir-icon">📞</span><span>0261-72-5566</span></div>
+      <a class="map-btn" href="https://maps.google.com/?q=長野県北安曇郡白馬村北城3020-106" target="_blank">📍 地図を開く</a>
+    </div>
+  </div>
+
+  <!-- Day2 Breakfast -->
+  <div class="card">
+    <div class="food-cat">Day 2 朝食</div>
+    <div class="notice">ハイキング出発前に近くのカフェでエネルギーチャージ！</div>
+    <div class="rc">
+      <div class="rc-top">
+        <div class="rc-name">🦁 Lion Cafe</div>
+        <div class="badge badge-b">モーニング</div>
+      </div>
+      <div class="card-sub">白馬八方エリアのカフェ。明るく開放感のある店内で朝食を。ハイキング前の拠点づくりに最適。</div>
+      <div class="ir"><span class="ir-icon">🕐</span><span>8:30〜（詳細は現地確認を推奨）</span></div>
+      <div class="ir"><span class="ir-icon">📍</span><span>白馬村八方エリア</span></div>
+      <a class="map-btn" href="https://maps.google.com/?q=Lion+Cafe+白馬+八方" target="_blank">📍 地図を開く</a>
+    </div>
+    <div class="rc" style="margin-top:10px">
+      <div class="rc-top">
+        <div class="rc-name">☕ What's Good Cafe</div>
+        <div class="badge badge-b">モーニング</div>
+      </div>
+      <div class="card-sub">白馬北城の注目カフェ。洗練された空間でコーヒー・チャイ・スムージーを。コーヒーが苦手な方も安心。</div>
+      <div class="ir"><span class="ir-icon">🕐</span><span>8:00〜（詳細は現地確認を推奨）</span></div>
+      <div class="ir"><span class="ir-icon">📍</span><span>白馬村北城エリア</span></div>
+      <a class="map-btn" href="https://maps.google.com/?q=What's+Good+Cafe+白馬" target="_blank">📍 地図を開く</a>
+    </div>
+  </div>
+
+  <!-- Day2 Lunch -->
+  <div class="card">
+    <div class="food-cat">Day 2 ランチ</div>
+    <div class="notice">⚠️ Sounds Like Cafe は土・日・祝日定休です。8月7〜9日のご旅行の場合、土曜はピラールをご選択ください。</div>
+    <div class="rc">
+      <div class="rc-top">
+        <div class="rc-name">🍝 ピラール（Pilar）</div>
+        <div class="badge badge-l">ランチ</div>
+      </div>
+      <div class="card-sub">八方尾根・標高1,680mの絶景イタリアン。ゴンドラ＆リフトでアクセス。八方池ハイキングと合わせて立ち寄れる山上レストラン。</div>
+      <div class="ir"><span class="ir-icon">🕐</span><span>レストラン 11:30〜15:00（LO 13:00）/ カフェ 9:00〜15:40</span></div>
+      <div class="ir"><span class="ir-icon">📅</span><span>定休日：火曜（レストランのみ）</span></div>
+      <div class="ir"><span class="ir-icon">📍</span><span>八方尾根スキー場内（ゴンドラ＆リフトで登山）</span></div>
+      <div class="ir"><span class="ir-icon">📞</span><span>0261-72-8438</span></div>
+      <a class="map-btn" href="https://maps.google.com/?q=ピラール+白馬+八方尾根" target="_blank">📍 地図を開く</a>
+    </div>
+    <div class="rc" style="margin-top:10px">
+      <div class="rc-top">
+        <div class="rc-name">🍔 Sounds Like Cafe</div>
+        <div class="badge badge-c">カフェ</div>
+      </div>
+      <div class="card-sub">白馬エコーランドの人気カフェ。海外仕込みのコーヒーとボリューム満点のチキンバーガーが有名。</div>
+      <div class="ir"><span class="ir-icon">🕐</span><span>9:30〜16:00（フードLO 15:00）</span></div>
+      <div class="ir"><span class="ir-icon">📅</span><span style="color:#C62828;font-weight:700">定休日：土・日・祝（⚠️ 週末旅行の方は注意）</span></div>
+      <div class="ir"><span class="ir-icon">📞</span><span>0261-72-2040</span></div>
+      <a class="map-btn" href="https://maps.google.com/?q=Sounds+Like+Cafe+白馬" target="_blank">📍 地図を開く</a>
+    </div>
+  </div>
+
+  <!-- Day2 Dinner -->
+  <div class="card">
+    <div class="food-cat">Day 2 夕食</div>
+    <div style="background:linear-gradient(135deg,var(--green-l),#D6F0E4);border-radius:14px;padding:16px;border:1.5px solid var(--green-l)">
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px">🍷 アンシャンテで特別ディナー</div>
+      <div class="card-sub">宿泊先のプチホテル アンシャンテにて、シェフこだわりのフランスコース料理をいただきます。ソムリエ厳選ワインとのペアリングも楽しみ。</div>
+      <div class="ir"><span class="ir-icon">✨</span><span>今夜のメインイベント。ゆっくりと味わいましょう。</span></div>
+    </div>
+  </div>
+
+  <!-- Day3 Lunch -->
+  <div class="card">
+    <div class="food-cat">Day 3 ランチ</div>
+    <div class="rc">
+      <div class="rc-top">
+        <div class="rc-name">🌊 ao LAKESIDE CAFE</div>
+        <div class="badge badge-l">ランチ</div>
+      </div>
+      <div class="card-sub">青木湖畔の絶景カフェ。信州産・旬の食材を使ったランチメニューが充実。SUP・カヌー後のひと休みにも最適。駐車場100台完備。</div>
+      <div class="ir"><span class="ir-icon">🕐</span><span>8:00〜21:00（フードLO 20:00 / ドリンクLO 20:30）</span></div>
+      <div class="ir"><span class="ir-icon">📅</span><span>定休日：水曜</span></div>
+      <div class="ir"><span class="ir-icon">📍</span><span>長野県大町市平21462-1</span></div>
+      <div class="ir"><span class="ir-icon">📞</span><span>0261-85-4010</span></div>
+      <a class="map-btn" href="https://maps.google.com/?q=ao+LAKESIDE+CAFE+青木湖+大町" target="_blank">📍 地図を開く</a>
+    </div>
+  </div>
+
+  <div class="notice">💡 掲載情報は変更されることがあります。訪問前にお電話やウェブで最新情報のご確認をおすすめします。</div>
+</section>
+
+<!-- ══════════ SPOTS ══════════ -->
+<section id="s-spots" class="section">
+  <h2 class="sec-title">📍 観光スポット</h2>
+
+  <!-- 岩岳 -->
+  <div class="card">
+    <div class="spot-img" style="background:linear-gradient(135deg,#2B9BB8,#7DD4B0)">🚡</div>
+    <div class="card-title">🚡 岩岳マウンテンリゾート</div>
+    <div style="margin-bottom:10px">
+      <span class="tag tag-b">Day 1</span>
+      <span class="tag tag-o">所要 3〜4時間</span>
+      <span class="tag tag-g">入場 ¥2,900〜</span>
+    </div>
+    <div class="card-sub" style="margin-bottom:12px">北アルプスを望む360°の絶景リゾート。グリーンシーズンは様々なアクティビティが楽しめます。</div>
+    <div style="font-weight:700;font-size:13px;color:var(--blue-d);margin-bottom:7px">見どころ</div>
+    <div class="ir"><span class="ir-icon">🎠</span><span>ゴンドラで標高1,289mへ（往復乗り放題）</span></div>
+    <div class="ir"><span class="ir-icon">☕</span><span>HAKUBA MOUNTAIN HARBOR（絶景テラスカフェ、8:45〜16:30）</span></div>
+    <div class="ir"><span class="ir-icon">🛼</span><span>ヤッホースイング（絶叫！崖から飛び出すブランコ）</span></div>
+    <div class="ir"><span class="ir-icon">🥐</span><span>山頂ベーカリー</span></div>
+    <div class="ir"><span class="ir-icon">⛰️</span><span>北アルプスの絶景パノラマ</span></div>
+    <div style="font-weight:700;font-size:13px;color:var(--blue-d);margin:12px 0 7px">基本情報</div>
+    <div class="ir"><span class="ir-icon">🕐</span><span>8:30〜17:00（ゴンドラ上り最終 16:20）</span></div>
+    <div class="ir"><span class="ir-icon">📅</span><span>グリーンシーズン〜2026年11月15日</span></div>
+    <div class="notice" style="margin-top:12px">☔ <strong>雨天時：</strong>HAKUBA MOUNTAIN HARBOR でのんびりカフェタイムを楽しみましょう。</div>
+    <a class="map-btn" href="https://maps.google.com/?q=白馬岩岳マウンテンリゾート" target="_blank">📍 地図を開く</a>
+  </div>
+
+  <!-- 八方池 -->
+  <div class="card">
+    <div class="spot-img" style="background:linear-gradient(135deg,#1A7BA4,#4DB8D4)">🏔️</div>
+    <div class="card-title">🏔️ 八方池</div>
+    <div style="margin-bottom:10px">
+      <span class="tag tag-b">Day 2</span>
+      <span class="tag tag-g">初心者OK</span>
+      <span class="tag tag-o">往復 2〜3時間</span>
+    </div>
+    <div class="card-sub" style="margin-bottom:12px">標高2,060mにある神秘の池。晴れた日には逆さ白馬三山が水面に映り込む、白馬随一の絶景スポット。</div>
+    <div style="font-weight:700;font-size:13px;color:var(--blue-d);margin-bottom:7px">コース情報</div>
+    <div class="ir"><span class="ir-icon">🚡</span><span>ゴンドラ＋リフト2本で登山口へ（八方アルペンライン）</span></div>
+    <div class="ir"><span class="ir-icon">🥾</span><span>登山口〜八方池：片道約1〜1.5時間</span></div>
+    <div class="ir"><span class="ir-icon">⛰️</span><span>難易度：初級（木道整備済み）</span></div>
+    <div class="ir"><span class="ir-icon">🌸</span><span>7〜8月は高山植物が見ごろ</span></div>
+    <div style="font-weight:700;font-size:13px;color:var(--blue-d);margin:12px 0 7px">持ち物チェック</div>
+    <div class="ir"><span class="ir-icon">👟</span><span>歩きやすいスニーカー（スニーカーでOK）</span></div>
+    <div class="ir"><span class="ir-icon">🧴</span><span>日焼け止め必須（高山の紫外線は強い）</span></div>
+    <div class="ir"><span class="ir-icon">🧥</span><span>山上は涼しい・風が強いことも。薄手羽織り持参を</span></div>
+    <div class="ir"><span class="ir-icon">💧</span><span>飲み物は多めに（山上自販機なし）</span></div>
+    <div class="notice" style="margin-top:12px">☔ <strong>雨天時：</strong>ゴンドラ運休の可能性あり。大出公園散策や白馬村カフェ巡りに変更。</div>
+    <a class="map-btn" href="https://maps.google.com/?q=八方池+白馬村" target="_blank">📍 地図を開く</a>
+  </div>
+
+  <!-- 大出公園 -->
+  <div class="card">
+    <div class="spot-img" style="background:linear-gradient(135deg,#5BAE82,#A8DFC0)">🌸</div>
+    <div class="card-title">🌸 大出公園</div>
+    <div style="margin-bottom:10px">
+      <span class="tag tag-b">Day 2</span>
+      <span class="tag tag-g">散歩気分</span>
+      <span class="tag tag-g">入場無料</span>
+    </div>
+    <div class="card-sub" style="margin-bottom:12px">白馬三山を背景に、茅葺き屋根の民家と吊り橋が絵になる白馬の定番フォトスポット。写真映えは抜群！</div>
+    <div class="ir"><span class="ir-icon">📸</span><span>白馬三山と吊り橋の絶景は白馬屈指のフォトスポット</span></div>
+    <div class="ir"><span class="ir-icon">🚶</span><span>散歩しながらのんびり楽しめます（30〜60分）</span></div>
+    <div class="ir"><span class="ir-icon">🌿</span><span>夏は緑が鮮やかで爽やかな開放感</span></div>
+    <div class="ir"><span class="ir-icon">🕐</span><span>滞在目安：30〜60分</span></div>
+    <div class="notice" style="margin-top:12px">☔ <strong>雨天時：</strong>雨の白馬三山も幻想的な雰囲気。軽い雨なら傘を差して散歩を。</div>
+    <a class="map-btn" href="https://maps.google.com/?q=大出公園+白馬村" target="_blank">📍 地図を開く</a>
+  </div>
+
+  <!-- 青木湖 -->
+  <div class="card">
+    <div class="spot-img" style="background:linear-gradient(135deg,#1A6B8A,#4DB8D4)">🏞️</div>
+    <div class="card-title">🏞️ 青木湖</div>
+    <div style="margin-bottom:10px">
+      <span class="tag tag-b">Day 3</span>
+      <span class="tag tag-o">半日</span>
+    </div>
+    <div class="card-sub" style="margin-bottom:12px">北アルプスを映す透明度抜群の湖。静かな湖面でSUPやカヌーを楽しめる、信州屈指のフォトジェニックスポット。</div>
+    <div class="ir"><span class="ir-icon">🚣</span><span>SUP・カヌーの体験ツアー（要予約推奨）</span></div>
+    <div class="ir"><span class="ir-icon">🚶</span><span>湖畔の遊歩道をのんびり散歩</span></div>
+    <div class="ir"><span class="ir-icon">📸</span><span>逆さ北アルプスが映る撮影スポット</span></div>
+    <div class="ir"><span class="ir-icon">☕</span><span>ao LAKESIDE CAFE で湖畔ランチ</span></div>
+    <div class="notice" style="margin-top:12px">☔ <strong>雨天時：</strong>湖畔カフェでのんびり。霧に包まれた青木湖も幻想的な美しさです。</div>
+    <a class="map-btn" href="https://maps.google.com/?q=青木湖+大町市" target="_blank">📍 地図を開く</a>
+  </div>
+
+  <!-- Snow Peak -->
+  <div class="card">
+    <div class="spot-img" style="background:linear-gradient(135deg,#607D8B,#90A4AE)">⛺</div>
+    <div class="card-title">⛺ Snow Peak LAND STATION HAKUBA</div>
+    <div style="margin-bottom:10px">
+      <span class="tag tag-b">Day 2</span>
+      <span class="tag tag-o">ショッピング</span>
+    </div>
+    <div class="card-sub" style="margin-bottom:12px">スノーピークの白馬拠点施設。ショップ・スターバックス・観光案内所が集まり、お土産選びにも最適。</div>
+    <div class="ir"><span class="ir-icon">🛒</span><span>スノーピークショップ：11:00〜19:00（年中無休）</span></div>
+    <div class="ir"><span class="ir-icon">☕</span><span>スターバックス：8:00〜21:00（年中無休）</span></div>
+    <div class="ir"><span class="ir-icon">ℹ️</span><span>白馬村観光局インフォメーション：9:00〜17:00</span></div>
+    <div class="ir"><span class="ir-icon">📍</span><span>長野県北安曇郡白馬村北城5497</span></div>
+    <a class="map-btn" href="https://maps.google.com/?q=Snow+Peak+LAND+STATION+HAKUBA" target="_blank">📍 地図を開く</a>
+  </div>
+
+</section>
+
+<!-- ══════════ MAP ══════════ -->
+<section id="s-map" class="section">
+  <h2 class="sec-title">🗺️ マップ</h2>
+  <div class="card">
+    <div class="card-title">📍 主要スポット一覧</div>
+    <div class="card-sub" style="margin-bottom:14px">タップして地図アプリで開けます</div>
+    <ul class="map-list">
+      <li class="map-item">
+        <div class="map-icon">🚡</div>
+        <div class="map-info"><div class="map-name">岩岳マウンテンリゾート</div><div class="map-addr">長野県北安曇郡白馬村北城 ｜ Day 1</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=白馬岩岳マウンテンリゾート" target="_blank">↗</a>
+      </li>
+      <li class="map-item">
+        <div class="map-icon">🏩</div>
+        <div class="map-info"><div class="map-name">RYOKAN SUI</div><div class="map-addr">白馬村神城21396 ｜ 1泊目</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=白馬龍神温泉+RYOKAN+SUI" target="_blank">↗</a>
+      </li>
+      <li class="map-item">
+        <div class="map-icon">🏔️</div>
+        <div class="map-info"><div class="map-name">八方池（八方尾根）</div><div class="map-addr">白馬八方アルペンライン ｜ Day 2</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=八方池+白馬村" target="_blank">↗</a>
+      </li>
+      <li class="map-item">
+        <div class="map-icon">🌸</div>
+        <div class="map-info"><div class="map-name">大出公園</div><div class="map-addr">長野県北安曇郡白馬村北城 ｜ Day 2</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=大出公園+白馬村" target="_blank">↗</a>
+      </li>
+      <li class="map-item">
+        <div class="map-icon">⛺</div>
+        <div class="map-info"><div class="map-name">Snow Peak LAND STATION</div><div class="map-addr">白馬村北城5497 ｜ Day 2</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=Snow+Peak+LAND+STATION+HAKUBA" target="_blank">↗</a>
+      </li>
+      <li class="map-item">
+        <div class="map-icon">☕</div>
+        <div class="map-info"><div class="map-name">白馬焙煎工房</div><div class="map-addr">白馬村北城3335-1 ｜ Day 2</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=白馬焙煎工房" target="_blank">↗</a>
+      </li>
+      <li class="map-item">
+        <div class="map-icon">🏩</div>
+        <div class="map-info"><div class="map-name">プチホテル アンシャンテ</div><div class="map-addr">白馬村（詳細は宿で確認） ｜ 2泊目</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=プチホテル+アンシャンテ+白馬" target="_blank">↗</a>
+      </li>
+      <li class="map-item">
+        <div class="map-icon">🏞️</div>
+        <div class="map-info"><div class="map-name">青木湖</div><div class="map-addr">長野県大町市平 ｜ Day 3</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=青木湖+大町市" target="_blank">↗</a>
+      </li>
+      <li class="map-item">
+        <div class="map-icon">🌊</div>
+        <div class="map-info"><div class="map-name">ao LAKESIDE CAFE</div><div class="map-addr">長野県大町市平21462-1 ｜ Day 3</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=ao+LAKESIDE+CAFE+青木湖" target="_blank">↗</a>
+      </li>
+      <li class="map-item">
+        <div class="map-icon">🎁</div>
+        <div class="map-info"><div class="map-name">長野駅（お土産）</div><div class="map-addr">長野県長野市 ｜ Day 3</div></div>
+        <a class="map-go" href="https://maps.google.com/?q=長野駅" target="_blank">↗</a>
+      </li>
+    </ul>
+  </div>
+  <div class="notice">💡 地図リンクをタップするとGoogle マップが開きます。オフライン利用に備え、事前にGoogle マップで各スポットをダウンロードしておくことをおすすめします。</div>
+</section>
+
+<!-- ══════════ PACKING ══════════ -->
+<section id="s-packing" class="section">
+  <h2 class="sec-title">🎒 持ち物リスト</h2>
+  <div class="card-sub" style="margin-bottom:14px;font-size:13px;color:var(--sub)">タップでチェック。8月上旬の白馬向けリストです。</div>
+
+  <div class="card">
+    <div class="pk-cat">👕 ウェア・ファッション</div>
+    <div id="pk-wear"></div>
+  </div>
+  <div class="card">
+    <div class="pk-cat">🔑 必需品</div>
+    <div id="pk-must"></div>
+  </div>
+  <div class="card">
+    <div class="pk-cat">🥾 アウトドア</div>
+    <div id="pk-out"></div>
+  </div>
+  <div class="card">
+    <div class="pk-cat">💄 スキンケア・美容</div>
+    <div id="pk-beauty"></div>
+  </div>
+
+  <button class="reset-btn" onclick="resetPk()">チェックをリセット</button>
+</section>
+
+<!-- ══════════ BOTTOM NAV ══════════ -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" onclick="go('home',this)"><span class="ni">🏠</span><span>ホーム</span></button>
+  <button class="nav-btn" onclick="go('itinerary',this)"><span class="ni">🗺️</span><span>旅程</span></button>
+  <button class="nav-btn" onclick="go('food',this)"><span class="ni">🍽️</span><span>グルメ</span></button>
+  <button class="nav-btn" onclick="go('spots',this)"><span class="ni">📍</span><span>スポット</span></button>
+  <button class="nav-btn" onclick="go('map',this)"><span class="ni">🗺</span><span>マップ</span></button>
+  <button class="nav-btn" onclick="go('packing',this)"><span class="ni">🎒</span><span>持ち物</span></button>
+</nav>
+
+<script>
+// Navigation
+function go(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('s-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Day tabs
+function switchDay(idx) {
+  document.querySelectorAll('.day-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  document.querySelectorAll('.day-content').forEach((c, i) => c.classList.toggle('active', i === idx));
+}
+
+// Countdown
+(function() {
+  const dep = new Date('2026-08-07T00:00:00');
+  const now = new Date();
+  const d = Math.ceil((dep - now) / 86400000);
+  const el = document.getElementById('cd-num');
+  const dt = document.getElementById('cd-date');
+  if (d > 0) {
+    el.textContent = d;
+    dt.textContent = '出発日：2026年8月7日（金）';
+  } else if (d === 0) {
+    el.style.fontSize = '32px';
+    el.textContent = '今日！';
+    dt.textContent = '🎉 いよいよ旅行当日！素敵な旅を！';
+  } else if (d > -4) {
+    el.style.fontSize = '32px';
+    el.textContent = ['旅行中✈️', '旅行中⛰️', 'ただいま🏠'][Math.abs(d) - 1] || '帰還';
+    dt.textContent = '素敵な思い出をありがとう ✨';
+  } else {
+    el.style.fontSize = '32px';
+    el.textContent = '楽しかった！';
+    dt.textContent = '素敵な旅の思い出、いつでも振り返れます ✨';
+  }
+})();
+
+// Today spot
+(function() {
+  const dep = new Date('2026-08-07T00:00:00');
+  const now = new Date();
+  const d = Math.floor((now - dep) / 86400000);
+  const msgs = {
+    0: '岩岳マウンテンリゾートの絶景ゴンドラへ！HAKUBA MOUNTAIN HARBOR のコーヒーも楽しみに。',
+    1: '八方池ハイキングへ！ゴンドラに早めに乗りましょう。水と羽織りを忘れずに。',
+    2: '青木湖でSUP体験！ao LAKESIDE CAFE でのランチをお楽しみに。',
+  };
+  const pre = [
+    '旅行前：岩岳マウンテンリゾートの絶景テラスをチェック！',
+    '旅行前：持ち物チェックリストを確認しましょう！',
+    '旅行前：レストランの予約はお済みですか？',
+    '旅行前：八方池ハイキングの装備を確認しましょう！',
+    '旅行前：白馬の天気予報をチェック！',
+    '旅行前：アンシャンテに送迎を依頼しましたか？',
+  ];
+  const el = document.getElementById('today-msg');
+  if (msgs[d]) el.textContent = msgs[d];
+  else if (d < 0) el.textContent = pre[Math.abs(d) % pre.length];
+  else el.textContent = '素敵な旅の思い出、いつでも振り返れます ✨';
+})();
+
+// Packing list
+const pkData = {
+  wear: [
+    ['Tシャツ（3〜4枚）', '涼しい素材がおすすめ'],
+    ['羽織り・薄手カーディガン', '山上・朝晩は肌寒い。必携！'],
+    ['パンツ・スカート（動きやすいもの）', 'ハイキングしやすい素材で'],
+    ['下着・靴下（3〜4セット）', ''],
+    ['パジャマ', ''],
+    ['帽子・キャップ', '日差し対策に必須'],
+    ['サングラス', '高山の紫外線は強い'],
+    ['ウィンドブレーカー・雨具', '山の天気は変わりやすい'],
+  ],
+  must: [
+    ['スマートフォン・充電器', ''],
+    ['モバイルバッテリー', 'ハイキング中は電源なし'],
+    ['財布・現金', '白馬は現金が必要な場面あり'],
+    ['保険証・常備薬', ''],
+    ['宿の予約確認書', 'アンシャンテへの送迎依頼も確認'],
+    ['イヤホン', '移動中の必需品'],
+    ['旅行用エコバッグ', 'お土産購入に便利'],
+    ['折りたたみ傘', '山の天気変化に備えて'],
+  ],
+  out: [
+    ['歩きやすいスニーカー', 'ハイキングに必須'],
+    ['サンダル', '宿・観光用に'],
+    ['リュックサック', 'ハイキング・観光兼用'],
+    ['水筒・ドリンク（500ml×2）', '山上は自販機が少ない'],
+    ['行動食（チョコ・ナッツなど）', 'ハイキング中のエネルギー補給'],
+    ['絆創膏・救急キット', ''],
+    ['タオル・手ぬぐい', '温泉・汗拭き用'],
+  ],
+  beauty: [
+    ['日焼け止め（SPF50+）', '高山の紫外線は強い。必須！'],
+    ['化粧水・保湿クリーム', '山の空気は乾燥しやすい'],
+    ['リップクリーム（UV入り）', ''],
+    ['洗顔料・シャンプー', '宿にある場合は不要'],
+    ['メイク用品（最小限）', 'ナチュラルメイクがおすすめ'],
+    ['ヘアゴム・ヘアピン', 'ハイキング中に邪魔にならないよう'],
+  ],
+};
+
+function renderPk() {
+  const saved = JSON.parse(localStorage.getItem('hk-pk') || '{}');
+  Object.entries(pkData).forEach(([key, items]) => {
+    const el = document.getElementById('pk-' + key);
+    el.innerHTML = '';
+    items.forEach(([label, note], i) => {
+      const k = key + '_' + i;
+      const on = !!saved[k];
+      const div = document.createElement('div');
+      div.className = 'pk-item' + (on ? ' done' : '');
+      div.innerHTML = `<div class="pk-box${on?' on':''}">${on?'✓':''}</div><div><div class="pk-label">${label}</div>${note?`<div class="pk-note">${note}</div>`:''}</div>`;
+      div.onclick = () => {
+        const s = JSON.parse(localStorage.getItem('hk-pk') || '{}');
+        s[k] = !s[k];
+        localStorage.setItem('hk-pk', JSON.stringify(s));
+        const isOn = s[k];
+        div.classList.toggle('done', isOn);
+        div.querySelector('.pk-box').classList.toggle('on', isOn);
+        div.querySelector('.pk-box').textContent = isOn ? '✓' : '';
+      };
+      el.appendChild(div);
+    });
+  });
+}
+
+function resetPk() {
+  localStorage.removeItem('hk-pk');
+  renderPk();
+}
+
+renderPk();
+
+// PWA
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(console.warn);
+}
+</script>
+</body>
+</html>
