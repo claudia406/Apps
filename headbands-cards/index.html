@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headbands Activity – Word Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #d8d8d8;
+  font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  margin: 0 auto 24px;
+  background: white;
+  overflow: hidden;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6px 10px;
+  border: 1.5px dashed #bbb;
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1px, transparent 1px);
+  background-size: 11px 11px;
+}
+
+.bg0 { background-color: #B5E8FF; }
+.bg1 { background-color: #AFEFC5; }
+.bg2 { background-color: #FEF7A0; }
+.bg3 { background-color: #FFDEA0; }
+.bg4 { background-color: #FFB3D8; }
+.bg5 { background-color: #DCB3FF; }
+
+.deco {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.3;
+  font-size: 14px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+.tl { top: 4px; left: 5px; }
+.tr { top: 4px; right: 5px; }
+.bl { bottom: 4px; left: 5px; }
+.br { bottom: 4px; right: 5px; }
+
+.word {
+  position: relative;
+  z-index: 2;
+  font-family: 'Mochiy Pop One', sans-serif;
+  color: #1a1a1a;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+  word-break: normal;
+  font-size: 28pt;
+}
+.word.f1 { font-size: 24pt; }
+.word.f2 { font-size: 19pt; }
+.word.f3 { font-size: 15pt; }
+.word.f4 { font-size: 12pt; }
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: white;
+    margin: 0;
+    padding: 0;
+  }
+  .page {
+    margin: 0;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+}
+</style>
+</head>
+<body>
+<script>
+const words = [
+  "Dog","Cat","Elephant","Giraffe","Penguin","Dolphin",
+  "Shark","Panda","Butterfly","Octopus","Rainbow","Volcano",
+  "Desert","Ocean","Island","Red","Blue","Yellow",
+  "Purple","Gold","Circle","Triangle","Star","Shadow",
+  "Mirror","Pizza","Hamburger","Sushi","Ice Cream","Chocolate",
+  "Watermelon","Pancake","Popcorn","Donut","Bubble Tea","School",
+  "Hospital","Airport","Library","Supermarket","Zoo","Aquarium",
+  "Amusement Park","Beach","Mountain","Soccer","Basketball","Tennis",
+  "Swimming","Surfing","Skiing","Dancing","Singing","Camping",
+  "Fishing","Smartphone","Laptop","Television","Refrigerator","Microwave",
+  "Washing Machine","Air Conditioner","Vacuum Cleaner","Headphones","Camera","Happiness",
+  "Excitement","Surprise","Fear","Confidence","Curiosity","Friendship",
+  "Teamwork","Leadership","Success","Taylor Swift","Lionel Messi","Cristiano Ronaldo",
+  "Michael Jordan","Albert Einstein","William Shakespeare","Walt Disney","Harry Potter","Pikachu",
+  "Mario","Japan","Canada","Australia","Brazil","Egypt",
+  "Paris","New York","London","Tokyo","Sydney","Time Machine",
+  "Robot","Alien","Treasure","Dream","Democracy","Culture Shock",
+  "Social Media","Artificial Intelligence","Climate Change","Globalization","Creativity","Diversity"
+];
+
+const decos = ['★','✦','♪','✿','◆','⚡','●','✰','♦','❋'];
+
+function sizeClass(w) {
+  const l = w.length;
+  if (l <= 8)  return '';
+  if (l <= 12) return 'f1';
+  if (l <= 16) return 'f2';
+  if (l <= 20) return 'f3';
+  return 'f4';
+}
+
+for (let p = 0; p < 9; p++) {
+  const page = document.createElement('div');
+  page.className = 'page';
+  for (let i = 0; i < 12; i++) {
+    const idx = p * 12 + i;
+    const w = words[idx];
+    const card = document.createElement('div');
+    card.className = 'card bg' + (idx % 6);
+    card.innerHTML =
+      '<span class="deco tl">' + decos[idx % 10] + '</span>' +
+      '<span class="deco tr">' + decos[(idx + 3) % 10] + '</span>' +
+      '<span class="deco bl">' + decos[(idx + 6) % 10] + '</span>' +
+      '<span class="deco br">' + decos[(idx + 8) % 10] + '</span>' +
+      '<div class="word ' + sizeClass(w) + '">' + w + '</div>';
+    page.appendChild(card);
+  }
+  document.body.appendChild(page);
+}
+</script>
+</body>
+</html>
