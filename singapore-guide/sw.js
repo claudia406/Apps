@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sg-guide-v1';
+const CACHE_NAME = 'sg-guide-v2';
 
 const STATIC_FILES = [
   './index.html',
