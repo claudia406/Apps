@@ -85,8 +85,6 @@ export function setOnCountryOpen(fn) {
   onCountryOpen = fn;
 }
 
-const HOME_LON = 138; // centers the initial map view on Japan
-
 export async function renderMap(container) {
   const svgText = await getSvgText();
   container.innerHTML = svgText;
@@ -127,11 +125,4 @@ export async function renderMap(container) {
 
     pinLayer.appendChild(g);
   }
-
-  requestAnimationFrame(() => {
-    const totalWidth = svgRoot.getBoundingClientRect().width;
-    const fraction = (HOME_LON + 180) / 360;
-    const target = fraction * totalWidth - container.clientWidth / 2;
-    container.scrollLeft = Math.max(0, Math.min(target, totalWidth - container.clientWidth));
-  });
 }
