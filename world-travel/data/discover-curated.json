@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "JP",
+    "tags": [
+      "historicArchitecture",
+      "localFood",
+      "natureLandscapes",
+      "craftsTraditionalArts"
+    ],
+    "why": {
+      "en": "A country where centuries-old wooden temples, precise craftsmanship, and quiet seasonal rituals sit right next to neon-lit cities.",
+      "ja": "何百年も残る木造建築や、精緻な職人技、季節を大切にする暮らしが、ネオン輝く都市とすぐ隣り合っています。"
+    },
+    "highlights": {
+      "en": [
+        "Centuries-old wooden shrines and temples built without nails",
+        "A food culture built on seasonality and precision",
+        "Onsen towns tucked into mountain valleys"
+      ],
+      "ja": [
+        "釘を使わず組まれた木造の神社仏閣",
+        "旬を大切にする繊細な食文化",
+        "山あいにひっそり佇む温泉街"
+      ]
+    },
+    "photoQuery": "Kyoto"
+  },
+  {
+    "id": "KR",
+    "tags": [
+      "localFood",
+      "colorfulCities",
+      "uniqueLocalExperiences",
+      "drinksNightlife"
+    ],
+    "why": {
+      "en": "Ancient palaces and hanok villages sit a short walk from some of the most energetic street food and night markets in Asia.",
+      "ja": "古宮殿や韓屋の村から少し歩けば、アジア屈指の活気ある屋台街やナイトマーケットに出会えます。"
+    },
+    "highlights": {
+      "en": [
+        "Hanok villages with tiled-roof houses in the middle of Seoul",
+        "A street food culture that runs late into the night",
+        "Traditional tea houses hidden down narrow alleys"
+      ],
+      "ja": [
+        "ソウルの中心に残る瓦屋根の韓屋村",
+        "夜遅くまで賑わう屋台文化",
+        "路地裏にひっそり佇む伝統茶屋"
+      ]
+    },
+    "photoQuery": "Seoul"
+  },
+  {
+    "id": "TW",
+    "tags": [
+      "localFood",
+      "uniqueLocalExperiences",
+      "marketsBazaars",
+      "natureLandscapes"
+    ],
+    "why": {
+      "en": "A small island with an outsized night market culture, steaming mountains, and a genuinely warm, unhurried pace of life.",
+      "ja": "小さな島ながら圧倒的なナイトマーケット文化、湯気立つ山々、そして気取らない温かな暮らしのペースがあります。"
+    },
+    "highlights": {
+      "en": [
+        "Night markets that double as the evening's main event",
+        "Hot spring towns built into volcanic hillsides",
+        "A layered mix of Indigenous, Hokkien, and Japanese-era influences"
+      ],
+      "ja": [
+        "それ自体が夜のメインイベントになるナイトマーケット",
+        "火山地形に築かれた温泉街",
+        "先住民族・閩南・日本統治時代が重なる文化層"
+      ]
+    },
+    "photoQuery": "Taipei"
+  },
+  {
+    "id": "TH",
+    "tags": [
+      "spicyFood",
+      "colorfulCities",
+      "historicArchitecture",
+      "uniqueLocalExperiences"
+    ],
+    "why": {
+      "en": "Gilded temple spires, floating markets, and a bold, spice-driven food culture that varies dramatically from north to south.",
+      "ja": "金色に輝く寺院の尖塔、水上マーケット、そして北と南でまったく表情の異なる大胆なスパイス料理。"
+    },
+    "highlights": {
+      "en": [
+        "Temple complexes with intricate gilded stupas",
+        "A regional cuisine that shifts sharply from north to south",
+        "Floating and railway markets still in daily use"
+      ],
+      "ja": [
+        "精巧な金色の仏塔が連なる寺院群",
+        "北と南で大きく変わる郷土料理",
+        "今も現役の水上マーケットと線路市場"
+      ]
+    },
+    "photoQuery": "Bangkok"
+  },
+  {
+    "id": "VN",
+    "tags": [
+      "localFood",
+      "historicArchitecture",
+      "uniqueLocalExperiences",
+      "beautifulStreets"
+    ],
+    "why": {
+      "en": "Motorbike-filled streets, French colonial facades, and a street food culture built around small plastic stools and one perfect dish at a time.",
+      "ja": "バイクが行き交う通り、フランス統治時代の建築、そして小さなプラスチック椅子で一品ずつ味わう屋台文化。"
+    },
+    "highlights": {
+      "en": [
+        "French colonial architecture layered over older Vietnamese towns",
+        "A street food culture centered on single-dish specialists",
+        "Limestone karst landscapes rising out of rivers and bays"
+      ],
+      "ja": [
+        "古い町並みに重なるフランス統治時代の建築",
+        "一品を極める屋台文化",
+        "川や湾から切り立つ石灰岩カルスト地形"
+      ]
+    },
+    "photoQuery": "Hanoi"
+  },
+  {
+    "id": "ID",
+    "tags": [
+      "dance",
+      "historicArchitecture",
+      "natureLandscapes",
+      "uniqueLocalExperiences"
+    ],
+    "why": {
+      "en": "A vast archipelago where Hindu temple ruins, volcanic landscapes, and highly stylized dance traditions vary from island to island.",
+      "ja": "膨大な数の島々からなる群島で、島ごとにヒンドゥー寺院の遺跡や火山の風景、様式美あるダンスの伝統が異なります。"
+    },
+    "highlights": {
+      "en": [
+        "Ancient Hindu-Buddhist temple complexes like Borobudur and Prambanan",
+        "Highly stylized Balinese dance and gamelan music",
+        "Volcanic landscapes across thousands of islands"
+      ],
+      "ja": [
+        "ボロブドゥールやプランバナンなど古代の仏教・ヒンドゥー寺院群",
+        "様式美豊かなバリ舞踊とガムラン音楽",
+        "数千の島々に広がる火山の風景"
+      ]
+    },
+    "photoQuery": "Bali"
+  },
+  {
+    "id": "MY",
+    "tags": [
+      "localFood",
+      "historicArchitecture",
+      "arabCulture",
+      "colorfulCities"
+    ],
+    "why": {
+      "en": "Malay, Chinese, Indian, and Islamic influences meet in one food culture, one skyline, and one set of holiday calendars.",
+      "ja": "マレー・中華・インド・イスラムの文化が、ひとつの食文化・都市の景観・祝祭カレンダーの中で交わります。"
+    },
+    "highlights": {
+      "en": [
+        "A food culture blending Malay, Chinese, and Indian traditions",
+        "Colonial-era shophouses beside modern skyscrapers",
+        "Hill stations and rainforest a short trip from the city"
+      ],
+      "ja": [
+        "マレー・中華・インドの伝統が溶け合う食文化",
+        "近代的な高層ビルと並ぶ植民地時代のショップハウス",
+        "都市から少し足を伸ばせば高原や熱帯雨林"
+      ]
+    },
+    "photoQuery": "Kuala Lumpur"
+  },
+  {
+    "id": "PH",
+    "tags": [
+      "natureLandscapes",
+      "localFood",
+      "uniqueLocalExperiences",
+      "colorfulCities"
+    ],
+    "why": {
+      "en": "Over 7,000 islands with a distinct blend of Spanish, American, and Southeast Asian influences in its food, faith, and festivals.",
+      "ja": "7000以上の島々からなり、スペイン・アメリカ・東南アジアの影響が食・信仰・祭りに独特な形で残っています。"
+    },
+    "highlights": {
+      "en": [
+        "Centuries-old rice terraces carved into mountainsides",
+        "A food culture shaped by Spanish and American colonial eras",
+        "Some of the most biodiverse reef waters on the planet"
+      ],
+      "ja": [
+        "何世紀もかけて山肌に築かれた棚田",
+        "スペイン・アメリカ統治の影響を受けた食文化",
+        "世界屈指の生物多様性を誇るサンゴ礁の海"
+      ]
+    },
+    "photoQuery": "Palawan"
+  },
+  {
+    "id": "IN",
+    "tags": [
+      "spicyFood",
+      "historicArchitecture",
+      "dance",
+      "colorfulCities"
+    ],
+    "why": {
+      "en": "A country of extraordinary regional variety, where architecture, dance styles, and spice blends change completely from state to state.",
+      "ja": "州が変わるだけで建築様式もダンスもスパイスの配合も一変する、驚くほど多様性に富んだ国です。"
+    },
+    "highlights": {
+      "en": [
+        "Mughal-era architecture including marble mausoleums and forts",
+        "Classical dance forms with centuries of codified technique",
+        "Regional cuisines built on entirely different spice traditions"
+      ],
+      "ja": [
+        "大理石の霊廟や城塞などムガル建築の傑作",
+        "何世紀もかけて体系化された古典舞踊",
+        "地域ごとにまったく異なるスパイスの伝統"
+      ]
+    },
+    "photoQuery": "Jaipur"
+  },
+  {
+    "id": "LK",
+    "tags": [
+      "spicyFood",
+      "historicArchitecture",
+      "natureLandscapes",
+      "uniqueLocalExperiences"
+    ],
+    "why": {
+      "en": "A compact island where ancient rock fortresses, tea-covered hills, and a deeply spiced cuisine are all within a few hours of each other.",
+      "ja": "古代の岩の要塞、茶畑に覆われた丘陵、スパイスの効いた料理が、数時間の距離に凝縮された島国です。"
+    },
+    "highlights": {
+      "en": [
+        "Ancient rock fortresses and cave temples over 1,000 years old",
+        "Highland tea estates draped over cool mountain ridges",
+        "A cuisine built on coconut, curry leaves, and layered spice"
+      ],
+      "ja": [
+        "1000年以上の歴史を持つ岩の要塞と石窟寺院",
+        "涼しい山の尾根を覆う高原の茶園",
+        "ココナッツとカレーリーフ、重なるスパイスが織りなす料理"
+      ]
+    },
+    "photoQuery": "Sigiriya"
+  },
+  {
+    "id": "NP",
+    "tags": [
+      "natureLandscapes",
+      "historicArchitecture",
+      "historyCulture",
+      "uniqueLocalExperiences"
+    ],
+    "why": {
+      "en": "Medieval temple squares in the Kathmandu Valley sit in the shadow of the highest mountains on earth.",
+      "ja": "カトマンズ盆地に残る中世の寺院広場が、地球上で最も高い山々の麓にひっそり佇んでいます。"
+    },
+    "highlights": {
+      "en": [
+        "Medieval temple squares built by rival kingdoms",
+        "Trekking routes leading toward the world's highest peaks",
+        "A living mix of Hindu and Buddhist traditions"
+      ],
+      "ja": [
+        "かつての王国同士が競い合い築いた中世の寺院広場",
+        "世界最高峰へと続くトレッキングルート",
+        "今も息づくヒンドゥーと仏教の共存文化"
+      ]
+    },
+    "photoQuery": "Kathmandu"
+  },
+  {
+    "id": "MN",
+    "tags": [
+      "natureLandscapes",
+      "uniqueLocalExperiences",
+      "historyCulture",
+      "musical"
+    ],
+    "why": {
+      "en": "Vast grassland steppe, nomadic ger camps, and a musical tradition built around throat singing and the horsehead fiddle.",
+      "ja": "見渡す限りの草原ステップ、遊牧民のゲル、そしてホーミーと馬頭琴が織りなす音楽の伝統。"
+    },
+    "highlights": {
+      "en": [
+        "Nomadic herding traditions still practiced on open steppe",
+        "Throat singing and horsehead fiddle music traditions",
+        "Some of the darkest night skies left for stargazing"
+      ],
+      "ja": [
+        "今も草原で続く遊牧の暮らし",
+        "ホーミー(喉歌)と馬頭琴の音楽伝統",
+        "満天の星が見える澄んだ夜空"
+      ]
+    },
+    "photoQuery": "Ulaanbaatar"
+  },
+  {
+    "id": "UZ",
+    "tags": [
+      "historicArchitecture",
+      "marketsBazaars",
+      "craftsTraditionalArts",
+      "colorfulCities"
+    ],
+    "why": {
+      "en": "Silk Road cities where turquoise-tiled madrasas and mausoleums still frame working bazaars and craft workshops.",
+      "ja": "シルクロードの街々では、ターコイズ色のタイルで彩られたマドラサや霊廟が、今も現役のバザールや工房を囲んでいます。"
+    },
+    "highlights": {
+      "en": [
+        "Turquoise-tiled madrasas and mausoleums from the Silk Road era",
+        "Working bazaars selling ceramics, silk, and spices",
+        "Desert oasis cities that once linked East and West"
+      ],
+      "ja": [
+        "シルクロード時代のターコイズ色に輝くマドラサと霊廟",
+        "陶器・絹・香辛料が並ぶ現役のバザール",
+        "かつて東西を結んだ砂漠のオアシス都市"
+      ]
+    },
+    "photoQuery": "Samarkand"
+  },
+  {
+    "id": "KH",
+    "tags": [
+      "historicArchitecture",
+      "historyCulture",
+      "dance",
+      "uniqueLocalExperiences"
+    ],
+    "why": {
+      "en": "Home to one of the largest religious monument complexes ever built, still surrounded by working temples and traditional dance.",
+      "ja": "史上最大級の宗教建築群を擁し、今も現役の寺院や伝統舞踊がその周囲に息づいています。"
+    },
+    "highlights": {
+      "en": [
+        "The vast 12th-century Angkor temple complex",
+        "Classical Khmer dance with roots in royal court tradition",
+        "Jungle-reclaimed temple ruins beyond the main complex"
+      ],
+      "ja": [
+        "12世紀に築かれた広大なアンコール遺跡群",
+        "宮廷舞踊にルーツを持つクメール古典舞踊",
+        "ジャングルに呑まれた遺跡群"
+      ]
+    },
+    "photoQuery": "Angkor Wat"
+  },
+  {
+    "id": "LA",
+    "tags": [
+      "historicArchitecture",
+      "natureLandscapes",
+      "uniqueLocalExperiences",
+      "historyCulture"
+    ],
+    "why": {
+      "en": "A slow-paced, landlocked country of gilded temples, misty mountains, and alms-giving ceremonies still observed at dawn.",
+      "ja": "内陸国ならではのゆったりとした時間の中に、金色の寺院、霧立つ山々、夜明けの托鉢の風景が残ります。"
+    },
+    "highlights": {
+      "en": [
+        "Gilded Buddhist temples along the Mekong River",
+        "Morning alms-giving processions still held daily",
+        "Limestone mountains and river towns largely untouched by mass tourism"
+      ],
+      "ja": [
+        "メコン川沿いに連なる金色の仏教寺院",
+        "今も毎朝続く托鉢の行列",
+        "大規模な観光化を免れた石灰岩の山々と川辺の町"
+      ]
+    },
+    "photoQuery": "Luang Prabang"
+  },
+  {
+    "id": "CN",
+    "tags": [
+      "historicArchitecture",
+      "natureLandscapes",
+      "craftsTraditionalArts",
+      "localFood"
+    ],
+    "why": {
+      "en": "A country where imperial architecture, regional cuisines, and dramatic mountain landscapes vary enormously across its scale.",
+      "ja": "国土の広大さゆえに、宮廷建築も郷土料理もダイナミックな山岳風景も地域ごとにまったく異なる表情を見せます。"
+    },
+    "highlights": {
+      "en": [
+        "Imperial palace and temple complexes centuries in the making",
+        "Regional cuisines ranging from delicate to intensely spiced",
+        "Karst mountain landscapes that inspired centuries of ink painting"
+      ],
+      "ja": [
+        "何世紀もかけて築かれた宮殿・寺院建築群",
+        "繊細な味から激辛まで幅広い郷土料理",
+        "水墨画に描かれ続けたカルスト山水の風景"
+      ]
+    },
+    "photoQuery": "Guilin"
+  },
+  {
+    "id": "MA",
+    "tags": [
+      "arabCulture",
+      "marketsBazaars",
+      "colorfulCities",
+      "craftsTraditionalArts"
+    ],
+    "why": {
+      "en": "Medina alleyways open onto hidden courtyards, dye pits, and workshops that have shaped the same crafts for generations.",
+      "ja": "メディナの路地を抜けると、隠れ中庭や染色工房、何世代も受け継がれる伝統工芸の作業場に出会います。"
+    },
+    "highlights": {
+      "en": [
+        "Maze-like medinas with covered souks and hidden riads",
+        "Centuries-old dyeing and leather tanning traditions",
+        "Berber, Arab, and Andalusian influences layered into one culture"
+      ],
+      "ja": [
+        "迷路のようなメディナと屋根付きの市場、隠れ家的なリヤド",
+        "何世紀も続く染色・皮なめしの伝統",
+        "ベルベル・アラブ・アンダルシアの文化が重なる街"
+      ]
+    },
+    "photoQuery": "Marrakesh"
+  },
+  {
+    "id": "JO",
+    "tags": [
+      "arabCulture",
+      "historicArchitecture",
+      "natureLandscapes",
+      "historyCulture"
+    ],
+    "why": {
+      "en": "A rose-red city carved directly into sandstone cliffs, alongside desert canyons still used by Bedouin communities.",
+      "ja": "砂岩の崖に直接彫り込まれたバラ色の都市と、ベドウィンの人々が今も暮らす砂漠の渓谷。"
+    },
+    "highlights": {
+      "en": [
+        "Petra, an entire city carved into rose-colored sandstone",
+        "Desert canyons still inhabited by Bedouin communities",
+        "Roman-era ruins remarkably well preserved in the desert climate"
+      ],
+      "ja": [
+        "バラ色の砂岩に彫られた都市遺跡ペトラ",
+        "ベドウィンの人々が今も暮らす砂漠の渓谷",
+        "乾燥した気候ゆえに残るローマ時代の遺跡"
+      ]
+    },
+    "photoQuery": "Petra"
+  },
+  {
+    "id": "OM",
+    "tags": [
+      "arabCulture",
+      "natureLandscapes",
+      "historicArchitecture",
+      "uniqueLocalExperiences"
+    ],
+    "why": {
+      "en": "Mountain forts and frankincense trade towns line a coast where turquoise wadis cut through red desert rock.",
+      "ja": "山あいの要塞と乳香交易で栄えた町が連なる海岸線には、赤い砂漠の岩を切り裂くターコイズ色のワディが広がります。"
+    },
+    "highlights": {
+      "en": [
+        "Hilltop forts guarding centuries-old trade routes",
+        "Frankincense trees still harvested in the southern hills",
+        "Turquoise wadis cutting through dramatic desert canyons"
+      ],
+      "ja": [
+        "古の交易路を見守った丘上の要塞",
+        "今も南部の丘で採取される乳香の木",
+        "劇的な砂漠の峡谷を流れるターコイズ色のワディ"
+      ]
+    },
+    "photoQuery": "Nizwa, Oman"
+  },
+  {
+    "id": "AE",
+    "tags": [
+      "arabCulture",
+      "colorfulCities",
+      "uniqueLocalExperiences",
+      "marketsBazaars"
+    ],
+    "why": {
+      "en": "Centuries-old spice and gold souks operate a short walk from some of the most ambitious modern architecture on earth.",
+      "ja": "何世紀も続く香辛料や金細工のスークから少し歩けば、地球上でも屈指の意欲的な現代建築が広がります。"
+    },
+    "highlights": {
+      "en": [
+        "Historic gold and spice souks along the creek",
+        "Some of the most ambitious contemporary architecture in the world",
+        "Falconry and desert traditions still actively practiced"
+      ],
+      "ja": [
+        "入江沿いに残る歴史ある金と香辛料のスーク",
+        "世界屈指の意欲的な現代建築群",
+        "今も受け継がれる鷹狩りと砂漠の伝統"
+      ]
+    },
+    "photoQuery": "Dubai"
+  },
+  {
+    "id": "EG",
+    "tags": [
+      "arabCulture",
+      "historicArchitecture",
+      "historyCulture",
+      "marketsBazaars"
+    ],
+    "why": {
+      "en": "Monuments over 4,000 years old still stand in a country where everyday life runs through markets that feel just as old.",
+      "ja": "4000年以上前の建造物が今も残る国で、日常の暮らしは同じくらい歴史を感じさせる市場を中心に営まれています。"
+    },
+    "highlights": {
+      "en": [
+        "Pyramid and temple complexes over four millennia old",
+        "Centuries-old bazaars still central to daily life",
+        "A Nile River culture that has shaped life for thousands of years"
+      ],
+      "ja": [
+        "4000年以上の歴史を持つピラミッド・神殿群",
+        "今も日常の中心にある何世紀も続くバザール",
+        "何千年も暮らしを形づくってきたナイル川の文化"
+      ]
+    },
+    "photoQuery": "Giza pyramid complex"
+  },
+  {
+    "id": "LB",
+    "tags": [
+      "arabCulture",
+      "localFood",
+      "drinksNightlife",
+      "historicArchitecture"
+    ],
+    "why": {
+      "en": "Roman ruins, mountain villages, and a mezze-driven food culture packed into one of the smallest countries in the region.",
+      "ja": "ローマ遺跡、山間の村々、そしてメゼを中心とした食文化が、この地域でも屈指の小さな国土にぎゅっと詰まっています。"
+    },
+    "highlights": {
+      "en": [
+        "Well-preserved Roman temple ruins in the Beqaa Valley",
+        "A mezze culture built around sharing many small dishes",
+        "Mountain villages a short drive from the Mediterranean coast"
+      ],
+      "ja": [
+        "ベカー高原に残る保存状態の良いローマ神殿",
+        "小皿を分け合うメゼの食文化",
+        "地中海沿岸から車ですぐの山間の村々"
+      ]
+    },
+    "photoQuery": "Baalbek"
+  },
+  {
+    "id": "TN",
+    "tags": [
+      "arabCulture",
+      "colorfulCities",
+      "historicArchitecture",
+      "marketsBazaars"
+    ],
+    "why": {
+      "en": "Blue-and-white hillside towns and Roman amphitheaters sit alongside covered medina markets selling ceramics and spices.",
+      "ja": "青と白に彩られた丘の町やローマの円形劇場が、陶器や香辛料が並ぶメディナの市場のすぐそばにあります。"
+    },
+    "highlights": {
+      "en": [
+        "Blue-and-white hillside towns overlooking the Mediterranean",
+        "One of the best-preserved Roman amphitheaters in the world",
+        "Covered medina markets selling ceramics and woven textiles"
+      ],
+      "ja": [
+        "地中海を見下ろす青と白の丘の町",
+        "世界屈指の保存状態を誇るローマの円形劇場",
+        "陶器や織物が並ぶ屋根付きのメディナ市場"
+      ]
+    },
+    "photoQuery": "Sidi Bou Said"
+  },
+  {
+    "id": "TR",
+    "tags": [
+      "historicArchitecture",
+      "localFood",
+      "marketsBazaars",
+      "natureLandscapes"
+    ],
+    "why": {
+      "en": "A country straddling two continents, with Byzantine domes, Ottoman bazaars, and surreal volcanic rock landscapes.",
+      "ja": "二つの大陸にまたがる国で、ビザンツの円蓋、オスマン帝国のバザール、そして幻想的な火山岩の風景が共存しています。"
+    },
+    "highlights": {
+      "en": [
+        "Byzantine and Ottoman architecture layered in one skyline",
+        "One of the world's oldest and largest covered bazaars",
+        "Surreal volcanic rock formations shaped over millions of years"
+      ],
+      "ja": [
+        "ビザンツとオスマン建築が重なる街並み",
+        "世界最古・最大級の屋根付きバザール",
+        "何百万年もかけて形づくられた幻想的な火山岩の奇景"
+      ]
+    },
+    "photoQuery": "Cappadocia"
+  },
+  {
+    "id": "PT",
+    "tags": [
+      "historicArchitecture",
+      "musical",
+      "colorfulCities",
+      "localFood"
+    ],
+    "why": {
+      "en": "Hand-painted tile facades and melancholic fado music fill hillside neighborhoods overlooking the Atlantic.",
+      "ja": "手描きのタイルが彩る家々と物悲しいファドの調べが、大西洋を見下ろす丘の町を満たしています。"
+    },
+    "highlights": {
+      "en": [
+        "Hand-painted azulejo tiles covering entire building facades",
+        "Fado, a melancholic musical tradition rooted in Lisbon's old quarters",
+        "Hillside neighborhoods with tram lines and ocean views"
+      ],
+      "ja": [
+        "建物の外壁を彩る手描きのアズレージョタイル",
+        "リスボンの旧市街に根づく物悲しいファドの伝統",
+        "路面電車と海の眺めが広がる丘の町"
+      ]
+    },
+    "photoQuery": "Porto"
+  },
+  {
+    "id": "ES",
+    "tags": [
+      "dance",
+      "historicArchitecture",
+      "colorfulCities",
+      "drinksNightlife"
+    ],
+    "why": {
+      "en": "Moorish palaces, Gaudí's unfinished cathedral, and flamenco all belong to one country with wildly distinct regional identities.",
+      "ja": "ムーア様式の宮殿、ガウディの未完の大聖堂、フラメンコ。ひとつの国の中に、まったく異なる地域文化が息づきます。"
+    },
+    "highlights": {
+      "en": [
+        "Moorish palace complexes with intricate tilework",
+        "Flamenco, a dance and music tradition rooted in Andalusia",
+        "Regional identities with distinct languages, food, and festivals"
+      ],
+      "ja": [
+        "精緻なタイル装飾が施されたムーア様式の宮殿群",
+        "アンダルシアに根づくフラメンコの舞踊と音楽",
+        "言語も食も祭りも異なる地域ごとの強い個性"
+      ]
+    },
+    "photoQuery": "Seville"
+  },
+  {
+    "id": "IT",
+    "tags": [
+      "historicArchitecture",
+      "artMuseums",
+      "localFood",
+      "musical"
+    ],
+    "why": {
+      "en": "Opera houses, Renaissance frescoes, and a food culture that changes distinctly with every regional border.",
+      "ja": "オペラハウス、ルネサンスのフレスコ画、そして州境を越えるたびに表情を変える食文化。"
+    },
+    "highlights": {
+      "en": [
+        "Renaissance art and architecture spanning centuries",
+        "Opera houses that have shaped the tradition for hundreds of years",
+        "A food culture that varies distinctly from region to region"
+      ],
+      "ja": [
+        "何世紀にもわたるルネサンス美術と建築",
+        "何百年もオペラの伝統を築いてきた歌劇場",
+        "地方ごとに大きく異なる食文化"
+      ]
+    },
+    "photoQuery": "Venice"
+  },
+  {
+    "id": "GR",
+    "tags": [
+      "historicArchitecture",
+      "historyCulture",
+      "natureLandscapes",
+      "colorfulCities"
+    ],
+    "why": {
+      "en": "Marble ruins over two thousand years old sit above whitewashed island villages built into volcanic cliffs.",
+      "ja": "2000年以上前の大理石の遺跡が、火山の崖に築かれた白壁の島の村々を見下ろします。"
+    },
+    "highlights": {
+      "en": [
+        "Ancient marble temples and theaters over two millennia old",
+        "Whitewashed island villages built into volcanic caldera cliffs",
+        "A birthplace of Western theatre and philosophy"
+      ],
+      "ja": [
+        "2000年以上前の大理石の神殿と劇場",
+        "火山のカルデラ崖に築かれた白壁の島の村",
+        "西洋演劇と哲学が生まれた土地"
+      ]
+    },
+    "photoQuery": "Santorini"
+  },
+  {
+    "id": "HR",
+    "tags": [
+      "historicArchitecture",
+      "colorfulCities",
+      "natureLandscapes",
+      "beautifulStreets"
+    ],
+    "why": {
+      "en": "Marble-paved old towns along the Adriatic coast sit beside waterfalls that cascade through terraced turquoise lakes.",
+      "ja": "アドリア海沿いの大理石舗装の旧市街のそばには、階段状のターコイズ色の湖を流れ落ちる滝が広がります。"
+    },
+    "highlights": {
+      "en": [
+        "Marble-paved old towns enclosed by medieval walls",
+        "Terraced turquoise lakes connected by cascading waterfalls",
+        "A Venetian and Austro-Hungarian architectural legacy along the coast"
+      ],
+      "ja": [
+        "中世の城壁に囲まれた大理石舗装の旧市街",
+        "滝でつながる階段状のターコイズ色の湖",
+        "沿岸に残るヴェネツィアとオーストリア=ハンガリーの建築遺産"
+      ]
+    },
+    "photoQuery": "Dubrovnik"
+  },
+  {
+    "id": "GE",
+    "tags": [
+      "historicArchitecture",
+      "localFood",
+      "drinksNightlife",
+      "natureLandscapes"
+    ],
+    "why": {
+      "en": "One of the world's oldest wine-making cultures, still using clay vessels buried underground, set against dramatic mountain scenery.",
+      "ja": "地中に埋めた土器で醸す、世界最古とされるワイン造りの文化が、劇的な山岳風景の中に息づいています。"
+    },
+    "highlights": {
+      "en": [
+        "An 8,000-year-old wine tradition using buried clay qvevri vessels",
+        "Watchtower villages built into the Caucasus mountains",
+        "A distinct alphabet and Orthodox Christian architecture found nowhere else"
+      ],
+      "ja": [
+        "8000年の歴史を持つクヴェヴリ(土器)によるワイン造り",
+        "コーカサス山脈に築かれた望楼の村",
+        "他に類を見ない独自の文字体系と正教建築"
+      ]
+    },
+    "photoQuery": "Tbilisi"
+  },
+  {
+    "id": "AM",
+    "tags": [
+      "historicArchitecture",
+      "historyCulture",
+      "natureLandscapes",
+      "craftsTraditionalArts"
+    ],
+    "why": {
+      "en": "One of the world's oldest Christian nations, with medieval monasteries perched on cliffs above deep mountain gorges.",
+      "ja": "世界最古のキリスト教国のひとつで、中世の修道院が深い山峡を見下ろす崖の上に佇みます。"
+    },
+    "highlights": {
+      "en": [
+        "Medieval monasteries built directly into cliff faces",
+        "One of the earliest nations to adopt Christianity as a state religion",
+        "A distinct alphabet and khachkar cross-stone carving tradition"
+      ],
+      "ja": [
+        "崖に直接築かれた中世の修道院",
+        "世界で最も早くキリスト教を国教とした国のひとつ",
+        "独自の文字体系とハチュカル(十字架石)彫刻の伝統"
+      ]
+    },
+    "photoQuery": "Geghard Monastery"
+  },
+  {
+    "id": "IS",
+    "tags": [
+      "natureLandscapes",
+      "uniqueLocalExperiences",
+      "historyCulture",
+      "musical"
+    ],
+    "why": {
+      "en": "Volcanic landscapes, geothermal springs, and a saga-writing tradition dating back nearly a thousand years.",
+      "ja": "火山の風景と地熱の温泉、そして千年近く前から続くサガ(伝承物語)の伝統。"
+    },
+    "highlights": {
+      "en": [
+        "Volcanic landscapes with geothermal hot springs and geysers",
+        "A medieval saga-writing tradition still central to national identity",
+        "Some of the darkest skies in Europe for viewing the aurora"
+      ],
+      "ja": [
+        "地熱の温泉と間欠泉が広がる火山地形",
+        "国のアイデンティティに今も息づく中世のサガ文学",
+        "オーロラ観測に適したヨーロッパ屈指の暗い夜空"
+      ]
+    },
+    "photoQuery": "Reykjavik"
+  },
+  {
+    "id": "NO",
+    "tags": [
+      "natureLandscapes",
+      "historicArchitecture",
+      "musical",
+      "uniqueLocalExperiences"
+    ],
+    "why": {
+      "en": "Fjord villages beneath towering cliffs still hold onto wooden stave churches nearly a thousand years old.",
+      "ja": "そびえ立つ崖の下に広がるフィヨルドの村には、千年近く前に建てられた木造のスターヴ教会が今も残ります。"
+    },
+    "highlights": {
+      "en": [
+        "Wooden stave churches nearly a thousand years old",
+        "Fjord villages set beneath dramatic vertical cliffs",
+        "The midnight sun and polar night reshaping daily rhythms by season"
+      ],
+      "ja": [
+        "千年近い歴史を持つ木造のスターヴ教会",
+        "切り立った崖の下に広がるフィヨルドの村",
+        "季節で暮らしのリズムを変える白夜と極夜"
+      ]
+    },
+    "photoQuery": "Geirangerfjord"
+  },
+  {
+    "id": "FR",
+    "tags": [
+      "artMuseums",
+      "historicArchitecture",
+      "localFood",
+      "theatrePerformingArts"
+    ],
+    "why": {
+      "en": "A country where regional cuisine, centuries-old cathedrals, and a deep café and theatre culture are treated as everyday life.",
+      "ja": "郷土料理も何世紀も前の大聖堂も、カフェや演劇の文化も、すべて日常として大切にされている国です。"
+    },
+    "highlights": {
+      "en": [
+        "Gothic cathedrals built over centuries of craftsmanship",
+        "Regional cuisines with strong, distinct culinary identities",
+        "A café and theatre culture woven into daily routine"
+      ],
+      "ja": [
+        "何世紀もの職人技が積み重なったゴシック大聖堂",
+        "地方ごとに強い個性を持つ郷土料理",
+        "日常に溶け込むカフェと演劇の文化"
+      ]
+    },
+    "photoQuery": "Paris"
+  },
+  {
+    "id": "CZ",
+    "tags": [
+      "historicArchitecture",
+      "beautifulStreets",
+      "musical",
+      "drinksNightlife"
+    ],
+    "why": {
+      "en": "A well-preserved medieval old town with a centuries-old brewing tradition and a classical music heritage that fills its concert halls.",
+      "ja": "保存状態の良い中世の旧市街には、何世紀も続くビール醸造の伝統と、コンサートホールを満たすクラシック音楽の遺産があります。"
+    },
+    "highlights": {
+      "en": [
+        "A medieval old town largely untouched by modern wartime damage",
+        "One of the world's oldest continuous beer-brewing traditions",
+        "A classical music heritage spanning centuries of composers"
+      ],
+      "ja": [
+        "近代の戦災をほぼ免れた中世の旧市街",
+        "世界最古級のビール醸造の伝統",
+        "何世紀もの作曲家を輩出したクラシック音楽の遺産"
+      ]
+    },
+    "photoQuery": "Prague"
+  },
+  {
+    "id": "HU",
+    "tags": [
+      "historicArchitecture",
+      "musical",
+      "drinksNightlife",
+      "beautifulStreets"
+    ],
+    "why": {
+      "en": "Thermal bathhouses centuries old sit beneath a grand riverside parliament, with a nightlife scene built inside ruined buildings.",
+      "ja": "何世紀も続く温泉浴場が壮麗な川沿いの国会議事堂の近くに広がり、廃墟建築を利用したナイトライフ文化も根付いています。"
+    },
+    "highlights": {
+      "en": [
+        "Thermal bathhouses in use since the Ottoman era",
+        "A riverside parliament building among Europe's most ornate",
+        "\"Ruin bars\" built inside abandoned pre-war buildings"
+      ],
+      "ja": [
+        "オスマン帝国時代から続く温泉浴場",
+        "ヨーロッパ屈指の華麗さを誇る川沿いの国会議事堂",
+        "戦前の廃墟建築を活用した\"ルインバー\"文化"
+      ]
+    },
+    "photoQuery": "Budapest"
+  },
+  {
+    "id": "KE",
+    "tags": [
+      "natureLandscapes",
+      "uniqueLocalExperiences",
+      "historyCulture",
+      "dance"
+    ],
+    "why": {
+      "en": "Great Rift Valley landscapes and Indigenous pastoralist traditions sit alongside a Swahili coastal culture centuries in the making.",
+      "ja": "大地溝帯の風景と先住民の牧畜文化のそばには、何世紀もかけて育まれたスワヒリ海岸文化が広がっています。"
+    },
+    "highlights": {
+      "en": [
+        "Great Rift Valley landscapes with active volcanoes and lakes",
+        "Maasai and other pastoralist traditions still practiced today",
+        "A Swahili coastal culture blending African, Arab, and Indian influences"
+      ],
+      "ja": [
+        "活火山と湖が点在する大地溝帯の風景",
+        "今も受け継がれるマサイ族などの牧畜文化",
+        "アフリカ・アラブ・インドの影響が融合したスワヒリ海岸文化"
+      ]
+    },
+    "photoQuery": "Maasai Mara"
+  },
+  {
+    "id": "TZ",
+    "tags": [
+      "natureLandscapes",
+      "historicArchitecture",
+      "arabCulture",
+      "uniqueLocalExperiences"
+    ],
+    "why": {
+      "en": "Stone Town's coral-stone alleyways carry centuries of Swahili, Arab, and Indian trade, just off the coast of the Serengeti's plains.",
+      "ja": "サンゴ石造りのストーン・タウンの路地には、スワヒリ・アラブ・インドの交易の歴史が刻まれ、その沖にはセレンゲティの草原が広がります。"
+    },
+    "highlights": {
+      "en": [
+        "Stone Town's coral-stone architecture and carved wooden doors",
+        "Centuries of Swahili, Arab, and Indian trading history",
+        "Vast savanna plains supporting one of the largest animal migrations"
+      ],
+      "ja": [
+        "ストーン・タウンのサンゴ石建築と彫刻が施された木製の扉",
+        "何世紀にも及ぶスワヒリ・アラブ・インドの交易史",
+        "大規模な動物大移動を支える広大なサバンナ"
+      ]
+    },
+    "photoQuery": "Stone Town, Zanzibar"
+  },
+  {
+    "id": "SN",
+    "tags": [
+      "musical",
+      "dance",
+      "colorfulCities",
+      "localFood"
+    ],
+    "why": {
+      "en": "A West African hub for live music and dance, where colorful markets and coastal towns carry a strong griot storytelling tradition.",
+      "ja": "西アフリカにおける音楽とダンスの中心地で、色鮮やかな市場や沿岸の町には語り部グリオの伝統が息づいています。"
+    },
+    "highlights": {
+      "en": [
+        "A vibrant live music scene rooted in griot storytelling traditions",
+        "Colorful markets and colonial-era coastal architecture",
+        "Mbalax and other dance-driven musical styles born locally"
+      ],
+      "ja": [
+        "グリオの語り部文化に根ざした活気ある音楽シーン",
+        "色鮮やかな市場と植民地時代の沿岸建築",
+        "この地で生まれたンバラックなどダンス主体の音楽スタイル"
+      ]
+    },
+    "photoQuery": "Dakar"
+  },
+  {
+    "id": "ET",
+    "tags": [
+      "spicyFood",
+      "historyCulture",
+      "historicArchitecture",
+      "musical"
+    ],
+    "why": {
+      "en": "Rock-hewn churches carved a thousand years ago and a coffee culture born here define a country that was never colonized.",
+      "ja": "千年前に岩を彫って築かれた教会群と、この地で生まれたコーヒー文化。植民地支配を受けなかった国です。"
+    },
+    "highlights": {
+      "en": [
+        "11 monolithic rock-hewn churches carved from a single stone each",
+        "The birthplace of coffee, still central to daily ritual",
+        "A cuisine built on injera and richly spiced stews"
+      ],
+      "ja": [
+        "一枚岩を彫り出して築かれた11の岩窟教会群",
+        "コーヒー発祥の地、今も日常の儀式に欠かせない存在",
+        "インジェラとスパイス豊かな煮込み料理が中心の食文化"
+      ]
+    },
+    "photoQuery": "Lalibela"
+  },
+  {
+    "id": "ZA",
+    "tags": [
+      "natureLandscapes",
+      "historyCulture",
+      "colorfulCities",
+      "localFood"
+    ],
+    "why": {
+      "en": "A country of dramatic coastal cliffs, vineyard valleys, and a Cape Malay food culture with its own distinct spice traditions.",
+      "ja": "劇的な海岸の崖とワイン渓谷、そして独自のスパイス伝統を持つケープマレー料理の文化が広がる国です。"
+    },
+    "highlights": {
+      "en": [
+        "Dramatic coastal cliffs where two oceans meet",
+        "Centuries-old vineyard valleys with a distinct wine tradition",
+        "A Cape Malay cuisine built on its own spice traditions"
+      ],
+      "ja": [
+        "二つの海がぶつかる劇的な海岸の崖",
+        "独自のワイン伝統を持つ何世紀も続くブドウ畑の渓谷",
+        "独自のスパイス伝統を持つケープマレー料理"
+      ]
+    },
+    "photoQuery": "Cape Town"
+  },
+  {
+    "id": "GH",
+    "tags": [
+      "musical",
+      "dance",
+      "historyCulture",
+      "colorfulCities"
+    ],
+    "why": {
+      "en": "Colorful kente cloth weaving and a deep drumming and dance tradition are central to daily life along this coast.",
+      "ja": "色鮮やかなケンテ布の織物と、太鼓とダンスの深い伝統が、この沿岸の日常生活の中心にあります。"
+    },
+    "highlights": {
+      "en": [
+        "Kente cloth, a colorful hand-woven textile tradition",
+        "Coastal fortresses tied to centuries of Atlantic trade history",
+        "Drumming and dance traditions central to community life"
+      ],
+      "ja": [
+        "色鮮やかな手織りのケンテ布の伝統",
+        "大西洋交易の歴史を伝える沿岸の要塞群",
+        "地域社会の中心にある太鼓とダンスの伝統"
+      ]
+    },
+    "photoQuery": "Cape Coast Castle"
+  },
+  {
+    "id": "RW",
+    "tags": [
+      "natureLandscapes",
+      "craftsTraditionalArts",
+      "uniqueLocalExperiences",
+      "historyCulture"
+    ],
+    "why": {
+      "en": "Misty mountain forests home to mountain gorillas, paired with a fast-growing capital known for its cleanliness and hilltop views.",
+      "ja": "マウンテンゴリラの棲む霧深い山の森と、清潔さと丘の眺望で知られる急成長中の首都。"
+    },
+    "highlights": {
+      "en": [
+        "Misty volcanic forests home to endangered mountain gorillas",
+        "Traditional imigongo geometric art made from cattle dung and ash",
+        "A capital city known for hilltop views and remarkable cleanliness"
+      ],
+      "ja": [
+        "絶滅危惧種のマウンテンゴリラが棲む霧深い火山の森",
+        "牛糞と灰から作られる伝統幾何学アート「イミゴンゴ」",
+        "丘の眺望と清潔さで知られる首都"
+      ]
+    },
+    "photoQuery": "Kigali"
+  },
+  {
+    "id": "MG",
+    "tags": [
+      "natureLandscapes",
+      "uniqueLocalExperiences",
+      "craftsTraditionalArts",
+      "historyCulture"
+    ],
+    "why": {
+      "en": "An island that split from the mainland so long ago that most of its plants and animals exist nowhere else on earth.",
+      "ja": "大陸から分かれてから非常に長い時間が経ち、動植物の多くが地球上のどこにも存在しない独自種となった島。"
+    },
+    "highlights": {
+      "en": [
+        "Forests of baobab trees found almost nowhere else on earth",
+        "Wildlife that evolved in isolation for tens of millions of years",
+        "A Malagasy culture blending African, Southeast Asian, and Arab roots"
+      ],
+      "ja": [
+        "地球上でほぼここにしか見られないバオバブの森",
+        "何千万年もの隔離の中で進化した固有の野生動物",
+        "アフリカ・東南アジア・アラブのルーツが融合したマラガシ文化"
+      ]
+    },
+    "photoQuery": "Avenue of the Baobabs"
+  },
+  {
+    "id": "MX",
+    "tags": [
+      "spicyFood",
+      "colorfulCities",
+      "historicArchitecture",
+      "musical"
+    ],
+    "why": {
+      "en": "Ancient pyramid cities and hand-painted colonial towns share a spice and chile tradition thousands of years in the making.",
+      "ja": "古代のピラミッド都市と手描きで彩られた植民地時代の町には、何千年もかけて育まれた唐辛子とスパイスの伝統が息づきます。"
+    },
+    "highlights": {
+      "en": [
+        "Ancient Mesoamerican pyramid cities predating European contact",
+        "Colorful colonial towns with hand-painted building facades",
+        "A chile and spice tradition thousands of years in the making"
+      ],
+      "ja": [
+        "ヨーロッパ人到来以前のメソアメリカのピラミッド都市",
+        "手描きの外壁で彩られたカラフルな植民地時代の町",
+        "何千年もかけて育まれた唐辛子とスパイスの伝統"
+      ]
+    },
+    "photoQuery": "Guanajuato"
+  },
+  {
+    "id": "PE",
+    "tags": [
+      "historicArchitecture",
+      "natureLandscapes",
+      "craftsTraditionalArts",
+      "localFood"
+    ],
+    "why": {
+      "en": "An Andean mountain citadel built without mortar sits above a coastal food culture now recognized among the most inventive in the world.",
+      "ja": "モルタルを使わず築かれたアンデスの山上都市の麓には、世界でも屈指の独創性を誇る沿岸の食文化が広がります。"
+    },
+    "highlights": {
+      "en": [
+        "Machu Picchu, an Inca citadel built without mortar",
+        "A coastal cuisine blending Indigenous, Spanish, and Asian influences",
+        "Handwoven textile traditions passed down through Andean communities"
+      ],
+      "ja": [
+        "モルタルを使わず築かれたインカの山上都市マチュピチュ",
+        "先住民・スペイン・アジアの影響が融合した沿岸の食文化",
+        "アンデスの共同体に受け継がれる手織りの伝統"
+      ]
+    },
+    "photoQuery": "Machu Picchu"
+  },
+  {
+    "id": "CO",
+    "tags": [
+      "dance",
+      "musical",
+      "colorfulCities",
+      "natureLandscapes"
+    ],
+    "why": {
+      "en": "Salsa clubs, colorful Caribbean port towns, and cloud forests share the same country, often within a single day's travel.",
+      "ja": "サルサクラブ、色鮮やかなカリブ海の港町、雲霧林。これらすべてが、時に1日で巡れる距離に共存しています。"
+    },
+    "highlights": {
+      "en": [
+        "A salsa dance culture central to everyday social life",
+        "Colorful colonial port towns along the Caribbean coast",
+        "Cloud forests and páramo landscapes found only in the Andes"
+      ],
+      "ja": [
+        "日常の社交に欠かせないサルサ文化",
+        "カリブ海沿いに残る色鮮やかな植民地時代の港町",
+        "アンデス地方特有の雲霧林とパラモの風景"
+      ]
+    },
+    "photoQuery": "Cartagena, Colombia"
+  },
+  {
+    "id": "BR",
+    "tags": [
+      "dance",
+      "musical",
+      "natureLandscapes",
+      "colorfulCities"
+    ],
+    "why": {
+      "en": "Samba, capoeira, and bossa nova all trace back here, alongside the largest rainforest and river system on earth.",
+      "ja": "サンバ、カポエイラ、ボサノヴァ。そのルーツはすべてこの国にあり、地球最大の熱帯雨林と河川流域も抱えています。"
+    },
+    "highlights": {
+      "en": [
+        "Samba and Carnival traditions central to national identity",
+        "Capoeira, a martial art disguised as dance, born from resistance",
+        "The Amazon rainforest, the largest on earth"
+      ],
+      "ja": [
+        "国のアイデンティティの核をなすサンバとカーニバルの伝統",
+        "抵抗の中から生まれた、舞踊を装う武術カポエイラ",
+        "地球最大の熱帯雨林アマゾン"
+      ]
+    },
+    "photoQuery": "Rio de Janeiro"
+  },
+  {
+    "id": "CU",
+    "tags": [
+      "dance",
+      "musical",
+      "colorfulCities",
+      "historicArchitecture"
+    ],
+    "why": {
+      "en": "Faded pastel colonial buildings and 1950s cars share the street with a live son and salsa music scene still performed nightly.",
+      "ja": "色あせたパステルカラーの植民地時代の建物と1950年代のクラシックカーが並ぶ通りでは、今も夜な夜なソンやサルサの生演奏が響きます。"
+    },
+    "highlights": {
+      "en": [
+        "Pastel-colored colonial architecture largely preserved for decades",
+        "A live son and salsa music tradition performed nightly",
+        "Vintage American cars still in daily use as taxis"
+      ],
+      "ja": [
+        "何十年も大きく変わらず残るパステルカラーの植民地建築",
+        "今も夜ごと演奏されるソンとサルサの生音楽",
+        "今もタクシーとして日常使いされるヴィンテージカー"
+      ]
+    },
+    "photoQuery": "Havana"
+  },
+  {
+    "id": "NZ",
+    "tags": [
+      "natureLandscapes",
+      "historyCulture",
+      "uniqueLocalExperiences",
+      "dance"
+    ],
+    "why": {
+      "en": "Dramatic fjords and glacier valleys sit alongside a living Māori culture with its own language, carving, and performance traditions.",
+      "ja": "劇的なフィヨルドと氷河の谷のそばには、独自の言語・彫刻・パフォーマンス文化を持つマオリの人々の暮らしが息づいています。"
+    },
+    "highlights": {
+      "en": [
+        "Fjords and glacier-carved valleys largely untouched by development",
+        "A living Māori culture with its own language and carving traditions",
+        "The haka, a ceremonial dance performed at gatherings and events"
+      ],
+      "ja": [
+        "開発をほぼ免れたフィヨルドと氷河が刻んだ谷",
+        "独自の言語と彫刻文化を持つ今も息づくマオリ文化",
+        "集会や式典で披露される儀礼舞踊ハカ"
+      ]
+    },
+    "photoQuery": "Queenstown, New Zealand"
+  }
+]

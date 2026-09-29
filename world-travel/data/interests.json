@@ -1,0 +1,18 @@
+[
+  { "id": "localFood", "en": "Local Food", "ja": "郷土料理" },
+  { "id": "spicyFood", "en": "Spicy Food & Spices", "ja": "スパイス・辛い料理" },
+  { "id": "drinksNightlife", "en": "Drinks & Nightlife", "ja": "お酒・ナイトライフ" },
+  { "id": "historicArchitecture", "en": "Historic Architecture", "ja": "歴史的建築" },
+  { "id": "historyCulture", "en": "History & Culture", "ja": "歴史・文化" },
+  { "id": "colorfulCities", "en": "Colorful Cities", "ja": "カラフルな街並み" },
+  { "id": "arabCulture", "en": "Arab Culture", "ja": "アラブ文化" },
+  { "id": "dance", "en": "Dance", "ja": "ダンス" },
+  { "id": "musical", "en": "Musical", "ja": "ミュージカル" },
+  { "id": "theatrePerformingArts", "en": "Theatre & Performing Arts", "ja": "演劇・舞台芸術" },
+  { "id": "uniqueLocalExperiences", "en": "Unique Local Experiences", "ja": "その土地ならではの体験" },
+  { "id": "beautifulStreets", "en": "Beautiful Streets & Architecture", "ja": "美しい街並み・建築" },
+  { "id": "natureLandscapes", "en": "Nature & Landscapes", "ja": "自然・絶景" },
+  { "id": "artMuseums", "en": "Art & Museums", "ja": "アート・美術館" },
+  { "id": "marketsBazaars", "en": "Markets & Bazaars", "ja": "市場・バザール" },
+  { "id": "craftsTraditionalArts", "en": "Crafts & Traditional Arts", "ja": "工芸・伝統芸術" }
+]
