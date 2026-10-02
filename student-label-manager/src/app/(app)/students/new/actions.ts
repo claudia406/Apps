@@ -35,6 +35,16 @@ export async function createStudentAction(
     };
   }
 
-  const student = await createStudent(parsed.data);
+  let student;
+  try {
+    student = await createStudent(parsed.data);
+  } catch (err) {
+    console.error("createStudentAction failed", err);
+    return {
+      error: "保存に失敗しました。時間をおいて再度お試しいただくか、管理者にご連絡ください。",
+      values: raw,
+    };
+  }
+
   redirect(`/students/${student.id}`);
 }

@@ -36,6 +36,15 @@ export async function updateStudentAction(
     };
   }
 
-  await updateStudent(id, parsed.data);
+  try {
+    await updateStudent(id, parsed.data);
+  } catch (err) {
+    console.error("updateStudentAction failed", err);
+    return {
+      error: "保存に失敗しました。時間をおいて再度お試しいただくか、管理者にご連絡ください。",
+      values: raw,
+    };
+  }
+
   redirect(`/students/${id}`);
 }
