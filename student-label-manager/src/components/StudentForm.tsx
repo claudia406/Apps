@@ -8,6 +8,7 @@ import { lookupPostalCodeAction } from "@/app/(app)/students/zipcode-action";
 
 export interface StudentFormValues {
   fullName: string;
+  furigana: string;
   postalCode: string;
   address: string;
   schoolName: string;
@@ -100,6 +101,17 @@ export default function StudentForm({ action, initialValues, excludeId, submitLa
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
           onBlur={() => runDuplicateCheck(fullName, schoolName)}
+        />
+      </div>
+
+      <div className="field">
+        <label htmlFor="furigana">フリガナ</label>
+        <input
+          id="furigana"
+          name="furigana"
+          type="text"
+          placeholder="例: ヤマダ タロウ"
+          defaultValue={initialValues.furigana}
         />
       </div>
 

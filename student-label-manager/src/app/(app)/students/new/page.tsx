@@ -9,6 +9,7 @@ export default function NewStudentPage() {
         action={createStudentAction}
         initialValues={{
           fullName: "",
+          furigana: "",
           postalCode: "",
           address: "",
           schoolName: "",

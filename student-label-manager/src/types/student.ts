@@ -3,6 +3,7 @@ export type StudentStatus = "active" | "archived";
 export interface Student {
   id: string;
   full_name: string;
+  furigana: string;
   postal_code: string;
   address: string;
   school_name: string;

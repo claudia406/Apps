@@ -81,26 +81,26 @@
   border: 1px dashed #cccccc;
 }
 
-.cellName {
-  font-size: 12pt;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0 0 2mm;
-}
-
-.cellGuardian {
-  font-size: 10pt;
-  margin: 0 0 2mm;
-}
-
 .cellAddress {
   font-size: 9pt;
   line-height: 1.3;
   white-space: pre-wrap;
   word-break: break-word;
+  margin: 0 0 3mm;
+}
+
+.cellName,
+.cellGuardian {
+  font-size: 12pt;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin: 0;
+}
+
+.cellName {
+  margin-bottom: 1mm;
 }
 
 .testLabel {

@@ -22,6 +22,7 @@ export default async function EditStudentPage({ params }: Props) {
         action={updateStudentAction.bind(null, student.id)}
         initialValues={{
           fullName: student.full_name,
+          furigana: student.furigana,
           postalCode: student.postal_code,
           address: student.address,
           schoolName: student.school_name,

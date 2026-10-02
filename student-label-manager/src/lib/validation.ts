@@ -7,6 +7,14 @@ const optionalText = z.string().trim().max(200).default("");
 
 export const studentSchema = z.object({
   fullName: optionalText,
+  furigana: z
+    .string()
+    .trim()
+    .max(200)
+    .refine((v) => v === "" || /^[゠-ヿｦ-ﾟー　\s]*$/.test(v), {
+      message: "フリガナはカタカナで入力してください。",
+    })
+    .default(""),
   postalCode: z
     .string()
     .trim()

@@ -198,14 +198,14 @@ export default function PrintFlow({ initialStudents }: { initialStudents: Studen
                   <p className={styles.testLabel}>位置 {idx + 1}</p>
                 ) : student ? (
                   <>
-                    <p className={styles.cellName}>{labelNameLine(student)}</p>
-                    {guardianVisible && <p className={styles.cellGuardian}>保護者様</p>}
                     {(student.postal_code || student.address) && (
                       <p className={styles.cellAddress}>
                         {student.postal_code ? `〒${student.postal_code}\n` : ""}
                         {student.address}
                       </p>
                     )}
+                    <p className={styles.cellName}>{labelNameLine(student)}</p>
+                    {guardianVisible && <p className={styles.cellGuardian}>保護者様</p>}
                   </>
                 ) : null}
               </div>

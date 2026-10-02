@@ -49,6 +49,7 @@ export default async function StudentDetailPage({ params }: Props) {
 
         <dl style={{ marginTop: 20 }}>
           {[
+            ["フリガナ", student.furigana],
             ["学校名", student.school_name],
             ["郵便番号", student.postal_code],
             ["住所", student.address],

@@ -19,6 +19,7 @@ export async function updateStudentAction(
 
   const raw = {
     fullName: String(formData.get("fullName") ?? ""),
+    furigana: String(formData.get("furigana") ?? ""),
     postalCode: String(formData.get("postalCode") ?? ""),
     address: String(formData.get("address") ?? ""),
     schoolName: String(formData.get("schoolName") ?? ""),

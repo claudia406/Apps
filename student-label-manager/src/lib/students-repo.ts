@@ -5,6 +5,7 @@ import type { StudentInput } from "@/lib/validation";
 function dbColumns(input: StudentInput) {
   return {
     full_name: input.fullName,
+    furigana: input.furigana,
     postal_code: input.postalCode,
     address: input.address,
     school_name: input.schoolName,
@@ -48,7 +49,9 @@ export async function searchStudents({ query, includeArchived }: SearchParams): 
   const trimmed = query.trim();
   if (trimmed) {
     const like = toOrFilterValue(`%${escapeLike(trimmed)}%`);
-    builder = builder.or(`full_name.ilike.${like},school_name.ilike.${like},email.ilike.${like}`);
+    builder = builder.or(
+      `full_name.ilike.${like},furigana.ilike.${like},school_name.ilike.${like},email.ilike.${like}`
+    );
   }
 
   const { data, error } = await builder;
