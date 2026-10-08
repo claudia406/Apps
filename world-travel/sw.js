@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'world-travel-v1';
+const CACHE_VERSION = 'world-travel-v2';
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
@@ -79,20 +79,24 @@ self.addEventListener('fetch', (event) => {
   }
 
   if (url.origin === self.location.origin) {
+    // Network-first: always serve the latest deployed code when online, so a
+    // fix shipped to the server reaches an already-installed PWA on its very
+    // next load instead of being stuck behind a stale precache indefinitely.
+    // Falls back to cache only when the network is unavailable (offline-first).
     event.respondWith(
-      caches.match(req).then((cached) => {
-        if (cached) return cached;
-        return fetch(req)
-          .then((fresh) => {
-            const clone = fresh.clone();
-            caches.open(SHELL_CACHE).then((cache) => cache.put(req, clone));
-            return fresh;
-          })
-          .catch(() => {
+      fetch(req)
+        .then((fresh) => {
+          const clone = fresh.clone();
+          caches.open(SHELL_CACHE).then((cache) => cache.put(req, clone));
+          return fresh;
+        })
+        .catch(() =>
+          caches.match(req).then((cached) => {
+            if (cached) return cached;
             if (req.mode === 'navigate') return caches.match('index.html');
             return undefined;
-          });
-      })
+          })
+        )
     );
   }
 });

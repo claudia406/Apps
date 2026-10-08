@@ -239,6 +239,13 @@ img { display: block; }
   line-height: 1.7;
 }
 
+.error-screen {
+  padding: calc(var(--safe-top) + 80px) 32px 40px;
+  text-align: center;
+}
+.error-screen__title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.error-screen__body { color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+
 /* ---------- Modal / Sheet system ---------- */
 
 .modal-overlay {

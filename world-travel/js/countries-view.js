@@ -3,7 +3,7 @@ import { getCountryById, countryName } from './countries-data.js';
 import { getCountryCover, setCountryCover } from './prefs.js';
 import { get, getAllByIndex } from './db.js';
 import { blobUrl, brightnessFilter } from './photos.js';
-import { openSheet } from './ui.js';
+import { openSheet, alertDialog } from './ui.js';
 import { t, pinLabel, getLang } from './i18n.js';
 
 async function resolveCountryCoverPhoto(countryId, trips) {
@@ -109,7 +109,10 @@ export async function renderCountryPage(container, countryId, { onBack, onOpenTr
       const photos = await getAllByIndex('photos', 'byTrip', trip.id);
       allPhotos.push(...photos);
     }
-    if (!allPhotos.length) return;
+    if (!allPhotos.length) {
+      await alertDialog({ title: t('noCoverPhotosTitle'), body: t('noCoverPhotosBody') });
+      return;
+    }
 
     const wrap = document.createElement('div');
     wrap.className = 'sheet sheet--full';

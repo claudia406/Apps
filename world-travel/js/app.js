@@ -42,41 +42,61 @@ function popDetail() {
   render();
 }
 
+function renderErrorScreen(err) {
+  console.error(err);
+  viewRoot.innerHTML = `
+    <div class="error-screen">
+      <p class="error-screen__title"></p>
+      <p class="error-screen__body"></p>
+      <button type="button" class="btn btn-primary" data-role="error-back"></button>
+    </div>
+  `;
+  viewRoot.querySelector('.error-screen__title').textContent = t('errScreenTitle');
+  viewRoot.querySelector('.error-screen__body').textContent = t('errScreenBody');
+  const backBtn = viewRoot.querySelector('[data-role="error-back"]');
+  backBtn.textContent = t('errScreenBackToMap');
+  backBtn.addEventListener('click', () => goToTab('map'));
+}
+
 async function render() {
   updateFabVisibility();
   updateNavActive();
 
   const top = state.stack[state.stack.length - 1];
 
-  if (top?.type === 'trip') {
-    await renderTrip(viewRoot, top.id, {
-      onBack: popDetail,
-      onDataChanged: () => {
-        const mapContainer = document.getElementById('map-container');
-        if (mapContainer) renderMap(mapContainer).catch(() => {});
-      },
-    });
-    return;
-  }
+  try {
+    if (top?.type === 'trip') {
+      await renderTrip(viewRoot, top.id, {
+        onBack: popDetail,
+        onDataChanged: () => {
+          const mapContainer = document.getElementById('map-container');
+          if (mapContainer) renderMap(mapContainer).catch(() => {});
+        },
+      });
+      return;
+    }
 
-  if (top?.type === 'country') {
-    await renderCountryPage(viewRoot, top.id, {
-      onBack: popDetail,
-      onOpenTrip: (tripId) => pushDetail({ type: 'trip', id: tripId }),
-    });
-    return;
-  }
+    if (top?.type === 'country') {
+      await renderCountryPage(viewRoot, top.id, {
+        onBack: popDetail,
+        onOpenTrip: (tripId) => pushDetail({ type: 'trip', id: tripId }),
+      });
+      return;
+    }
 
-  if (state.activeTab === 'map') {
-    viewRoot.innerHTML = `<div id="map-screen" class="map-screen"><div id="map-container" class="map-container"></div></div>`;
-    setOnCountryOpen((countryId) => pushDetail({ type: 'country', id: countryId }));
-    await renderMap(document.getElementById('map-container'));
-  } else if (state.activeTab === 'countries') {
-    await renderCountries(viewRoot, {
-      onOpenCountry: (countryId) => pushDetail({ type: 'country', id: countryId }),
-    });
-  } else if (state.activeTab === 'discover') {
-    await renderDiscover(viewRoot);
+    if (state.activeTab === 'map') {
+      viewRoot.innerHTML = `<div id="map-screen" class="map-screen"><div id="map-container" class="map-container"></div></div>`;
+      setOnCountryOpen((countryId) => pushDetail({ type: 'country', id: countryId }));
+      await renderMap(document.getElementById('map-container'));
+    } else if (state.activeTab === 'countries') {
+      await renderCountries(viewRoot, {
+        onOpenCountry: (countryId) => pushDetail({ type: 'country', id: countryId }),
+      });
+    } else if (state.activeTab === 'discover') {
+      await renderDiscover(viewRoot);
+    }
+  } catch (err) {
+    renderErrorScreen(err);
   }
 }
 
@@ -148,5 +168,14 @@ boot();
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+  // When a newer service worker takes over (a fix was shipped since this PWA
+  // was last opened), reload once so the already-installed app actually picks
+  // up the new code instead of continuing to run whatever was cached before.
+  let reloadedForUpdate = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (reloadedForUpdate) return;
+    reloadedForUpdate = true;
+    window.location.reload();
   });
 }

@@ -74,6 +74,11 @@ const STRINGS = {
     errStorageBody: 'Your device may be low on storage. Try removing a few photos or freeing up space, then try again.',
     errPhotoTitle: 'Couldn’t add this photo',
     errPhotoBody: 'The photo may be in an unsupported format. Try a different photo.',
+    noCoverPhotosTitle: 'No photos yet',
+    noCoverPhotosBody: 'Add some photos to a trip in this country first, then you can pick a cover.',
+    errScreenTitle: 'Something went wrong',
+    errScreenBody: 'This screen couldn’t be displayed. Please try again.',
+    errScreenBackToMap: 'Back to Map',
     ok: 'OK',
 
     countryOf: 'in {country}',
@@ -153,6 +158,11 @@ const STRINGS = {
     errStorageBody: '端末のストレージ容量が不足している可能性があります。写真を整理するか空き容量を確保してから、もう一度お試しください。',
     errPhotoTitle: 'この写真を追加できませんでした',
     errPhotoBody: '対応していない形式の可能性があります。別の写真をお試しください。',
+    noCoverPhotosTitle: 'まだ写真がありません',
+    noCoverPhotosBody: 'この国の旅行に写真を追加すると、カバー写真を選べるようになります。',
+    errScreenTitle: '問題が発生しました',
+    errScreenBody: 'この画面を表示できませんでした。もう一度お試しください。',
+    errScreenBackToMap: 'マップに戻る',
     ok: 'OK',
 
     countryOf: '{country}',
