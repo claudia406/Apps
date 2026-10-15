@@ -131,6 +131,12 @@ export function offerToCandidate(
 
   const resolvedDates = resolveDatesFromActual(params.flex, offer.departure_at, offer.return_at);
 
+  const withinRequestedFlexibility =
+    Math.abs(resolvedDates.departDiffDays) <= params.flex.departFlexDays &&
+    Math.abs(resolvedDates.returnDiffDays) <= params.flex.returnFlexDays &&
+    (params.flex.minStayDays === undefined || resolvedDates.stayDays >= params.flex.minStayDays) &&
+    (params.flex.maxStayDays === undefined || resolvedDates.stayDays <= params.flex.maxStayDays);
+
   const bookingLink = offer.link
     ? buildLinkFromApiPath(offer.link, marker)
     : buildSearchResultsLink({
@@ -161,6 +167,7 @@ export function offerToCandidate(
     price: offer.price,
     currency: params.currency,
     resolvedDates,
+    withinRequestedFlexibility,
     airline: offer.airline ?? null,
     transfers: offer.transfers ?? null,
     returnTransfers: offer.return_transfers ?? null,
@@ -315,12 +322,12 @@ export class AviasalesAdapter implements FlightDataAdapter {
     let hadError = false;
     let hadRateLimit = false;
 
-    const results = await mapWithConcurrencyLimit(candidateDates, MAX_CONCURRENT_REQUESTS, async (dateCandidate) => {
+    const queryPricesForDates = async (departureAt: string, returnAt: string) => {
       const url = new URL(`${API_BASE}/aviasales/v3/prices_for_dates`);
       url.searchParams.set("origin", params.originIata);
       url.searchParams.set("destination", params.destinationIata);
-      url.searchParams.set("departure_at", dateCandidate.departDate);
-      url.searchParams.set("return_at", dateCandidate.returnDate);
+      url.searchParams.set("departure_at", departureAt);
+      url.searchParams.set("return_at", returnAt);
       url.searchParams.set("one_way", "false");
       url.searchParams.set("direct", "false");
       url.searchParams.set("sorting", "price");
@@ -328,11 +335,22 @@ export class AviasalesAdapter implements FlightDataAdapter {
       url.searchParams.set("limit", "10");
       url.searchParams.set("token", token);
 
+      const raw = await callJson(url.toString());
+      const parsed = pricesForDatesResponseSchema.safeParse(raw);
+      if (!parsed.success || !parsed.data.data) return [];
+      return parsed.data.data;
+    };
+
+    const results = await mapWithConcurrencyLimit(candidateDates, MAX_CONCURRENT_REQUESTS, async (dateCandidate) => {
       try {
-        const raw = await callJson(url.toString());
-        const parsed = pricesForDatesResponseSchema.safeParse(raw);
-        if (!parsed.success || !parsed.data.data) return [];
-        return parsed.data.data;
+        const exact = await queryPricesForDates(dateCandidate.departDate, dateCandidate.returnDate);
+        if (exact.length > 0) return exact;
+
+        // 完全一致する日付のキャッシュが無い場合は、同じ月単位で再検索する。
+        // キャッシュベースのAPIは完全一致の網羅性が低いため、月単位の方が結果を得やすい。
+        // 実際に採用される日程は、APIが返した実際のdeparture_at/return_atから算出するため、
+        // この代替検索を行っても当初日程との差分表示が不正確になることはない。
+        return await queryPricesForDates(dateCandidate.departDate.slice(0, 7), dateCandidate.returnDate.slice(0, 7));
       } catch (error) {
         if (error instanceof RateLimitError) hadRateLimit = true;
         else hadError = true;

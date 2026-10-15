@@ -83,6 +83,8 @@ export type FlightCandidate = {
   currency: string | null;
 
   resolvedDates: ResolvedDates;
+  /** ユーザーが指定した柔軟性の範囲内の日程かどうか(キャッシュの都合で範囲外を代替表示する場合がある) */
+  withinRequestedFlexibility: boolean;
 
   airline: string | null; // 未確認の場合は null
   transfers: number | null; // 乗継回数。未確認の場合は null

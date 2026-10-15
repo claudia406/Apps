@@ -39,7 +39,11 @@ function sortCandidates(candidates: FlightCandidate[], key: SortKey): FlightCand
 
 export function DestinationDetail({ candidates }: { candidates: FlightCandidate[] }) {
   const [sortKey, setSortKey] = useState<SortKey>("price");
-  const sorted = useMemo(() => sortCandidates(candidates, sortKey), [candidates, sortKey]);
+  const [onlyWithinFlexibility, setOnlyWithinFlexibility] = useState(false);
+
+  const outOfRangeCount = candidates.filter((c) => !c.withinRequestedFlexibility).length;
+  const visible = onlyWithinFlexibility ? candidates.filter((c) => c.withinRequestedFlexibility) : candidates;
+  const sorted = useMemo(() => sortCandidates(visible, sortKey), [visible, sortKey]);
 
   if (candidates.length === 0) {
     return (
@@ -52,6 +56,21 @@ export function DestinationDetail({ candidates }: { candidates: FlightCandidate[
 
   return (
     <div>
+      {outOfRangeCount > 0 && (
+        <div className="notice notice-warning">
+          {outOfRangeCount}件は、指定された日程の柔軟性の範囲外の候補です(データソースのキャッシュの都合で、範囲内の日程が見つからなかったため代替として表示しています)。各カードの「柔軟性の範囲外」バッジで区別できます。
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              checked={onlyWithinFlexibility}
+              onChange={(event) => setOnlyWithinFlexibility(event.target.checked)}
+            />{" "}
+            範囲内の候補のみ表示する
+          </label>
+        </div>
+      )}
+
       <p className="hint" style={{ marginBottom: 12 }}>
         並べ替えの基準(「最安値」と「おすすめ」は区別しています。根拠のない総合スコアでの並べ替えは行いません):
       </p>
@@ -69,9 +88,11 @@ export function DestinationDetail({ candidates }: { candidates: FlightCandidate[
         ))}
       </div>
 
-      {sorted.map((candidate) => (
-        <CandidateCard key={candidate.id} candidate={candidate} />
-      ))}
+      {sorted.length === 0 ? (
+        <p className="empty-state">範囲内の候補はありませんでした。チェックを外すと範囲外の候補を確認できます。</p>
+      ) : (
+        sorted.map((candidate) => <CandidateCard key={candidate.id} candidate={candidate} />)
+      )}
     </div>
   );
 }
@@ -84,6 +105,7 @@ function CandidateCard({ candidate }: { candidate: FlightCandidate }) {
       <div className="candidate-head">
         <span className="candidate-price">{formatPrice(candidate.price, candidate.currency)}</span>
         <PriceStateBadge state={candidate.priceState} />
+        {!candidate.withinRequestedFlexibility && <span className="badge badge-warning">柔軟性の範囲外</span>}
       </div>
 
       <dl className="candidate-meta">

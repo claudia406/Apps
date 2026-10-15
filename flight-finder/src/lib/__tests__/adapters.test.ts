@@ -42,6 +42,29 @@ describe("offerToCandidate", () => {
     expect(candidate?.airline).toBe("SQ");
     expect(candidate?.bookingLink.url).toContain("marker=marker1");
     expect(candidate?.resolvedDates.actualDepartDate).toBe("2026-12-02");
+    expect(candidate?.withinRequestedFlexibility).toBe(true);
+  });
+
+  it("指定した柔軟性(前後3日)の範囲外の日程はwithinRequestedFlexibility=falseになる(範囲外を隠して提示しない)", () => {
+    const candidate = offerToCandidate(
+      { price: 58446, airline: "CZ", departure_at: "2026-12-10T15:05:00+09:00", return_at: "2026-12-16T19:55:00+07:00" },
+      baseParams,
+      undefined,
+      "aviasales",
+      "Aviasales Data API",
+    );
+    expect(candidate?.withinRequestedFlexibility).toBe(false);
+  });
+
+  it("滞在日数の下限・上限を外れる場合もwithinRequestedFlexibility=falseになる", () => {
+    const candidate = offerToCandidate(
+      { price: 10000, departure_at: "2026-12-02T00:00:00", return_at: "2026-12-03T00:00:00" },
+      { ...baseParams, flex: { ...flex, minStayDays: 5 } },
+      undefined,
+      "aviasales",
+      "Aviasales Data API",
+    );
+    expect(candidate?.withinRequestedFlexibility).toBe(false);
   });
 
   it("価格が欠けているオファーは推測で埋めずnullを返す", () => {
