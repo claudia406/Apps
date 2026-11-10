@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f6fbfa;
+  --surface: #ffffff;
+  --surface-soft: #eef7f5;
+  --border: #d7e7e2;
+  --text: #223733;
+  --text-muted: #5f7b76;
+  --text-faint: #8aa3a0;
+
+  --sea-mist: #dcebe8;
+  --soft-aqua: #a8cfc7;
+  --sage: #8fb7ad;
+  --pale-blue: #b8c9e0;
+  --lavender: #d8c8e4;
+  --sand: #e8d6c6;
+
+  --accent: #4f8f82;
+  --accent-contrast: #ffffff;
+  --accent-soft: #e4f1ee;
+
+  --danger: #b4584a;
+  --danger-bg: #fdeeec;
+  --success: #4f8f67;
+  --success-bg: #ebf5ee;
+  --warning: #b8894a;
+  --warning-bg: #fbf1e6;
+
+  /* 月別グラフ・カレンダーで使う単色のセマンティック(magnitude)ランプ */
+  --ramp-1: #eaf3f1;
+  --ramp-2: #cde6e0;
+  --ramp-3: #a8cfc7;
+  --ramp-4: #7fa99c;
+  --ramp-5: #4f766a;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-soft: 0 6px 24px -8px rgba(60, 90, 85, 0.18);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-sea-mist: var(--sea-mist);
+  --color-soft-aqua: var(--soft-aqua);
+  --color-sage: var(--sage);
+  --color-pale-blue: var(--pale-blue);
+  --color-lavender: var(--lavender);
+  --color-sand: var(--sand);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --font-sans: var(--font-zen-maru);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #10211f;
+    --surface: #16302c;
+    --surface-soft: #1b3a34;
+    --border: #2a4a43;
+    --text: #e7f3f0;
+    --text-muted: #a9c7c1;
+    --text-faint: #7fa49c;
+
+    --sea-mist: #1c3a35;
+    --soft-aqua: #2f564d;
+    --sage: #3c6b5f;
+    --pale-blue: #3a4f73;
+    --lavender: #4a3f5c;
+    --sand: #4a3c2f;
+
+    --accent: #7fd2bd;
+    --accent-contrast: #0d2420;
+    --accent-soft: #1d3e38;
+
+    --danger: #e08b7a;
+    --danger-bg: #3a2420;
+    --success: #7fd2a0;
+    --success-bg: #1d3a2a;
+    --warning: #e0b57a;
+    --warning-bg: #3a2e1d;
+
+    --ramp-1: #1c3a35;
+    --ramp-2: #28493f;
+    --ramp-3: #35604f;
+    --ramp-4: #468066;
+    --ramp-5: #5ea581;
+
+    --shadow-soft: 0 6px 24px -8px rgba(0, 0, 0, 0.45);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  font-family: var(--font-zen-maru), "Hiragino Maru Gothic ProN", sans-serif;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-2.5deg); }
+  50% { transform: rotate(2.5deg); }
+}
+
+@keyframes sway-wide {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes drift-right {
+  0% { transform: translateX(-2.2px); }
+  100% { transform: translateX(2.2px); }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-rise-in {
+  animation: rise-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
