@@ -61,16 +61,24 @@ export function ChartIcon({ className }: IconProps) {
 }
 
 export function SettingsIcon({ className }: IconProps) {
+  // 歯車の歯は同じ形を45度ずつ回転させて並べているため、上下左右・斜めすべてで完全に対称になる。
+  const toothAngles = [0, 45, 90, 135, 180, 225, 270, 315];
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-      <circle cx="12" cy="12" r="3.1" stroke="currentColor" strokeWidth="1.8" />
-      <path
-        d="M19.4 13.4a1.7 1.7 0 0 0 .34 1.87l.06.06a2.06 2.06 0 1 1-2.92 2.92l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V19.5a2.06 2.06 0 1 1-4.13 0v-.1a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2.06 2.06 0 1 1-2.92-2.92l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H4.5a2.06 2.06 0 1 1 0-4.13h.1a1.7 1.7 0 0 0 1.55-1.11 1.7 1.7 0 0 0-.34-1.87l-.06-.06A2.06 2.06 0 1 1 8.67 2.9l.06.06a1.7 1.7 0 0 0 1.87.34h.08a1.7 1.7 0 0 0 1-1.55V1.6a2.06 2.06 0 1 1 4.13 0v.1a1.7 1.7 0 0 0 1 1.55h.08a1.7 1.7 0 0 0 1.87-.34l.06-.06a2.06 2.06 0 1 1 2.92 2.92l-.06.06a1.7 1.7 0 0 0-.34 1.87v.08a1.7 1.7 0 0 0 1.55 1h.13a2.06 2.06 0 1 1 0 4.13h-.1a1.7 1.7 0 0 0-1.55 1Z"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinejoin="round"
-        opacity="0.9"
-      />
+      {toothAngles.map((angle) => (
+        <rect
+          key={angle}
+          x="10.8"
+          y="2.6"
+          width="2.4"
+          height="3.4"
+          rx="0.7"
+          fill="currentColor"
+          transform={`rotate(${angle} 12 12)`}
+        />
+      ))}
+      <circle cx="12" cy="12" r="5.6" stroke="currentColor" strokeWidth="1.8" fill="none" />
+      <circle cx="12" cy="12" r="2.1" stroke="currentColor" strokeWidth="1.6" fill="none" />
     </svg>
   );
 }
