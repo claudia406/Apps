@@ -270,9 +270,14 @@ function buildFlyer(data, outputPath) {
     const addY = actPanelY + actPanelH + 0.25;
     badge(s, "その他の情報 (Additional Information)", MARGIN, addY, 4.2);
     const addPanelY = addY + 0.55;
-    const addPanelH = PAGE_H - 0.5 - addPanelY - 0.15;
+    const addGap = 0.2;
+    const addPanelH = data.additionalInfoPanelH || (0.2 + measureSectionsHeight(data.additionalInfoSections, { gap: addGap }) + 0.1);
+    const addAvailableH = PAGE_H - 0.5 - addPanelY - 0.15;
+    if (addPanelH > addAvailableH + 0.01) {
+      console.warn(`[tibso-template] Slide 3 "Additional Information" panel needs ${addPanelH.toFixed(2)}in but only ${addAvailableH.toFixed(2)}in fits above the footer. Shorten the text or shrink page3PhotoAspect/activitiesPanelH.`);
+    }
     grayPanel(s, MARGIN, addPanelY, CONTENT_W, addPanelH);
-    renderSections(s, data.additionalInfoSections, MARGIN + 0.25, addPanelY + 0.2, CONTENT_W - 0.5, { gap: 0.2 });
+    renderSections(s, data.additionalInfoSections, MARGIN + 0.25, addPanelY + 0.2, CONTENT_W - 0.5, { gap: addGap });
 
     addFooter(s, data.abcLogo, data.tibsoLogo);
   }
