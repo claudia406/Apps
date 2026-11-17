@@ -228,17 +228,25 @@ function buildFlyer(data, outputPath) {
     const matPanelH = PAGE_H - 0.5 - matPanelY - 0.15;
     grayPanel(s, MARGIN, matPanelY, CONTENT_W, matPanelH);
 
+    let matContentY = matPanelY + 0.2;
+    let matContentH = matPanelH - 0.4;
+    if (data.matriculationNote) {
+      paragraph(s, data.matriculationNote, MARGIN + 0.25, matContentY, CONTENT_W - 0.5, 0.3, { fontSize: 10.5 });
+      matContentY += 0.32;
+      matContentH -= 0.32;
+    }
+
     if (data.matriculationBody) {
-      paragraph(s, data.matriculationBody, MARGIN + 0.25, matPanelY + 0.2, CONTENT_W - 0.5, matPanelH - 0.4, { fontSize: 10 });
+      paragraph(s, data.matriculationBody, MARGIN + 0.25, matContentY, CONTENT_W - 0.5, matContentH, { fontSize: 10 });
     } else if (data.matriculationColumns === 2) {
       const half = Math.ceil(data.matriculationList.length / 2);
       const colA = data.matriculationList.slice(0, half);
       const colB = data.matriculationList.slice(half);
       const mw = (CONTENT_W - 0.5 - 0.3) / 2;
-      bullets(s, colA, MARGIN + 0.25, matPanelY + 0.2, mw, matPanelH - 0.4, { fontSize: 10 });
-      bullets(s, colB, MARGIN + 0.25 + mw + 0.3, matPanelY + 0.2, mw, matPanelH - 0.4, { fontSize: 10 });
+      bullets(s, colA, MARGIN + 0.25, matContentY, mw, matContentH, { fontSize: 10 });
+      bullets(s, colB, MARGIN + 0.25 + mw + 0.3, matContentY, mw, matContentH, { fontSize: 10 });
     } else {
-      bullets(s, data.matriculationList, MARGIN + 0.25, matPanelY + 0.2, CONTENT_W - 0.5, matPanelH - 0.4, { fontSize: 10 });
+      bullets(s, data.matriculationList, MARGIN + 0.25, matContentY, CONTENT_W - 0.5, matContentH, { fontSize: 10 });
     }
 
     addFooter(s, data.abcLogo, data.tibsoLogo);
