@@ -188,12 +188,12 @@ function buildFlyer(data, outputPath) {
     fy += 0.32;
     paragraph(s, data.facilitiesBody, MARGIN, fy, textW, facilitiesH, { fontSize: 9.8 });
 
-    const photoH = bottomH - 0.4;
-    const photoW = photoH * (data.introPhotoAspect || 1.4);
-    const maxPhotoW = 2.55;
-    const finalPhotoW = Math.min(photoW, maxPhotoW);
-    const finalPhotoH = finalPhotoW / (data.introPhotoAspect || 1.4);
-    s.addImage({ path: data.introPhoto, x: PAGE_W - MARGIN - finalPhotoW, y: y + (bottomH - finalPhotoH) / 2, w: finalPhotoW, h: finalPhotoH });
+    const finalPhotoW = 2.55;
+    const finalPhotoH = bottomH - 0.4;
+    s.addImage({
+      path: data.introPhoto, x: PAGE_W - MARGIN - finalPhotoW, y: y + (bottomH - finalPhotoH) / 2,
+      w: finalPhotoW, h: finalPhotoH, sizing: { type: "cover", w: finalPhotoW, h: finalPhotoH },
+    });
 
     addFooter(s, data.abcLogo, data.tibsoLogo);
   }
@@ -215,9 +215,11 @@ function buildFlyer(data, outputPath) {
 
     const photos = data.page2Photos;
     const pGap = 0.15;
+    const pW = 2.35;
     const pH = (panelH - pGap * (photos.length - 1)) / photos.length;
     photos.forEach((p, i) => {
-      s.addImage({ path: p, x: PAGE_W - MARGIN - 2.35, y: panelY + i * (pH + pGap), w: 2.35, h: pH });
+      const py = panelY + i * (pH + pGap);
+      s.addImage({ path: p, x: PAGE_W - MARGIN - pW, y: py, w: pW, h: pH, sizing: { type: "cover", w: pW, h: pH } });
     });
 
     const matY = panelY + panelH + 0.25;
@@ -253,7 +255,8 @@ function buildFlyer(data, outputPath) {
     const pW3 = (CONTENT_W - gap3 * (photos3.length - 1)) / photos3.length;
     const pH3 = pW3 * (data.page3PhotoAspect || 0.65);
     photos3.forEach((p, i) => {
-      s.addImage({ path: p, x: MARGIN + i * (pW3 + gap3), y, w: pW3, h: pH3 });
+      const px = MARGIN + i * (pW3 + gap3);
+      s.addImage({ path: p, x: px, y, w: pW3, h: pH3, sizing: { type: "cover", w: pW3, h: pH3 } });
     });
 
     y += pH3 + 0.25;
